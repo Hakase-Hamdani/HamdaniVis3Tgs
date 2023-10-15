@@ -5,13 +5,14 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, DB, ZAbstractRODataset, ZAbstractDataset, ZDataset,
-  ZAbstractConnection, ZConnection;
+  ZAbstractConnection, ZConnection, Grids, DBGrids;
 
 type
   TmodulDB = class(TForm)
-    Ztest: TZConnection;
+    Zconnection: TZConnection;
     ZqTest: TZQuery;
     DsTest: TDataSource;
+    DBGrid1: TDBGrid;
   private
     { Private declarations }
   public
