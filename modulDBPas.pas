@@ -5,7 +5,7 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, DB, ZAbstractRODataset, ZAbstractDataset, ZDataset,
-  ZAbstractConnection, ZConnection, Grids, DBGrids;
+  ZAbstractConnection, ZConnection, Grids, DBGrids, StdCtrls;
 
 type
   TmodulDB = class(TForm)
@@ -13,6 +13,9 @@ type
     ZqTest: TZQuery;
     DsTest: TDataSource;
     DBGrid1: TDBGrid;
+    GroupBox1: TGroupBox;
+    DsLogin: TDataSource;
+    ZqLogin: TZQuery;
   private
     { Private declarations }
   public

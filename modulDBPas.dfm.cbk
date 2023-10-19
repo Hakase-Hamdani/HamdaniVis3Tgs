@@ -38,9 +38,8 @@ object modulDB: TmodulDB
     ControlsCodePage = cGET_ACP
     UTF8StringsAsWideField = False
     AutoEncodeStrings = False
-    Connected = True
     Port = 3306
-    Database = 'visual3db'
+    Database = '2110010302visual3tugas'
     User = 'root'
     Protocol = 'mysql'
     LibraryLocation = 
@@ -51,7 +50,6 @@ object modulDB: TmodulDB
   end
   object ZqTest: TZQuery
     Connection = Zconnection
-    Active = True
     SQL.Strings = (
       
         'SELECT p.nama AS penerbit_nama, p.NIP, p.jabatan, d.nama_divisi,' +
