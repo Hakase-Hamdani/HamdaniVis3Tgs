@@ -28,7 +28,7 @@ var
 implementation
 
 uses
-  modulDBPas;
+  modulDBPas, PasAdmin;
 
 {$R *.dfm}
 
@@ -62,7 +62,7 @@ begin
             begin
               userid := modulDB.ZqLogin.FieldValues['id']; //set userid berdasarkan sintaks di kanan
               ShowMessage('Selamat Datang, Admin');
-              //put the ShowModal here
+              frAdmin.ShowModal;
             end
           else
             begin

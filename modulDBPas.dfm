@@ -1,6 +1,6 @@
 object modulDB: TmodulDB
-  Left = 260
-  Top = 194
+  Left = 166
+  Top = 157
   Width = 397
   Height = 480
   Caption = 'modulDB'
@@ -15,7 +15,7 @@ object modulDB: TmodulDB
   TextHeight = 13
   object DBGrid1: TDBGrid
     Left = 24
-    Top = 232
+    Top = 312
     Width = 320
     Height = 120
     DataSource = DsTest
@@ -34,13 +34,21 @@ object modulDB: TmodulDB
     Caption = 'login'
     TabOrder = 1
   end
+  object GroupBox2: TGroupBox
+    Left = 144
+    Top = 120
+    Width = 185
+    Height = 129
+    Caption = 'Admin'
+    TabOrder = 2
+  end
   object Zconnection: TZConnection
     ControlsCodePage = cGET_ACP
     UTF8StringsAsWideField = False
     AutoEncodeStrings = False
     Connected = True
     Port = 3306
-    Database = 'visual3db'
+    Database = '2110010302visual3tugas'
     User = 'root'
     Protocol = 'mysql'
     LibraryLocation = 
@@ -51,7 +59,6 @@ object modulDB: TmodulDB
   end
   object ZqTest: TZQuery
     Connection = Zconnection
-    Active = True
     SQL.Strings = (
       
         'SELECT p.nama AS penerbit_nama, p.NIP, p.jabatan, d.nama_divisi,' +
@@ -84,5 +91,14 @@ object modulDB: TmodulDB
     DataSource = DsTest
     Left = 176
     Top = 32
+  end
+  object ZqAdmin: TZQuery
+    Params = <>
+    Left = 176
+    Top = 136
+  end
+  object DsAdmin: TDataSource
+    Left = 248
+    Top = 136
   end
 end

@@ -16,6 +16,9 @@ type
     GroupBox1: TGroupBox;
     DsLogin: TDataSource;
     ZqLogin: TZQuery;
+    GroupBox2: TGroupBox;
+    ZqAdmin: TZQuery;
+    DsAdmin: TDataSource;
   private
     { Private declarations }
   public
