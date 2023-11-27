@@ -1,6 +1,6 @@
 object frLogin: TfrLogin
-  Left = 166
-  Top = 144
+  Left = 203
+  Top = 159
   Width = 335
   Height = 461
   Caption = 'Login'
@@ -28,14 +28,6 @@ object frLogin: TfrLogin
     Height = 13
     Caption = 'Password'
   end
-  object lblId: TLabel
-    Left = 16
-    Top = 376
-    Width = 3
-    Height = 13
-    Transparent = True
-    Visible = False
-  end
   object edtUserName: TEdit
     Left = 73
     Top = 116
@@ -58,5 +50,14 @@ object frLogin: TfrLogin
     Caption = 'Login'
     TabOrder = 2
     OnClick = btnLoginClick
+  end
+  object Edit1: TEdit
+    Left = 16
+    Top = 376
+    Width = 121
+    Height = 21
+    ReadOnly = True
+    TabOrder = 3
+    Text = 'Edit1'
   end
 end

@@ -1,7 +1,7 @@
 object frAdmin: TfrAdmin
-  Left = 602
-  Top = 164
-  Width = 695
+  Left = 635
+  Top = 163
+  Width = 492
   Height = 510
   Caption = 'ADMIN'
   Color = clBtnFace
@@ -11,6 +11,7 @@ object frAdmin: TfrAdmin
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
   object GroupBox1: TGroupBox
@@ -27,55 +28,41 @@ object frAdmin: TfrAdmin
       Height = 25
       Caption = 'USER'
       TabOrder = 0
+      OnClick = Button1Click
     end
-    object Button7: TButton
-      Left = 32
-      Top = 64
-      Width = 113
-      Height = 25
-      Caption = 'CETAK TABEL USER'
-      TabOrder = 1
-    end
-  end
-  object GroupBox2: TGroupBox
-    Left = 248
-    Top = 136
-    Width = 185
-    Height = 313
-    Caption = 'Administrasi Staff'
-    TabOrder = 1
     object Button2: TButton
       Left = 32
-      Top = 32
+      Top = 64
       Width = 113
       Height = 25
       Caption = 'STAFF'
-      TabOrder = 0
-    end
-    object Button3: TButton
-      Left = 32
-      Top = 64
-      Width = 113
-      Height = 25
-      Caption = 'DIVISI'
       TabOrder = 1
     end
-    object Button9: TButton
+    object Button3: TButton
       Left = 32
       Top = 96
       Width = 113
       Height = 25
-      Caption = 'CETAK DATA STAFF'
+      Caption = 'DIVISI'
       TabOrder = 2
+    end
+    object Button9: TButton
+      Left = 32
+      Top = 128
+      Width = 113
+      Height = 25
+      Caption = 'CETAK DATA STAFF'
+      TabOrder = 3
+      OnClick = Button9Click
     end
   end
   object GroupBox3: TGroupBox
-    Left = 454
+    Left = 246
     Top = 136
     Width = 185
     Height = 313
     Caption = 'Administrasi Surat'
-    TabOrder = 2
+    TabOrder = 1
     object Button4: TButton
       Left = 36
       Top = 32
@@ -115,7 +102,7 @@ object frAdmin: TfrAdmin
     Width = 393
     Height = 105
     Caption = 'Profil'
-    TabOrder = 3
+    TabOrder = 2
     object Label1: TLabel
       Left = 16
       Top = 24

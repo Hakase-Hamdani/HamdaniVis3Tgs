@@ -13,7 +13,7 @@ type
     btnLogin: TButton;
     Label2: TLabel;
     Label3: TLabel;
-    lblId: TLabel;
+    Edit1: TEdit;
     procedure btnLoginClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
   private
@@ -61,8 +61,10 @@ begin
           if (level = 'admin') then
             begin
               userid := modulDB.ZqLogin.FieldValues['id']; //set userid berdasarkan sintaks di kanan
+//              Label1.Caption := userid;
+              Edit1.Text := userid;
               ShowMessage('Selamat Datang, Admin');
-              frAdmin.ShowModal;
+              frAdmin.Show;
             end
           else
             begin
@@ -78,7 +80,7 @@ begin
     end
   else //jika tidak
     begin
-          ShowMessage('Anda tidak terdaftar'); //jalankan ini
+          ShowMessage('Data salah!/Anda tidak terdaftar'); //jalankan ini
     end;
 end;
 //  modulDB.ZqLogin.Close;
