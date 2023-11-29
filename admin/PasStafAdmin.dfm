@@ -1,6 +1,6 @@
 object frStaffAdmin: TfrStaffAdmin
   Left = 311
-  Top = 205
+  Top = 235
   Width = 938
   Height = 374
   Caption = 'Staff'
@@ -101,6 +101,9 @@ object frStaffAdmin: TfrStaffAdmin
     Height = 21
     ItemHeight = 13
     TabOrder = 5
+    Items.Strings = (
+      'aktif'
+      'nonaktif')
   end
   object btnSimpan: TButton
     Left = 48

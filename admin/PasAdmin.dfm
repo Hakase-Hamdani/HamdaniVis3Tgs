@@ -1,6 +1,6 @@
 object frAdmin: TfrAdmin
-  Left = 511
-  Top = 352
+  Left = 278
+  Top = 123
   Width = 1029
   Height = 489
   Caption = 'ADMIN'
@@ -46,6 +46,7 @@ object frAdmin: TfrAdmin
       Height = 25
       Caption = 'DIVISI'
       TabOrder = 2
+      OnClick = Button3Click
     end
     object Button9: TButton
       Left = 32
@@ -71,6 +72,7 @@ object frAdmin: TfrAdmin
       Height = 25
       Caption = 'TUJUAN'
       TabOrder = 0
+      OnClick = Button4Click
     end
     object Button5: TButton
       Left = 36
@@ -79,6 +81,7 @@ object frAdmin: TfrAdmin
       Height = 25
       Caption = 'KLASIFIKASI'
       TabOrder = 1
+      OnClick = Button5Click
     end
   end
   object GroupBox4: TGroupBox

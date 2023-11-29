@@ -26,6 +26,9 @@ type
     procedure FormCreate(Sender: TObject);
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
+    procedure Button3Click(Sender: TObject);
+    procedure Button4Click(Sender: TObject);
+    procedure Button5Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -38,7 +41,8 @@ var
 implementation
 
 uses
-  PasAdminLapStaff, PasLogin, modulDBPas, PasUserAdmin, PasStafAdmin;
+  PasAdminLapStaff, PasLogin, modulDBPas, PasUserAdmin, PasStafAdmin, 
+  PasDivAdmin, PasKlasAdmin, PasTujuanAdmin;
 
 {$R *.dfm}
 
@@ -66,6 +70,21 @@ end;
 procedure TfrAdmin.Button2Click(Sender: TObject);
 begin
 frStaffAdmin.ShowModal;
+end;
+
+procedure TfrAdmin.Button3Click(Sender: TObject);
+begin
+frDIvisiAdmin.ShowModal;
+end;
+
+procedure TfrAdmin.Button4Click(Sender: TObject);
+begin
+frTujuanAdmin.ShowModal;
+end;
+
+procedure TfrAdmin.Button5Click(Sender: TObject);
+begin
+frKlasAdmin.ShowModal;
 end;
 
 end.

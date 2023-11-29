@@ -1,6 +1,6 @@
 object frDIvisiAdmin: TfrDIvisiAdmin
-  Left = 260
-  Top = 236
+  Left = 474
+  Top = 152
   Width = 787
   Height = 242
   Caption = 'Edit Divisi'

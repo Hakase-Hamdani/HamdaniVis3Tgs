@@ -1,6 +1,6 @@
 object frKlasAdmin: TfrKlasAdmin
-  Left = 103
-  Top = 203
+  Left = 211
+  Top = 227
   Width = 861
   Height = 306
   Caption = 'Administrasi Klasifikasi'

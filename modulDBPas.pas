@@ -41,6 +41,14 @@ type
     ZqKlasAdmin: TZQuery;
     DsKlasAdmin: TDataSource;
     ZqKlasAdminView: TZQuery;
+    GroupBox7: TGroupBox;
+    ZqTujuanAdmin: TZQuery;
+    DsTujuanAdmin: TDataSource;
+    ZqTujuanAdminView: TZQuery;
+    GroupBox9: TGroupBox;
+    ZqSuratMain: TZQuery;
+    DsSurat: TDataSource;
+    ZqSuratView: TZQuery;
   private
     { Private declarations }
   public

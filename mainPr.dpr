@@ -9,7 +9,9 @@ uses
   PasUserAdmin in 'admin\PasUserAdmin.pas' {frUserAdmin},
   PasStafAdmin in 'admin\PasStafAdmin.pas' {frStaffAdmin},
   PasDivAdmin in 'admin\PasDivAdmin.pas' {frDIvisiAdmin},
-  PasKlasAdmin in 'admin\PasKlasAdmin.pas' {frKlasAdmin};
+  PasKlasAdmin in 'admin\PasKlasAdmin.pas' {frKlasAdmin},
+  PasTujuanAdmin in 'admin\PasTujuanAdmin.pas' {frTujuanAdmin},
+  PasInputSurat in 'PasInputSurat.pas' {frSurat};
 
 {$R *.res}
 
@@ -23,5 +25,7 @@ begin
   Application.CreateForm(TfrStaffAdmin, frStaffAdmin);
   Application.CreateForm(TfrDIvisiAdmin, frDIvisiAdmin);
   Application.CreateForm(TfrKlasAdmin, frKlasAdmin);
+  Application.CreateForm(TfrTujuanAdmin, frTujuanAdmin);
+  Application.CreateForm(TfrSurat, frSurat);
   Application.Run;
 end.

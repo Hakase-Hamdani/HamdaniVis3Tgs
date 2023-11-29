@@ -7,7 +7,7 @@ uses
   Dialogs, Grids, DBGrids, StdCtrls;
 
 type
-  TfrTujuan = class(TForm)
+  TfrTujuanAdmin = class(TForm)
     Label1: TLabel;
     Label2: TLabel;
     Label3: TLabel;
@@ -34,7 +34,7 @@ type
   end;
 
 var
-  frTujuan: TfrTujuan;
+  frTujuanAdmin: TfrTujuanAdmin;
 
 implementation
 
@@ -43,7 +43,7 @@ uses
 
 {$R *.dfm}
 
-procedure TfrTujuan.btsSimpanClick(Sender: TObject);
+procedure TfrTujuanAdmin.btsSimpanClick(Sender: TObject);
 begin
 modulDB.ZqTujuanAdmin.SQL.Clear;
 modulDB.ZqTujuanAdmin.SQL.Text := '';
@@ -59,9 +59,9 @@ modulDB.ZqTujuanAdmin.ExecSQL;
 modulDB.DsTujuanAdmin.DataSet.Refresh;
 end;
 
-procedure TfrTujuan.DBGrid1CellClick(Column: TColumn);
+procedure TfrTujuanAdmin.DBGrid1CellClick(Column: TColumn);
 begin
-edtId.Text ;= modulDB.ZqTujuanAdmin.Fields[0].AsString;
+edtId.Text := modulDB.ZqTujuanAdmin.Fields[0].AsString;
 edtAlamat.Text := modulDB.ZqTujuanAdmin.Fields[1].AsString;
 edtOrang.Text := modulDB.ZqTujuanAdmin.Fields[2].AsString;
 edtJabatan.Text := modulDB.ZqTujuanAdmin.Fields[3].AsString;
@@ -69,7 +69,7 @@ edtInstitusi.Text := modulDB.ZqTujuanAdmin.Fields[4].AsString;
 edtSts.Text := modulDB.ZqTujuanAdmin.Fields[5].AsString;
 end;
 
-procedure TfrTujuan.btnUbahClick(Sender: TObject);
+procedure TfrTujuanAdmin.btnUbahClick(Sender: TObject);
 begin
 modulDB.ZqTujuanAdmin.SQL.Clear;
 modulDB.ZqTujuanAdmin.SQL.Text := '';
@@ -87,7 +87,7 @@ modulDB.ZqTujuanAdmin.ExecSQL;
 modulDB.DsTujuanAdmin.DataSet.Refresh;
 end;
 
-procedure TfrTujuan.btnHapusClick(Sender: TObject);
+procedure TfrTujuanAdmin.btnHapusClick(Sender: TObject);
 begin
 modulDB.ZqTujuanAdmin.SQL.Clear;
 modulDB.ZqTujuanAdmin.SQL.Text := '';

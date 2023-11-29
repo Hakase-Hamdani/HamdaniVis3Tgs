@@ -1,8 +1,8 @@
 object modulDB: TmodulDB
-  Left = 304
-  Top = 147
-  Width = 1146
-  Height = 527
+  Left = 593
+  Top = 104
+  Width = 734
+  Height = 571
   Caption = 'modulDB'
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -14,10 +14,10 @@ object modulDB: TmodulDB
   PixelsPerInch = 96
   TextHeight = 13
   object DBGrid1: TDBGrid
-    Left = 800
-    Top = 360
+    Left = 16
+    Top = 432
     Width = 320
-    Height = 120
+    Height = 88
     DataSource = DsLogin
     TabOrder = 0
     TitleFont.Charset = DEFAULT_CHARSET
@@ -35,23 +35,23 @@ object modulDB: TmodulDB
     TabOrder = 1
   end
   object GroupBox2: TGroupBox
-    Left = 144
-    Top = 120
+    Left = 16
+    Top = 136
     Width = 233
     Height = 129
     Caption = 'Admin'
     TabOrder = 2
   end
   object GroupBox3: TGroupBox
-    Left = 144
-    Top = 264
+    Left = 16
+    Top = 280
     Width = 233
     Height = 137
     Caption = 'User Admin'
     TabOrder = 3
   end
   object GroupBox4: TGroupBox
-    Left = 392
+    Left = 344
     Top = 8
     Width = 329
     Height = 129
@@ -59,7 +59,7 @@ object modulDB: TmodulDB
     TabOrder = 4
   end
   object GroupBox5: TGroupBox
-    Left = 392
+    Left = 280
     Top = 144
     Width = 185
     Height = 129
@@ -67,12 +67,28 @@ object modulDB: TmodulDB
     TabOrder = 5
   end
   object GroupBox6: TGroupBox
-    Left = 608
+    Left = 488
     Top = 144
     Width = 185
     Height = 121
     Caption = 'Klasifikasi Admin'
     TabOrder = 6
+  end
+  object GroupBox7: TGroupBox
+    Left = 280
+    Top = 288
+    Width = 185
+    Height = 121
+    Caption = 'Tujuan Admin'
+    TabOrder = 7
+  end
+  object GroupBox9: TGroupBox
+    Left = 488
+    Top = 288
+    Width = 185
+    Height = 121
+    Caption = 'SuratMain'
+    TabOrder = 8
   end
   object Zconnection: TZConnection
     ControlsCodePage = cGET_ACP
@@ -130,21 +146,21 @@ object modulDB: TmodulDB
     SQL.Strings = (
       'SELECT * FROM penerbit')
     Params = <>
-    Left = 176
-    Top = 136
+    Left = 48
+    Top = 152
   end
   object DsAdmin: TDataSource
     DataSet = ZqAdmin
-    Left = 256
-    Top = 136
+    Left = 128
+    Top = 152
   end
   object FrxdbAdmin: TfrxDBDataset
     UserName = 'frxDBDataset1'
     CloseDataSource = False
     DataSource = DsLapStaff
     BCDToCurrency = False
-    Left = 176
-    Top = 192
+    Left = 48
+    Top = 208
   end
   object FrxrepAdminUser: TfrxReport
     Version = '4.12.6'
@@ -161,8 +177,8 @@ object modulDB: TmodulDB
       'begin'
       ''
       'end.')
-    Left = 256
-    Top = 192
+    Left = 128
+    Top = 208
     Datasets = <
       item
         DataSet = FrxdbAdmin
@@ -479,13 +495,13 @@ object modulDB: TmodulDB
       'JOIN divisi d ON p.id_divisi = d.id'
       'JOIN user u ON p.id_user = u.id;')
     Params = <>
-    Left = 328
-    Top = 136
+    Left = 200
+    Top = 152
   end
   object DsLapStaff: TDataSource
     DataSet = ZqLapStaff
-    Left = 328
-    Top = 192
+    Left = 200
+    Top = 208
   end
   object ZqUserAdmin: TZQuery
     Connection = Zconnection
@@ -493,13 +509,13 @@ object modulDB: TmodulDB
     SQL.Strings = (
       'SELECT * FROM user')
     Params = <>
-    Left = 168
-    Top = 280
+    Left = 40
+    Top = 296
   end
   object DsUserAdmin: TDataSource
     DataSet = ZqUserAdminView
-    Left = 240
-    Top = 280
+    Left = 112
+    Top = 296
   end
   object ZqUserAdminView: TZQuery
     Connection = Zconnection
@@ -507,8 +523,8 @@ object modulDB: TmodulDB
     SQL.Strings = (
       'SELECT * FROM user')
     Params = <>
-    Left = 184
-    Top = 344
+    Left = 56
+    Top = 360
   end
   object ZqStafAdmin: TZQuery
     Connection = Zconnection
@@ -516,7 +532,7 @@ object modulDB: TmodulDB
     SQL.Strings = (
       'SELECT * FROM user')
     Params = <>
-    Left = 448
+    Left = 400
     Top = 24
   end
   object ZqStafAdminView: TZQuery
@@ -525,12 +541,12 @@ object modulDB: TmodulDB
     SQL.Strings = (
       'SELECT * FROM penerbit')
     Params = <>
-    Left = 448
+    Left = 400
     Top = 80
   end
   object DsStafAdminView: TDataSource
     DataSet = ZqStafAdminView
-    Left = 608
+    Left = 560
     Top = 64
   end
   object ZqDivStaf: TZQuery
@@ -539,7 +555,7 @@ object modulDB: TmodulDB
     SQL.Strings = (
       'SELECT * FROM divisi')
     Params = <>
-    Left = 520
+    Left = 472
     Top = 56
   end
   object ZqDivAdmin: TZQuery
@@ -548,7 +564,7 @@ object modulDB: TmodulDB
     SQL.Strings = (
       'SELECT * FROM divisi')
     Params = <>
-    Left = 408
+    Left = 296
     Top = 160
   end
   object ZqDivAdminView: TZQuery
@@ -557,12 +573,12 @@ object modulDB: TmodulDB
     SQL.Strings = (
       'SELECT * FROM divisi')
     Params = <>
-    Left = 408
+    Left = 296
     Top = 216
   end
   object DsDivAdmin: TDataSource
     DataSet = ZqDivAdminView
-    Left = 472
+    Left = 360
     Top = 176
   end
   object ZqKlasAdmin: TZQuery
@@ -571,12 +587,12 @@ object modulDB: TmodulDB
     SQL.Strings = (
       'SELECT * FROM klasifikasi')
     Params = <>
-    Left = 632
+    Left = 520
     Top = 160
   end
   object DsKlasAdmin: TDataSource
     DataSet = ZqKlasAdminView
-    Left = 696
+    Left = 584
     Top = 176
   end
   object ZqKlasAdminView: TZQuery
@@ -585,7 +601,52 @@ object modulDB: TmodulDB
     SQL.Strings = (
       'SELECT * FROM klasifikasi')
     Params = <>
-    Left = 632
+    Left = 520
     Top = 216
+  end
+  object ZqTujuanAdmin: TZQuery
+    Connection = Zconnection
+    Active = True
+    SQL.Strings = (
+      'SELECT * FROM tujuan')
+    Params = <>
+    Left = 296
+    Top = 296
+  end
+  object DsTujuanAdmin: TDataSource
+    DataSet = ZqTujuanAdminView
+    Left = 360
+    Top = 312
+  end
+  object ZqTujuanAdminView: TZQuery
+    Connection = Zconnection
+    Active = True
+    SQL.Strings = (
+      'SELECT * FROM tujuan')
+    Params = <>
+    Left = 296
+    Top = 352
+  end
+  object ZqSuratMain: TZQuery
+    Connection = Zconnection
+    SQL.Strings = (
+      'SELECT * FROM surat')
+    Params = <>
+    Left = 504
+    Top = 296
+  end
+  object DsSurat: TDataSource
+    DataSet = ZqSuratView
+    Left = 568
+    Top = 312
+  end
+  object ZqSuratView: TZQuery
+    Connection = Zconnection
+    Active = True
+    SQL.Strings = (
+      'SELECT * FROM surat')
+    Params = <>
+    Left = 504
+    Top = 352
   end
 end

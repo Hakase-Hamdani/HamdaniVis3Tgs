@@ -80,7 +80,7 @@ var
 begin
 modulDB.ZqStafAdmin.SQL.Clear;
 modulDB.ZqStafAdmin.SQL.Text := '';
-modulDB.ZqStafAdmin.SQL.Text := 'INSERT INTO penerbit (id_user, id_divisi, nama, NIP, jabatan, `status`) VALUES (:id_user, :id_divisi, :nama, :jabatan, :status)';
+modulDB.ZqStafAdmin.SQL.Text := 'INSERT INTO penerbit (id_user, id_divisi, nama, NIP, jabatan, `status`) VALUES (:id_user, :id_divisi, :nama, :NIP, :jabatan, :status)';
 
 id_user := Integer(cbxUser.Items.Objects[cbxUser.ItemIndex]);
 id_divisi := Integer(cbxDiv.Items.Objects[cbxDiv.ItemIndex]);
@@ -88,7 +88,7 @@ id_divisi := Integer(cbxDiv.Items.Objects[cbxDiv.ItemIndex]);
 modulDB.ZqStafAdmin.ParamByName('id_user').Value := id_user;
 modulDB.ZqStafAdmin.ParamByName('id_divisi').Value := id_divisi;
 modulDB.ZqStafAdmin.ParamByName('nama').Value := edtNama.Text;
-modulDB.ZqStafAdmin.ParamByName('NIP').Value := edtNip.Text;
+modulDB.ZqStafAdmin.ParamByName('nip').Value := edtNip.Text;
 modulDB.ZqStafAdmin.ParamByName('status').Value := cbxSts.Text;
 
 modulDB.ZqStafAdmin.ExecSQL;
