@@ -45,9 +45,6 @@ procedure TfrUserAdmin.btnSimpanClick(Sender: TObject);
 var
   username, pswd, sts, lvl: string;
 begin
-//  username := edtUsername.Text;
-//  pswd := edtPassword.Text;
-//  sts := edtSts.Text;
 
 modulDB.ZqUserAdmin.SQL.Clear;
 modulDB.ZqUserAdmin.SQL.Text := '';

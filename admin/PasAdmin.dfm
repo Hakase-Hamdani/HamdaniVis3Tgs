@@ -1,8 +1,8 @@
 object frAdmin: TfrAdmin
-  Left = 635
-  Top = 163
-  Width = 492
-  Height = 510
+  Left = 511
+  Top = 352
+  Width = 1029
+  Height = 489
   Caption = 'ADMIN'
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -16,9 +16,9 @@ object frAdmin: TfrAdmin
   TextHeight = 13
   object GroupBox1: TGroupBox
     Left = 40
-    Top = 136
+    Top = 120
     Width = 185
-    Height = 313
+    Height = 177
     Caption = 'Administrasi Pengguna'
     TabOrder = 0
     object Button1: TButton
@@ -37,6 +37,7 @@ object frAdmin: TfrAdmin
       Height = 25
       Caption = 'STAFF'
       TabOrder = 1
+      OnClick = Button2Click
     end
     object Button3: TButton
       Left = 32
@@ -57,10 +58,10 @@ object frAdmin: TfrAdmin
     end
   end
   object GroupBox3: TGroupBox
-    Left = 246
-    Top = 136
+    Left = 38
+    Top = 304
     Width = 185
-    Height = 313
+    Height = 113
     Caption = 'Administrasi Surat'
     TabOrder = 1
     object Button4: TButton
@@ -79,27 +80,11 @@ object frAdmin: TfrAdmin
       Caption = 'KLASIFIKASI'
       TabOrder = 1
     end
-    object Button6: TButton
-      Left = 36
-      Top = 96
-      Width = 113
-      Height = 25
-      Caption = 'SURAT KELUAR'
-      TabOrder = 2
-    end
-    object Button8: TButton
-      Left = 28
-      Top = 128
-      Width = 129
-      Height = 25
-      Caption = 'CETAK DAFTAR SURAT'
-      TabOrder = 3
-    end
   end
   object GroupBox4: TGroupBox
     Left = 40
     Top = 8
-    Width = 393
+    Width = 217
     Height = 105
     Caption = 'Profil'
     TabOrder = 2
@@ -124,5 +109,25 @@ object frAdmin: TfrAdmin
       Height = 21
       TabOrder = 0
     end
+  end
+  object DBGrid1: TDBGrid
+    Left = 272
+    Top = 16
+    Width = 697
+    Height = 385
+    TabOrder = 3
+    TitleFont.Charset = DEFAULT_CHARSET
+    TitleFont.Color = clWindowText
+    TitleFont.Height = -11
+    TitleFont.Name = 'Tahoma'
+    TitleFont.Style = []
+  end
+  object Button6: TButton
+    Left = 276
+    Top = 408
+    Width = 113
+    Height = 25
+    Caption = 'TAMBAH SURAT KELUAR'
+    TabOrder = 4
   end
 end

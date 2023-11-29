@@ -1,6 +1,6 @@
 object modulDB: TmodulDB
-  Left = 321
-  Top = 173
+  Left = 211
+  Top = 483
   Width = 1146
   Height = 527
   Caption = 'modulDB'
@@ -49,6 +49,22 @@ object modulDB: TmodulDB
     Height = 137
     Caption = 'User Admin'
     TabOrder = 3
+  end
+  object GroupBox4: TGroupBox
+    Left = 392
+    Top = 8
+    Width = 329
+    Height = 129
+    Caption = 'Staf Admin'
+    TabOrder = 4
+  end
+  object GroupBox5: TGroupBox
+    Left = 392
+    Top = 144
+    Width = 185
+    Height = 129
+    Caption = 'GroupBox5'
+    TabOrder = 5
   end
   object Zconnection: TZConnection
     ControlsCodePage = cGET_ACP
@@ -485,5 +501,56 @@ object modulDB: TmodulDB
     Params = <>
     Left = 184
     Top = 344
+  end
+  object ZqStafAdmin: TZQuery
+    Connection = Zconnection
+    Active = True
+    SQL.Strings = (
+      'SELECT * FROM user')
+    Params = <>
+    Left = 448
+    Top = 24
+  end
+  object ZqStafAdminView: TZQuery
+    Connection = Zconnection
+    Active = True
+    SQL.Strings = (
+      'SELECT * FROM penerbit')
+    Params = <>
+    Left = 448
+    Top = 80
+  end
+  object DsStafAdminView: TDataSource
+    DataSet = ZqStafAdminView
+    Left = 608
+    Top = 64
+  end
+  object ZqDivStaf: TZQuery
+    Connection = Zconnection
+    Active = True
+    SQL.Strings = (
+      'SELECT * FROM divisi')
+    Params = <>
+    Left = 520
+    Top = 56
+  end
+  object ZqDivAdmin: TZQuery
+    Params = <>
+    Left = 408
+    Top = 160
+  end
+  object ZqDivAdminView: TZQuery
+    Connection = Zconnection
+    Active = True
+    SQL.Strings = (
+      'SELECT * FROM divisi')
+    Params = <>
+    Left = 408
+    Top = 216
+  end
+  object DsDivAdmin: TDataSource
+    DataSet = ZqDivAdminView
+    Left = 472
+    Top = 176
   end
 end

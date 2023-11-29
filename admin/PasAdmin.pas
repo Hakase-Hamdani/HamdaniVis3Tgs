@@ -4,7 +4,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls;
+  Dialogs, StdCtrls, Grids, DBGrids;
 
 type
   TfrAdmin = class(TForm)
@@ -13,8 +13,6 @@ type
     GroupBox3: TGroupBox;
     Button4: TButton;
     Button5: TButton;
-    Button6: TButton;
-    Button8: TButton;
     GroupBox4: TGroupBox;
     Label1: TLabel;
     Label2: TLabel;
@@ -22,9 +20,12 @@ type
     Button2: TButton;
     Button3: TButton;
     Button9: TButton;
+    DBGrid1: TDBGrid;
+    Button6: TButton;
     procedure Button9Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure Button1Click(Sender: TObject);
+    procedure Button2Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -37,7 +38,7 @@ var
 implementation
 
 uses
-  PasAdminLapStaff, PasLogin, modulDBPas, PasUserAdmin;
+  PasAdminLapStaff, PasLogin, modulDBPas, PasUserAdmin, PasStafAdmin;
 
 {$R *.dfm}
 
@@ -60,6 +61,11 @@ end;
 procedure TfrAdmin.Button1Click(Sender: TObject);
 begin
 frUserAdmin.ShowModal;
+end;
+
+procedure TfrAdmin.Button2Click(Sender: TObject);
+begin
+frStaffAdmin.ShowModal;
 end;
 
 end.

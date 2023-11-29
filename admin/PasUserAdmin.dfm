@@ -1,8 +1,8 @@
 object frUserAdmin: TfrUserAdmin
-  Left = 509
-  Top = 170
-  Width = 360
-  Height = 510
+  Left = 129
+  Top = 122
+  Width = 858
+  Height = 315
   Caption = 'Manajemen User'
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -56,9 +56,9 @@ object frUserAdmin: TfrUserAdmin
     TabOrder = 1
   end
   object DBGrid1: TDBGrid
-    Left = 8
-    Top = 224
-    Width = 329
+    Left = 328
+    Top = 16
+    Width = 481
     Height = 201
     DataSource = modulDB.DsUserAdmin
     TabOrder = 2
@@ -99,7 +99,7 @@ object frUserAdmin: TfrUserAdmin
       end>
   end
   object btnSimpan: TButton
-    Left = 80
+    Left = 96
     Top = 184
     Width = 75
     Height = 25
@@ -108,7 +108,7 @@ object frUserAdmin: TfrUserAdmin
     OnClick = btnSimpanClick
   end
   object btnEdit: TButton
-    Left = 168
+    Left = 184
     Top = 184
     Width = 75
     Height = 25
@@ -117,8 +117,8 @@ object frUserAdmin: TfrUserAdmin
     OnClick = btnEditClick
   end
   object btnHapus: TButton
-    Left = 8
-    Top = 432
+    Left = 328
+    Top = 224
     Width = 75
     Height = 25
     Caption = 'HAPUS'

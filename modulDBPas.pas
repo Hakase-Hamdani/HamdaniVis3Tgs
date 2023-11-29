@@ -28,6 +28,15 @@ type
     ZqUserAdmin: TZQuery;
     DsUserAdmin: TDataSource;
     ZqUserAdminView: TZQuery;
+    GroupBox4: TGroupBox;
+    ZqStafAdmin: TZQuery;
+    ZqStafAdminView: TZQuery;
+    DsStafAdminView: TDataSource;
+    ZqDivStaf: TZQuery;
+    GroupBox5: TGroupBox;
+    ZqDivAdmin: TZQuery;
+    ZqDivAdminView: TZQuery;
+    DsDivAdmin: TDataSource;
   private
     { Private declarations }
   public
