@@ -81,4 +81,13 @@ object frDIvisiAdmin: TfrDIvisiAdmin
     TabOrder = 5
     Visible = False
   end
+  object edtHapus: TButton
+    Left = 272
+    Top = 152
+    Width = 75
+    Height = 25
+    Caption = 'HAPUS'
+    TabOrder = 6
+    OnClick = edtHapusClick
+  end
 end

@@ -8,7 +8,8 @@ uses
   PasAdminLapStaff in 'admin\PasAdminLapStaff.pas' {frAdminLapStaff},
   PasUserAdmin in 'admin\PasUserAdmin.pas' {frUserAdmin},
   PasStafAdmin in 'admin\PasStafAdmin.pas' {frStaffAdmin},
-  PasDivAdmin in 'admin\PasDivAdmin.pas' {frDIvisiAdmin};
+  PasDivAdmin in 'admin\PasDivAdmin.pas' {frDIvisiAdmin},
+  PasKlasAdmin in 'admin\PasKlasAdmin.pas' {frKlasAdmin};
 
 {$R *.res}
 
@@ -21,5 +22,6 @@ begin
   Application.CreateForm(TfrUserAdmin, frUserAdmin);
   Application.CreateForm(TfrStaffAdmin, frStaffAdmin);
   Application.CreateForm(TfrDIvisiAdmin, frDIvisiAdmin);
+  Application.CreateForm(TfrKlasAdmin, frKlasAdmin);
   Application.Run;
 end.

@@ -1,6 +1,6 @@
 object modulDB: TmodulDB
-  Left = 211
-  Top = 483
+  Left = 304
+  Top = 147
   Width = 1146
   Height = 527
   Caption = 'modulDB'
@@ -63,8 +63,16 @@ object modulDB: TmodulDB
     Top = 144
     Width = 185
     Height = 129
-    Caption = 'GroupBox5'
+    Caption = 'Divisi Admin'
     TabOrder = 5
+  end
+  object GroupBox6: TGroupBox
+    Left = 608
+    Top = 144
+    Width = 185
+    Height = 121
+    Caption = 'Klasifikasi Admin'
+    TabOrder = 6
   end
   object Zconnection: TZConnection
     ControlsCodePage = cGET_ACP
@@ -535,6 +543,10 @@ object modulDB: TmodulDB
     Top = 56
   end
   object ZqDivAdmin: TZQuery
+    Connection = Zconnection
+    Active = True
+    SQL.Strings = (
+      'SELECT * FROM divisi')
     Params = <>
     Left = 408
     Top = 160
@@ -552,5 +564,28 @@ object modulDB: TmodulDB
     DataSet = ZqDivAdminView
     Left = 472
     Top = 176
+  end
+  object ZqKlasAdmin: TZQuery
+    Connection = Zconnection
+    Active = True
+    SQL.Strings = (
+      'SELECT * FROM klasifikasi')
+    Params = <>
+    Left = 632
+    Top = 160
+  end
+  object DsKlasAdmin: TDataSource
+    DataSet = ZqKlasAdminView
+    Left = 696
+    Top = 176
+  end
+  object ZqKlasAdminView: TZQuery
+    Connection = Zconnection
+    Active = True
+    SQL.Strings = (
+      'SELECT * FROM klasifikasi')
+    Params = <>
+    Left = 632
+    Top = 216
   end
 end

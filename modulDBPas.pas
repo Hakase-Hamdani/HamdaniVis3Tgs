@@ -37,6 +37,10 @@ type
     ZqDivAdmin: TZQuery;
     ZqDivAdminView: TZQuery;
     DsDivAdmin: TDataSource;
+    GroupBox6: TGroupBox;
+    ZqKlasAdmin: TZQuery;
+    DsKlasAdmin: TDataSource;
+    ZqKlasAdminView: TZQuery;
   private
     { Private declarations }
   public
