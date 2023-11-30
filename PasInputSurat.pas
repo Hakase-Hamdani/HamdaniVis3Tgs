@@ -21,8 +21,13 @@ type
     MmDetail: TMemo;
     cbxStatus: TComboBox;
     DBGrid1: TDBGrid;
-    Button1: TButton;
+    btnSimpan: TButton;
     Button2: TButton;
+    edtId: TEdit;
+    procedure FormActivate(Sender: TObject);
+    procedure btnSimpanClick(Sender: TObject);
+    procedure DBGrid1CellClick(Column: TColumn);
+    procedure Button2Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -35,8 +40,88 @@ var
 implementation
 
 uses
-  modulDBPas, PasLogin;
+  modulDBPas, PasLogin, DB;
 
 {$R *.dfm}
+
+procedure TfrSurat.FormActivate(Sender: TObject);
+begin
+while not modulDB.ZqStafAdminView.Eof do //Penerbit
+  begin
+    cbxPenerbit.Items.AddObject(modulDB.ZqStafAdminView.FieldByName('nama').AsString, TObject(modulDB.ZqStafAdminView.FieldByName('id').AsInteger));
+    modulDB.ZqStafAdminView.Next;
+  end;
+while not modulDB.ZqTujuanAdminView.Eof do //Tujuan
+  begin
+    cbxTujuan.Items.AddObject(modulDB.ZqTujuanAdminView.FieldByName('alamat').AsString, TObject(modulDB.ZqTujuanAdminView.FieldByName('id').AsInteger));
+    modulDB.ZqTujuanAdminView.Next;
+  end;
+while not modulDB.ZqKlasAdminView.Eof do
+  begin
+    cbxJenis.Items.AddObject(modulDB.ZqKlasAdminView.FieldByName('nama').AsString, TObject(modulDB.ZqKlasAdminView.FieldByName('id').AsInteger));
+    modulDB.ZqKlasAdminView.Next;
+  end;
+end;
+
+procedure TfrSurat.btnSimpanClick(Sender: TObject);
+var
+  id_penerbit, id_tujuan, id_jenis : Integer;
+begin
+modulDB.ZqSuratMain.SQL.Clear;
+modulDB.ZqSuratMain.SQL.Text := 'INSERT INTO surat (id_penerbit, id_tujuan, id_jenis, tgl_berlaku, detail, status) VALUES (:id_penerbit, :id_tujuan, :id_jenis, :tgl_berlaku, :detail, :status)';
+
+id_penerbit := Integer(cbxPenerbit.Items.Objects[cbxPenerbit.ItemIndex]);
+id_tujuan := Integer(cbxTujuan.Items.Objects[cbxTujuan.ItemIndex]);
+id_jenis := Integer(cbxJenis.Items.Objects[cbxTujuan.ItemIndex]);
+
+
+modulDB.ZqSuratMain.ParamByName('id_penerbit').Value := id_penerbit;
+modulDB.ZqSuratMain.ParamByName('id_tujuan').Value := id_tujuan;
+modulDB.ZqSuratMain.ParamByName('id_jenis').Value := id_jenis;
+
+modulDB.ZqSuratMain.ParamByName('tgl_berlaku').Value := DateBerlaku.Date;
+modulDB.ZqSuratMain.ParamByName('detail').Value := MmDetail.Text;
+modulDB.ZqSuratMain.ParamByName('status').Value := cbxStatus.Text;
+
+modulDB.ZqSuratView.ExecSQL;
+modulDB.DsSurat.DataSet.Refresh;
+end;
+
+procedure TfrSurat.DBGrid1CellClick(Column: TColumn);
+var
+  selectedDate  : TDateTime;
+begin
+if (DBGrid1.DataSource.DataSet <> nil) and (DBGrid1.DataSource.DataSet.RecNo > 0) then
+  begin
+    selectedDate := DBGrid1.DataSource.DataSet.FieldByName('tgl_berlaku').AsDateTime;
+    DateBerlaku.Date := selectedDate;
+  end;
+
+edtId.Text := modulDB.ZqSuratView.Fields[0].AsString;
+MmDetail.Text := modulDB.ZqSuratView.Fields[5].AsString;
+cbxStatus.Text := modulDB.ZqSuratView.Fields[6].AsString;
+end;
+
+procedure TfrSurat.Button2Click(Sender: TObject);
+begin
+modulDB.ZqSuratMain.SQL.Clear;
+modulDB.ZqSuratMain.SQL.Text := 'UPDATE surat SET id_penerbit = :id_penerbit, id_tujuan = :id_tujuan, id_jenis = :id_jenis, detail = :detail, status = :status WHERE id = :id';
+
+id_penerbit := Integer(cbxPenerbit.Items.Objects[cbxPenerbit.ItemIndex]);
+id_tujuan := Integer(cbxTujuan.Items.Objects[cbxTujuan.ItemIndex]);
+id_jenis := Integer(cbxJenis.Items.Objects[cbxTujuan.ItemIndex]);
+
+
+modulDB.ZqSuratMain.ParamByName('id_penerbit').Value := id_penerbit;
+modulDB.ZqSuratMain.ParamByName('id_tujuan').Value := id_tujuan;
+modulDB.ZqSuratMain.ParamByName('id_jenis').Value := id_jenis;
+
+modulDB.ZqSuratMain.ParamByName('tgl_berlaku').Value := DateBerlaku.Date;
+modulDB.ZqSuratMain.ParamByName('detail').Value := MmDetail.Text;
+modulDB.ZqSuratMain.ParamByName('status').Value := cbxStatus.Text;
+
+modulDB.ZqSuratView.ExecSQL;
+modulDB.DsSurat.DataSet.Refresh;
+end;
 
 end.

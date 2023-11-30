@@ -1,6 +1,6 @@
 object frAdmin: TfrAdmin
-  Left = 278
-  Top = 123
+  Left = 1
+  Top = 153
   Width = 1029
   Height = 489
   Caption = 'ADMIN'
@@ -128,9 +128,10 @@ object frAdmin: TfrAdmin
   object Button6: TButton
     Left = 276
     Top = 408
-    Width = 113
+    Width = 157
     Height = 25
     Caption = 'TAMBAH SURAT KELUAR'
     TabOrder = 4
+    OnClick = Button6Click
   end
 end

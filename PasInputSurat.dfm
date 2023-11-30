@@ -1,8 +1,8 @@
 object frSurat: TfrSurat
-  Left = 286
-  Top = 195
+  Left = 23
+  Top = 230
   Width = 920
-  Height = 506
+  Height = 400
   Caption = 'Buat Surat'
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -11,6 +11,7 @@ object frSurat: TfrSurat
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  OnActivate = FormActivate
   PixelsPerInch = 96
   TextHeight = 13
   object Label1: TLabel
@@ -104,6 +105,9 @@ object frSurat: TfrSurat
     Height = 21
     ItemHeight = 13
     TabOrder = 5
+    Items.Strings = (
+      'aktif'
+      'nonaktif')
   end
   object DBGrid1: TDBGrid
     Left = 328
@@ -117,14 +121,16 @@ object frSurat: TfrSurat
     TitleFont.Height = -11
     TitleFont.Name = 'Tahoma'
     TitleFont.Style = []
+    OnCellClick = DBGrid1CellClick
   end
-  object Button1: TButton
+  object btnSimpan: TButton
     Left = 40
     Top = 320
     Width = 75
     Height = 25
     Caption = 'SIMPAN'
     TabOrder = 7
+    OnClick = btnSimpanClick
   end
   object Button2: TButton
     Left = 136
@@ -133,5 +139,14 @@ object frSurat: TfrSurat
     Height = 25
     Caption = 'UBAH'
     TabOrder = 8
+    OnClick = Button2Click
+  end
+  object edtId: TEdit
+    Left = 232
+    Top = 320
+    Width = 121
+    Height = 21
+    TabOrder = 9
+    Visible = False
   end
 end

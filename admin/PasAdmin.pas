@@ -29,6 +29,7 @@ type
     procedure Button3Click(Sender: TObject);
     procedure Button4Click(Sender: TObject);
     procedure Button5Click(Sender: TObject);
+    procedure Button6Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -42,7 +43,7 @@ implementation
 
 uses
   PasAdminLapStaff, PasLogin, modulDBPas, PasUserAdmin, PasStafAdmin, 
-  PasDivAdmin, PasKlasAdmin, PasTujuanAdmin;
+  PasDivAdmin, PasKlasAdmin, PasTujuanAdmin, PasInputSurat;
 
 {$R *.dfm}
 
@@ -85,6 +86,11 @@ end;
 procedure TfrAdmin.Button5Click(Sender: TObject);
 begin
 frKlasAdmin.ShowModal;
+end;
+
+procedure TfrAdmin.Button6Click(Sender: TObject);
+begin
+frSurat.ShowModal;
 end;
 
 end.

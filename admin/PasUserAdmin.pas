@@ -42,8 +42,8 @@ uses
 {$R *.dfm}
 
 procedure TfrUserAdmin.btnSimpanClick(Sender: TObject);
-var
-  username, pswd, sts, lvl: string;
+//var
+//  username, pswd, sts, lvl: string;
 begin
 
 modulDB.ZqUserAdmin.SQL.Clear;
