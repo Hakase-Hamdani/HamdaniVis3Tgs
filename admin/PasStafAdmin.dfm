@@ -1,6 +1,6 @@
 object frStaffAdmin: TfrStaffAdmin
-  Left = 316
-  Top = 233
+  Left = 355
+  Top = 147
   Width = 938
   Height = 374
   Caption = 'Staff'
@@ -159,5 +159,6 @@ object frStaffAdmin: TfrStaffAdmin
     Height = 25
     Caption = 'btnStaffRep'
     TabOrder = 11
+    OnClick = btnStaffRepClick
   end
 end

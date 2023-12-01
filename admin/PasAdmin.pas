@@ -23,6 +23,7 @@ type
     DBGrid1: TDBGrid;
     Button6: TButton;
     edtOutRep: TButton;
+    edtStaffNama: TEdit;
     procedure Button9Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure Button1Click(Sender: TObject);
@@ -61,12 +62,19 @@ var
   userid : string;
 begin
   userid  := frLogin.Edit1.Text;
-  edtIdUser.Text := userid;
+  
+  //edtIdUser.Text := userid;
   modulDB.ZqUsr.SQL.Text := '';
   modulDB.ZqUsr.SQL.Text := 'SELECT user_name FROM user WHERE id = :id';
-  modulDB.ZqUsr.ParamByName('id').AsString := userid; //assign var 'nama' ke :nama di kueri
+  modulDB.ZqUsr.ParamByName('id').AsString := userid;
   modulDB.ZqUsr.Open;
   edtIdUser.Text := modulDB.ZqUsr.FIeldByName('user_name').AsString;
+
+  modulDB.ZqStaffNama.SQL.Text := '';
+  modulDB.ZqStaffNama.SQL.Text := 'SELECT nama FROM penerbit WHERE id_user = :id_user';
+  modulDB.ZqStaffNama.ParamByName('id_user').AsString := userid;
+  modulDB.ZqStaffNama.Open;
+  edtStaffNama.Text := modulDB.ZqStaffNama.FieldByName('nama').AsString;
 end;
 
 procedure TfrAdmin.Button1Click(Sender: TObject);
@@ -104,12 +112,19 @@ var
   userid : string;
 begin
   userid  := frLogin.Edit1.Text;
-  edtIdUser.Text := userid;
+  
+  //edtIdUser.Text := userid;
   modulDB.ZqUsr.SQL.Text := '';
   modulDB.ZqUsr.SQL.Text := 'SELECT user_name FROM user WHERE id = :id';
-  modulDB.ZqUsr.ParamByName('id').AsString := userid; //assign var 'nama' ke :nama di kueri
+  modulDB.ZqUsr.ParamByName('id').AsString := userid;
   modulDB.ZqUsr.Open;
   edtIdUser.Text := modulDB.ZqUsr.FIeldByName('user_name').AsString;
+
+  modulDB.ZqStaffNama.SQL.Text := '';
+  modulDB.ZqStaffNama.SQL.Text := 'SELECT nama FROM penerbit WHERE id_user = :id_user';
+  modulDB.ZqStaffNama.ParamByName('id_user').AsString := userid;
+  modulDB.ZqStaffNama.Open;
+  edtStaffNama.Text := modulDB.ZqStaffNama.FieldByName('nama').AsString;
 end;
 
 procedure TfrAdmin.edtOutRepClick(Sender: TObject);

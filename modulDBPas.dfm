@@ -1,8 +1,8 @@
 object modulDB: TmodulDB
-  Left = 453
-  Top = 154
+  Left = 483
+  Top = 108
   Width = 934
-  Height = 571
+  Height = 629
   Caption = 'modulDB'
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -15,7 +15,7 @@ object modulDB: TmodulDB
   TextHeight = 13
   object DBGrid1: TDBGrid
     Left = 16
-    Top = 432
+    Top = 496
     Width = 320
     Height = 88
     DataSource = DsLogin
@@ -38,13 +38,13 @@ object modulDB: TmodulDB
     Left = 16
     Top = 136
     Width = 233
-    Height = 129
+    Height = 201
     Caption = 'Admin'
     TabOrder = 2
   end
   object GroupBox3: TGroupBox
     Left = 16
-    Top = 280
+    Top = 344
     Width = 233
     Height = 137
     Caption = 'User Admin'
@@ -155,7 +155,7 @@ object modulDB: TmodulDB
       'SELECT * FROM penerbit')
     Params = <>
     Left = 48
-    Top = 152
+    Top = 144
   end
   object DsAdmin: TDataSource
     DataSet = ZqAdmin
@@ -517,12 +517,12 @@ object modulDB: TmodulDB
       'SELECT * FROM user')
     Params = <>
     Left = 40
-    Top = 296
+    Top = 360
   end
   object DsUserAdmin: TDataSource
     DataSet = ZqUserAdminView
     Left = 112
-    Top = 296
+    Top = 360
   end
   object ZqUserAdminView: TZQuery
     Connection = Zconnection
@@ -531,7 +531,7 @@ object modulDB: TmodulDB
       'SELECT * FROM user')
     Params = <>
     Left = 56
-    Top = 360
+    Top = 424
   end
   object ZqStafAdmin: TZQuery
     Connection = Zconnection
@@ -690,7 +690,7 @@ object modulDB: TmodulDB
       'SELECT user_name FROM user')
     Params = <>
     Left = 88
-    Top = 152
+    Top = 144
   end
   object FrxrepSurat: TfrxReport
     Version = '4.12.6'
@@ -1289,5 +1289,14 @@ object modulDB: TmodulDB
         end
       end
     end
+  end
+  object ZqStaffNama: TZQuery
+    Connection = Zconnection
+    Active = True
+    SQL.Strings = (
+      'SELECT nama FROM penerbit')
+    Params = <>
+    Left = 56
+    Top = 280
   end
 end

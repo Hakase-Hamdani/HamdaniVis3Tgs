@@ -31,6 +31,7 @@ type
     procedure btnSimpanClick(Sender: TObject);
     procedure DBGrid1CellClick(Column: TColumn);
     procedure btnUbahClick(Sender: TObject);
+    procedure btnStaffRepClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -129,6 +130,11 @@ modulDB.ZqStafAdmin.ParamByName('status').Value := cbxSts.Text;
 
 modulDB.ZqStafAdmin.ExecSQL;
 modulDB.DsStafAdminView.DataSet.Refresh;
+end;
+
+procedure TfrStaffAdmin.btnStaffRepClick(Sender: TObject);
+begin
+modulDB.FrxrepDsStafView.ShowReport();
 end;
 
 end.

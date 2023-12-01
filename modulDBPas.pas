@@ -61,6 +61,7 @@ type
     FrxrepSuratList: TfrxReport;
     FrxdbStafView: TfrxDBDataset;
     FrxrepDsStafView: TfrxReport;
+    ZqStaffNama: TZQuery;
   private
     { Private declarations }
   public

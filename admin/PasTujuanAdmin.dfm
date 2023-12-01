@@ -1,8 +1,8 @@
 object frTujuanAdmin: TfrTujuanAdmin
-  Left = 144
-  Top = 143
+  Left = 198
+  Top = 115
   Width = 928
-  Height = 480
+  Height = 292
   Caption = 'Administrasi Tujuan'
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET

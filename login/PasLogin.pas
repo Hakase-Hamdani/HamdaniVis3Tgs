@@ -28,7 +28,7 @@ var
 implementation
 
 uses
-  modulDBPas, PasAdmin;
+  modulDBPas, PasAdmin, pasRegUser;
 
 {$R *.dfm}
 
@@ -69,8 +69,9 @@ begin
           else
             begin
               userid := modulDB.ZqLogin.FieldValues['id']; //set userid berdasarkan sintaks di kanan
+              Edit1.Text := userid;
               ShowMessage('Selamat Datang, User');
-              //put the ShowModal here
+              frRegUser.Show;
             end;
         end
       else
