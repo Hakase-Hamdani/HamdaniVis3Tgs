@@ -26,11 +26,13 @@ type
     edtIdUser: TEdit;
     btnCetak: TButton;
     edtIdPenerbit: TEdit;
+    edtIdSurat: TEdit;
     procedure FormActivate(Sender: TObject);
     procedure btnSimpanClick(Sender: TObject);
     procedure DBGrid1CellClick(Column: TColumn);
     procedure Button2Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
+    procedure btnCetakClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -115,7 +117,7 @@ if (DBGrid1.DataSource.DataSet <> nil) and (DBGrid1.DataSource.DataSet.RecNo > 0
     DateBerlaku.Date := selectedDate;
   end;
 
-edtIdUser.Text := modulDB.ZqSuratView.Fields[0].AsString;
+edtIdSurat.Text := modulDB.ZqSuratView.Fields[0].AsString;
 MmDetail.Text := modulDB.ZqSuratView.Fields[5].AsString;
 cbxStatus.Text := modulDB.ZqSuratView.Fields[6].AsString;
 end;
@@ -165,6 +167,45 @@ begin
   modulDB.ZqUsr.ParamByName('id').AsString := userid; //assign var 'nama' ke :nama di kueri
   modulDB.ZqUsr.Open;
   edtIdUser.Text := modulDB.ZqUsr.FIeldByName('id').AsString;
+end;
+
+procedure TfrSurat.btnCetakClick(Sender: TObject);
+var
+  kueriJoin : string;
+begin
+kueriJoin :=
+    'SELECT ' +
+    '    surat.tgl_berlaku, ' +
+    '    surat.detail, ' +
+    '    surat.status AS surat_status, ' +
+    '    tujuan.alamat AS tujuan_alamat, ' +
+    '    tujuan.orang AS tujuan_orang, ' +
+    '    tujuan.jabatan AS tujuan_jabatan, ' +
+    '    tujuan.institusi AS tujuan_institusi, ' +
+    '    klasifikasi.nama AS klasifikasi_nama, ' +
+    '    klasifikasi.nomor AS klasifikasi_nomor, ' +
+    '    penerbit.nama AS penerbit_nama, ' +
+    '    penerbit.NIP AS penerbit_NIP, ' +
+    '    penerbit.jabatan AS penerbit_jabatan, ' +
+    '    divisi.nama_divisi ' +
+    'FROM ' +
+    '    surat ' +
+    'JOIN ' +
+    '    tujuan ON surat.id_tujuan = tujuan.id ' +
+    'JOIN ' +
+    '    klasifikasi ON surat.id_jenis = klasifikasi.id ' +
+    'JOIN ' +
+    '    penerbit ON surat.id_penerbit = penerbit.id ' +
+    'JOIN ' +
+    '    divisi ON penerbit.id_divisi = divisi.id ' +
+    'WHERE ' +
+    '    penerbit.id = :id_penerbit AND surat.id = :id_surat ';
+
+    modulDB.ZqSuratCetak.SQL.Text := '';
+    modulDB.ZqSuratCetak.SQL.Text := kueriJoin;
+    modulDB.ZqSuratCetak.ParamByName('id_penerbit').AsString := edtIdPenerbit.Text;
+    modulDB.ZqSuratCetak.ParamByName('id_surat').AsString := edtIdSurat.Text;
+    modulDB.ZqSuratCetak.Open;
 end;
 
 end.

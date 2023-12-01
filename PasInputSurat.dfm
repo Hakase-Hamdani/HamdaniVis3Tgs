@@ -1,6 +1,6 @@
 object frSurat: TfrSurat
-  Left = 190
-  Top = 333
+  Left = 549
+  Top = 100
   Width = 920
   Height = 400
   Caption = 'Buat Surat'
@@ -158,6 +158,7 @@ object frSurat: TfrSurat
     Height = 25
     Caption = 'CETAK SURAT'
     TabOrder = 10
+    OnClick = btnCetakClick
   end
   object edtIdPenerbit: TEdit
     Left = 128
@@ -166,5 +167,13 @@ object frSurat: TfrSurat
     Height = 21
     ReadOnly = True
     TabOrder = 11
+  end
+  object edtIdSurat: TEdit
+    Left = 624
+    Top = 320
+    Width = 121
+    Height = 21
+    TabOrder = 12
+    Visible = False
   end
 end

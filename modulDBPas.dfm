@@ -1,6 +1,6 @@
 object modulDB: TmodulDB
-  Left = 183
-  Top = 32
+  Left = 306
+  Top = 69
   Width = 934
   Height = 629
   Caption = 'modulDB'
@@ -657,6 +657,7 @@ object modulDB: TmodulDB
   end
   object ZqSuratView: TZQuery
     Connection = Zconnection
+    Active = True
     SQL.Strings = (
       'SELECT * FROM surat')
     Params = <>
@@ -707,8 +708,8 @@ object modulDB: TmodulDB
     PreviewOptions.Zoom = 1.000000000000000000
     PrintOptions.Printer = 'Default'
     PrintOptions.PrintOnSheet = 0
-    ReportOptions.CreateDate = 45261.672071354170000000
-    ReportOptions.LastChange = 45261.672071354170000000
+    ReportOptions.CreateDate = 45261.672071354200000000
+    ReportOptions.LastChange = 45261.672071354200000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
       'begin'
@@ -716,18 +717,262 @@ object modulDB: TmodulDB
       'end.')
     Left = 832
     Top = 344
-    Datasets = <>
+    Datasets = <
+      item
+        DataSet = FrxdbSurat
+        DataSetName = 'frxDBDataset1'
+      end>
     Variables = <>
     Style = <>
+    object Data: TfrxDataPage
+      Height = 1000.000000000000000000
+      Width = 1000.000000000000000000
+    end
+    object Page1: TfrxReportPage
+      PaperWidth = 210.000000000000000000
+      PaperHeight = 297.000000000000000000
+      PaperSize = 9
+      LeftMargin = 10.000000000000000000
+      RightMargin = 10.000000000000000000
+      TopMargin = 10.000000000000000000
+      BottomMargin = 10.000000000000000000
+      object ReportTitle1: TfrxReportTitle
+        Height = 30.236240000000000000
+        Top = 18.897650000000000000
+        Width = 718.110700000000000000
+        object Memo1: TfrxMemoView
+          Left = 291.023810000000000000
+          Top = 3.779530000000000000
+          Width = 94.488250000000000000
+          Height = 18.897650000000000000
+          ShowHint = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Memo.UTF8 = (
+            'SURAT RESMI')
+          ParentFont = False
+        end
+      end
+      object MasterData1: TfrxMasterData
+        Height = 937.323440000000000000
+        Top = 109.606370000000000000
+        Width = 718.110700000000000000
+        DataSet = FrxdbSurat
+        DataSetName = 'frxDBDataset1'
+        RowCount = 1
+        object Memo2: TfrxMemoView
+          Left = 11.338590000000000000
+          Top = 102.047310000000000000
+          Width = 94.488250000000000000
+          Height = 18.897650000000000000
+          ShowHint = False
+          Memo.UTF8 = (
+            'Kepada:')
+        end
+        object Memo3: TfrxMemoView
+          Left = 45.354360000000000000
+          Top = 120.944960000000000000
+          Width = 253.228510000000000000
+          Height = 18.897650000000000000
+          ShowHint = False
+          Memo.UTF8 = (
+            '[frxDBDataset1."tujuan_orang"]')
+        end
+        object Memo4: TfrxMemoView
+          Left = 11.338590000000000000
+          Top = 166.299320000000000000
+          Width = 94.488250000000000000
+          Height = 18.897650000000000000
+          ShowHint = False
+          Memo.UTF8 = (
+            'Di:')
+        end
+        object Memo5: TfrxMemoView
+          Left = 45.354360000000000000
+          Top = 185.196970000000000000
+          Width = 253.228510000000000000
+          Height = 18.897650000000000000
+          ShowHint = False
+          DataField = 'tujuan_institusi'
+          DataSet = FrxdbSurat
+          DataSetName = 'frxDBDataset1'
+          Memo.UTF8 = (
+            '[frxDBDataset1."tujuan_institusi"]')
+        end
+        object Memo6: TfrxMemoView
+          Left = 11.338590000000000000
+          Top = 3.779530000000000000
+          Width = 94.488250000000000000
+          Height = 18.897650000000000000
+          ShowHint = False
+          Memo.UTF8 = (
+            'Perihal Surat:')
+        end
+        object Memo7: TfrxMemoView
+          Left = 45.354360000000000000
+          Top = 22.677180000000000000
+          Width = 253.228510000000000000
+          Height = 18.897650000000000000
+          ShowHint = False
+          DataField = 'klasifikasi_nama'
+          DataSet = FrxdbSurat
+          DataSetName = 'frxDBDataset1'
+          Memo.UTF8 = (
+            '[frxDBDataset1."klasifikasi_nama"]')
+        end
+        object Memo8: TfrxMemoView
+          Left = 45.354360000000000000
+          Top = 207.874150000000000000
+          Width = 253.228510000000000000
+          Height = 18.897650000000000000
+          ShowHint = False
+          DataField = 'tujuan_alamat'
+          DataSet = FrxdbSurat
+          DataSetName = 'frxDBDataset1'
+          Memo.UTF8 = (
+            '[frxDBDataset1."tujuan_alamat"]')
+        end
+        object Memo9: TfrxMemoView
+          Left = 11.338590000000000000
+          Top = 45.354360000000000000
+          Width = 94.488250000000000000
+          Height = 18.897650000000000000
+          ShowHint = False
+          Memo.UTF8 = (
+            'Berlaku Sejak:')
+        end
+        object Memo10: TfrxMemoView
+          Left = 45.354360000000000000
+          Top = 64.252010000000000000
+          Width = 253.228510000000000000
+          Height = 18.897650000000000000
+          ShowHint = False
+          DataField = 'tgl_berlaku'
+          DataSet = FrxdbSurat
+          DataSetName = 'frxDBDataset1'
+          Memo.UTF8 = (
+            '[frxDBDataset1."tgl_berlaku"]')
+        end
+        object Memo14: TfrxMemoView
+          Left = 400.630180000000000000
+          Top = 86.929190000000000000
+          Width = 253.228510000000000000
+          Height = 18.897650000000000000
+          ShowHint = False
+          DataField = 'penerbit_jabatan'
+          DataSet = FrxdbSurat
+          DataSetName = 'frxDBDataset1'
+          Memo.UTF8 = (
+            '[frxDBDataset1."penerbit_jabatan"]')
+        end
+        object Memo15: TfrxMemoView
+          Left = 366.614410000000000000
+          Top = 3.779530000000000000
+          Width = 94.488250000000000000
+          Height = 18.897650000000000000
+          ShowHint = False
+          Memo.UTF8 = (
+            'Dari:')
+        end
+        object Memo16: TfrxMemoView
+          Left = 400.630180000000000000
+          Top = 22.677180000000000000
+          Width = 253.228510000000000000
+          Height = 18.897650000000000000
+          ShowHint = False
+          DataField = 'penerbit_nama'
+          DataSet = FrxdbSurat
+          DataSetName = 'frxDBDataset1'
+          Memo.UTF8 = (
+            '[frxDBDataset1."penerbit_nama"]')
+        end
+        object Memo18: TfrxMemoView
+          Left = 366.614410000000000000
+          Top = 45.354360000000000000
+          Width = 94.488250000000000000
+          Height = 18.897650000000000000
+          ShowHint = False
+          Memo.UTF8 = (
+            'NIP:')
+        end
+        object Memo19: TfrxMemoView
+          Left = 400.630180000000000000
+          Top = 64.252010000000000000
+          Width = 253.228510000000000000
+          Height = 18.897650000000000000
+          ShowHint = False
+          DataField = 'penerbit_nama'
+          DataSet = FrxdbSurat
+          DataSetName = 'frxDBDataset1'
+          Memo.UTF8 = (
+            '[frxDBDataset1."penerbit_nama"]')
+        end
+        object Memo20: TfrxMemoView
+          Left = 45.354360000000000000
+          Top = 143.622140000000000000
+          Width = 253.228510000000000000
+          Height = 18.897650000000000000
+          ShowHint = False
+          DataField = 'tujuan_jabatan'
+          DataSet = FrxdbSurat
+          DataSetName = 'frxDBDataset1'
+          Memo.UTF8 = (
+            '[frxDBDataset1."tujuan_jabatan"]')
+        end
+        object Memo11: TfrxMemoView
+          Left = 41.574830000000000000
+          Top = 264.567100000000000000
+          Width = 612.283860000000000000
+          Height = 491.338900000000000000
+          ShowHint = False
+          DataField = 'detail'
+          DataSet = FrxdbSurat
+          DataSetName = 'frxDBDataset1'
+          Memo.UTF8 = (
+            '[frxDBDataset1."detail"]')
+        end
+      end
+    end
   end
   object FrxdbSurat: TfrxDBDataset
     UserName = 'frxDBDataset1'
     CloseDataSource = False
+    DataSource = DsSuratCetak
     BCDToCurrency = False
     Left = 768
     Top = 336
   end
   object ZqSuratCetak: TZQuery
+    Connection = Zconnection
+    Active = True
+    SQL.Strings = (
+      'SELECT'
+      '    surat.tgl_berlaku,'
+      '    surat.detail,'
+      '    surat.status AS surat_status,'
+      '    tujuan.alamat AS tujuan_alamat,'
+      '    tujuan.orang AS tujuan_orang,'
+      '    tujuan.jabatan AS tujuan_jabatan,'
+      '    tujuan.institusi AS tujuan_institusi,'
+      '    klasifikasi.nama AS klasifikasi_nama,'
+      '    klasifikasi.nomor AS klasifikasi_nomor,'
+      '    penerbit.nama AS penerbit_nama,'
+      '    penerbit.NIP AS penerbit_NIP,'
+      '    penerbit.jabatan AS penerbit_jabatan,'
+      '    divisi.nama_divisi'
+      'FROM'
+      '    surat'
+      'JOIN'
+      '    tujuan ON surat.id_tujuan = tujuan.id'
+      'JOIN'
+      '    klasifikasi ON surat.id_jenis = klasifikasi.id'
+      'JOIN'
+      '    penerbit ON surat.id_penerbit = penerbit.id'
+      'JOIN'
+      '    divisi ON penerbit.id_divisi = divisi.id;')
     Params = <>
     Left = 656
     Top = 304
