@@ -66,6 +66,10 @@ type
     ZqIdUserPenerbit: TZQuery;
     GroupBox11: TGroupBox;
     ZqSignIn: TZQuery;
+    ZqStafDivisiView: TZQuery;
+    DsStafDivisi: TDataSource;
+    FrxdbTujuanView: TfrxDBDataset;
+    FrxrepTujuanView: TfrxReport;
   private
     { Private declarations }
   public
