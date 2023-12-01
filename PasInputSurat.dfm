@@ -1,6 +1,6 @@
 object frSurat: TfrSurat
-  Left = 23
-  Top = 230
+  Left = 449
+  Top = 271
   Width = 920
   Height = 400
   Caption = 'Buat Surat'
@@ -12,6 +12,7 @@ object frSurat: TfrSurat
   Font.Style = []
   OldCreateOrder = False
   OnActivate = FormActivate
+  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
   object Label1: TLabel
@@ -141,10 +142,10 @@ object frSurat: TfrSurat
     TabOrder = 8
     OnClick = Button2Click
   end
-  object edtId: TEdit
+  object edtIdUser: TEdit
     Left = 232
     Top = 320
-    Width = 121
+    Width = 89
     Height = 21
     TabOrder = 9
     Visible = False

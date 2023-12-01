@@ -1,6 +1,6 @@
 object frLogin: TfrLogin
-  Left = 310
-  Top = 157
+  Left = 138
+  Top = 142
   Width = 335
   Height = 461
   Caption = 'Login'
@@ -58,6 +58,6 @@ object frLogin: TfrLogin
     Height = 21
     ReadOnly = True
     TabOrder = 3
-    Text = 'Edit1'
+    Visible = False
   end
 end

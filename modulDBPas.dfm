@@ -1,6 +1,6 @@
 object modulDB: TmodulDB
-  Left = 238
-  Top = 239
+  Left = 206
+  Top = 59
   Width = 734
   Height = 571
   Caption = 'modulDB'
@@ -89,6 +89,14 @@ object modulDB: TmodulDB
     Height = 121
     Caption = 'SuratMain'
     TabOrder = 8
+  end
+  object GroupBox8: TGroupBox
+    Left = 376
+    Top = 416
+    Width = 185
+    Height = 105
+    Caption = 'Surat List'
+    TabOrder = 9
   end
   object Zconnection: TZConnection
     ControlsCodePage = cGET_ACP
@@ -648,5 +656,43 @@ object modulDB: TmodulDB
     Params = <>
     Left = 504
     Top = 352
+  end
+  object ZqSuratList: TZQuery
+    Connection = Zconnection
+    Active = True
+    SQL.Strings = (
+      'SELECT'
+      '    p.nama AS penerbit_nama,'
+      '    p.NIP AS penerbit_NIP,'
+      '    p.jabatan AS penerbit_jabatan,'
+      '    d.nama_divisi,'
+      '    t.alamat AS tujuan_alamat,'
+      '    t.orang AS tujuan_orang,'
+      '    t.institusi AS tujuan_institusi,'
+      '    k.nama AS klasifikasi_nama,'
+      '    k.nomor AS klasifikasi_nomor,'
+      '    s.tgl_berlaku,'
+      '    s.detail'
+      'FROM surat s'
+      'JOIN penerbit p ON s.id_penerbit = p.id'
+      'JOIN divisi d ON p.id_divisi = d.id'
+      'JOIN tujuan t ON s.id_tujuan = t.id'
+      'JOIN klasifikasi k ON s.id_jenis = k.id;')
+    Params = <>
+    Left = 384
+    Top = 448
+  end
+  object DsSuratList: TDataSource
+    DataSet = ZqSuratList
+    Left = 456
+    Top = 448
+  end
+  object ZqUsr: TZQuery
+    Connection = Zconnection
+    SQL.Strings = (
+      'SELECT user_name FROM user')
+    Params = <>
+    Left = 80
+    Top = 152
   end
 end

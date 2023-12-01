@@ -49,6 +49,10 @@ type
     ZqSuratMain: TZQuery;
     DsSurat: TDataSource;
     ZqSuratView: TZQuery;
+    GroupBox8: TGroupBox;
+    ZqSuratList: TZQuery;
+    DsSuratList: TDataSource;
+    ZqUsr: TZQuery;
   private
     { Private declarations }
   public

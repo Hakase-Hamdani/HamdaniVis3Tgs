@@ -23,11 +23,12 @@ type
     DBGrid1: TDBGrid;
     btnSimpan: TButton;
     Button2: TButton;
-    edtId: TEdit;
+    edtIdUser: TEdit;
     procedure FormActivate(Sender: TObject);
     procedure btnSimpanClick(Sender: TObject);
     procedure DBGrid1CellClick(Column: TColumn);
     procedure Button2Click(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
   public
@@ -45,7 +46,27 @@ uses
 {$R *.dfm}
 
 procedure TfrSurat.FormActivate(Sender: TObject);
+var
+  userid : string;
 begin
+
+//userid  := frLogin.Edit1.Text;
+//edtIdUser.Text := userid;
+
+//modulDB.ZqStafAdminView.SQL.Text := '';
+//modulDB.ZqStafAdminView.SQL.Text := 'SELECT nama FROM penerbit WHERE id_user = :id_user';
+//modulDB.ZqStafAdminView.ParamByName('id_user').AsString := userid;
+//modulDB.ZqStafAdminView.Open;
+
+
+//modulDB.ZqUsr.SQL.Text := '';
+//modulDB.ZqUsr.SQL.Text := 'SELECT id FROM user WHERE id = :id';
+//modulDB.ZqUsr.ParamByName('id').AsString := userid; //assign var 'nama' ke :nama di kueri
+//modulDB.ZqUsr.Open;
+
+//edtIdUser.Text := modulDB.ZqUsr.FIeldByName('id').AsString;
+//cbxPenerbit.Text := modulDB.ZqStafAdminView.FieldByName('nama').AsString;
+
 while not modulDB.ZqStafAdminView.Eof do //Penerbit
   begin
     cbxPenerbit.Items.AddObject(modulDB.ZqStafAdminView.FieldByName('nama').AsString, TObject(modulDB.ZqStafAdminView.FieldByName('id').AsInteger));
@@ -97,12 +118,14 @@ if (DBGrid1.DataSource.DataSet <> nil) and (DBGrid1.DataSource.DataSet.RecNo > 0
     DateBerlaku.Date := selectedDate;
   end;
 
-edtId.Text := modulDB.ZqSuratView.Fields[0].AsString;
+edtIdUser.Text := modulDB.ZqSuratView.Fields[0].AsString;
 MmDetail.Text := modulDB.ZqSuratView.Fields[5].AsString;
 cbxStatus.Text := modulDB.ZqSuratView.Fields[6].AsString;
 end;
 
 procedure TfrSurat.Button2Click(Sender: TObject);
+var
+  id_penerbit, id_tujuan, id_jenis : Integer;
 begin
 modulDB.ZqSuratMain.SQL.Clear;
 modulDB.ZqSuratMain.SQL.Text := 'UPDATE surat SET id_penerbit = :id_penerbit, id_tujuan = :id_tujuan, id_jenis = :id_jenis, detail = :detail, status = :status WHERE id = :id';
@@ -122,6 +145,19 @@ modulDB.ZqSuratMain.ParamByName('status').Value := cbxStatus.Text;
 
 modulDB.ZqSuratView.ExecSQL;
 modulDB.DsSurat.DataSet.Refresh;
+end;
+
+procedure TfrSurat.FormCreate(Sender: TObject);
+var
+  userid : string;
+begin
+  userid  := frLogin.Edit1.Text;
+  edtIdUser.Text := userid;
+  modulDB.ZqUsr.SQL.Text := '';
+  modulDB.ZqUsr.SQL.Text := 'SELECT id FROM user WHERE id = :id';
+  modulDB.ZqUsr.ParamByName('id').AsString := userid; //assign var 'nama' ke :nama di kueri
+  modulDB.ZqUsr.Open;
+  edtIdUser.Text := modulDB.ZqUsr.FIeldByName('id').AsString;
 end;
 
 end.

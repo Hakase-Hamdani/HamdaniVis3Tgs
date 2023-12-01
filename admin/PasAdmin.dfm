@@ -1,6 +1,6 @@
 object frAdmin: TfrAdmin
-  Left = 1
-  Top = 153
+  Left = 328
+  Top = 279
   Width = 1029
   Height = 489
   Caption = 'ADMIN'
@@ -11,6 +11,7 @@ object frAdmin: TfrAdmin
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  OnActivate = FormActivate
   OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
@@ -105,11 +106,12 @@ object frAdmin: TfrAdmin
       Height = 13
       Caption = ':'
     end
-    object Edit1: TEdit
+    object edtIdUser: TEdit
       Left = 72
       Top = 24
       Width = 121
       Height = 21
+      ReadOnly = True
       TabOrder = 0
     end
   end
@@ -118,6 +120,7 @@ object frAdmin: TfrAdmin
     Top = 16
     Width = 697
     Height = 385
+    DataSource = modulDB.DsSuratList
     TabOrder = 3
     TitleFont.Charset = DEFAULT_CHARSET
     TitleFont.Color = clWindowText

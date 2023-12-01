@@ -16,7 +16,7 @@ type
     GroupBox4: TGroupBox;
     Label1: TLabel;
     Label2: TLabel;
-    Edit1: TEdit;
+    edtIdUser: TEdit;
     Button2: TButton;
     Button3: TButton;
     Button9: TButton;
@@ -30,6 +30,7 @@ type
     procedure Button4Click(Sender: TObject);
     procedure Button5Click(Sender: TObject);
     procedure Button6Click(Sender: TObject);
+    procedure FormActivate(Sender: TObject);
   private
     { Private declarations }
   public
@@ -54,13 +55,15 @@ end;
 
 procedure TfrAdmin.FormCreate(Sender: TObject);
 var
-  userid, id: Integer;
+  userid : string;
 begin
-//  userid  := frLogin.Edit1.Text;
-  modulDB.ZqAdmin.SQL.Add('SELECT * FROM user WHERE = :id');
-  modulDB.ZqAdmin.ParamByName('id').AsInteger := id; //assign var 'nama' ke :nama di kueri
-
-  
+  userid  := frLogin.Edit1.Text;
+  edtIdUser.Text := userid;
+  modulDB.ZqUsr.SQL.Text := '';
+  modulDB.ZqUsr.SQL.Text := 'SELECT user_name FROM user WHERE id = :id';
+  modulDB.ZqUsr.ParamByName('id').AsString := userid; //assign var 'nama' ke :nama di kueri
+  modulDB.ZqUsr.Open;
+  edtIdUser.Text := modulDB.ZqUsr.FIeldByName('user_name').AsString;
 end;
 
 procedure TfrAdmin.Button1Click(Sender: TObject);
@@ -91,6 +94,19 @@ end;
 procedure TfrAdmin.Button6Click(Sender: TObject);
 begin
 frSurat.ShowModal;
+end;
+
+procedure TfrAdmin.FormActivate(Sender: TObject);
+var
+  userid : string;
+begin
+  userid  := frLogin.Edit1.Text;
+  edtIdUser.Text := userid;
+  modulDB.ZqUsr.SQL.Text := '';
+  modulDB.ZqUsr.SQL.Text := 'SELECT user_name FROM user WHERE id = :id';
+  modulDB.ZqUsr.ParamByName('id').AsString := userid; //assign var 'nama' ke :nama di kueri
+  modulDB.ZqUsr.Open;
+  edtIdUser.Text := modulDB.ZqUsr.FIeldByName('user_name').AsString;
 end;
 
 end.
