@@ -25,6 +25,7 @@ type
     Button2: TButton;
     edtIdUser: TEdit;
     btnCetak: TButton;
+    edtIdPenerbit: TEdit;
     procedure FormActivate(Sender: TObject);
     procedure btnSimpanClick(Sender: TObject);
     procedure DBGrid1CellClick(Column: TColumn);
@@ -48,31 +49,29 @@ uses
 
 procedure TfrSurat.FormActivate(Sender: TObject);
 var
-  userid : string;
+  userid, kueriJoinUser : string;
 begin
+  kueriJoinUser := 'SELECT id FROM penerbit WHERE id_user = :id_user';
 
-//userid  := frLogin.Edit1.Text;
-//edtIdUser.Text := userid;
+  userid  := frLogin.Edit1.Text;
 
-//modulDB.ZqStafAdminView.SQL.Text := '';
-//modulDB.ZqStafAdminView.SQL.Text := 'SELECT nama FROM penerbit WHERE id_user = :id_user';
-//modulDB.ZqStafAdminView.ParamByName('id_user').AsString := userid;
-//modulDB.ZqStafAdminView.Open;
+  modulDB.ZqIdUserPenerbit.SQL.Text := '';
+  modulDB.ZqIdUserPenerbit.SQL.Text := kueriJoinUser;
+  modulDB.ZqIdUserPenerbit.ParamByName('id_user').AsString := userid;
+  modulDB.ZqIdUserPenerbit.Open;
+  edtIdPenerbit.Text := modulDB.ZqIdUserPenerbit.FieldByName('id').AsString;
 
+  modulDB.ZqSuratView.SQL.Text := '';
+  modulDB.ZqSuratView.SQL.Text := 'SELECT * FROM surat WHERE id_penerbit = :id_penerbit';
+  modulDB.ZqSuratView.ParamByName('id_penerbit').AsString := edtIdPenerbit.Text;
+  modulDB.ZqSuratView.Open;
 
-//modulDB.ZqUsr.SQL.Text := '';
-//modulDB.ZqUsr.SQL.Text := 'SELECT id FROM user WHERE id = :id';
-//modulDB.ZqUsr.ParamByName('id').AsString := userid; //assign var 'nama' ke :nama di kueri
-//modulDB.ZqUsr.Open;
-
-//edtIdUser.Text := modulDB.ZqUsr.FIeldByName('id').AsString;
-//cbxPenerbit.Text := modulDB.ZqStafAdminView.FieldByName('nama').AsString;
-
-while not modulDB.ZqStafAdminView.Eof do //Penerbit
-  begin
-    cbxPenerbit.Items.AddObject(modulDB.ZqStafAdminView.FieldByName('nama').AsString, TObject(modulDB.ZqStafAdminView.FieldByName('id').AsInteger));
-    modulDB.ZqStafAdminView.Next;
-  end;
+  edtIdUser.Text := userid;
+  modulDB.ZqUsr.SQL.Text := '';
+  modulDB.ZqUsr.SQL.Text := 'SELECT id FROM user WHERE id = :id';
+  modulDB.ZqUsr.ParamByName('id').AsString := userid;
+  modulDB.ZqUsr.Open;
+  edtIdUser.Text := modulDB.ZqUsr.FIeldByName('id').AsString;
 while not modulDB.ZqTujuanAdminView.Eof do //Tujuan
   begin
     cbxTujuan.Items.AddObject(modulDB.ZqTujuanAdminView.FieldByName('alamat').AsString, TObject(modulDB.ZqTujuanAdminView.FieldByName('id').AsInteger));
@@ -89,15 +88,12 @@ procedure TfrSurat.btnSimpanClick(Sender: TObject);
 var
   id_penerbit, id_tujuan, id_jenis : Integer;
 begin
-modulDB.ZqSuratMain.SQL.Clear;
-modulDB.ZqSuratMain.SQL.Text := 'INSERT INTO surat (id_penerbit, id_tujuan, id_jenis, tgl_berlaku, detail, status) VALUES (:id_penerbit, :id_tujuan, :id_jenis, :tgl_berlaku, :detail, :status)';
 
-id_penerbit := Integer(cbxPenerbit.Items.Objects[cbxPenerbit.ItemIndex]);
 id_tujuan := Integer(cbxTujuan.Items.Objects[cbxTujuan.ItemIndex]);
 id_jenis := Integer(cbxJenis.Items.Objects[cbxTujuan.ItemIndex]);
 
 
-modulDB.ZqSuratMain.ParamByName('id_penerbit').Value := id_penerbit;
+modulDB.ZqSuratMain.ParamByName('id_penerbit').Value := edtIdPenerbit.Text;
 modulDB.ZqSuratMain.ParamByName('id_tujuan').Value := id_tujuan;
 modulDB.ZqSuratMain.ParamByName('id_jenis').Value := id_jenis;
 
@@ -150,8 +146,18 @@ end;
 
 procedure TfrSurat.FormCreate(Sender: TObject);
 var
-  userid : string;
+  userid, kueriJoinUser : string;
 begin
+  kueriJoinUser := 'SELECT id FROM penerbit WHERE id_user = :id_user';
+
+  userid  := frLogin.Edit1.Text;
+
+  modulDB.ZqIdUserPenerbit.SQL.Text := '';
+  modulDB.ZqIdUserPenerbit.SQL.Text := kueriJoinUser;
+  modulDB.ZqIdUserPenerbit.ParamByName('id_user').AsString := userid;
+  modulDB.ZqIdUserPenerbit.Open;
+  edtIdPenerbit.Text := modulDB.ZqIdUserPenerbit.FieldByName('id').AsString;
+  
   userid  := frLogin.Edit1.Text;
   edtIdUser.Text := userid;
   modulDB.ZqUsr.SQL.Text := '';

@@ -7,15 +7,21 @@ uses
   Dialogs, Grids, DBGrids, StdCtrls;
 
 type
-  TForm1 = class(TForm)
+  TfrRegUser = class(TForm)
     DBGrid1: TDBGrid;
     GroupBox1: TGroupBox;
     edtIdUser: TEdit;
     Label1: TLabel;
     Label2: TLabel;
-    edtStaff: TEdit;
+    edtStaffNama: TEdit;
+    GroupBox2: TGroupBox;
+    btnTujuan: TButton;
+    btnTambahSurat: TButton;
+    btnCetak: TButton;
     procedure FormCreate(Sender: TObject);
     procedure FormActivate(Sender: TObject);
+    procedure btnTujuanClick(Sender: TObject);
+    procedure btnTambahSuratClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -23,16 +29,16 @@ type
   end;
 
 var
-  Form1: TForm1;
+  frRegUser: TfrRegUser;
 
 implementation
 
 uses
-  PasLogin;
+  PasLogin, modulDBPas, PasTujuanAdmin, PasInputSurat;
 
 {$R *.dfm}
 
-procedure TForm1.FormCreate(Sender: TObject);
+procedure TfrRegUser.FormCreate(Sender: TObject);
 var
   userid : string;
 begin
@@ -52,7 +58,7 @@ begin
   edtStaffNama.Text := modulDB.ZqStaffNama.FieldByName('nama').AsString;
 end;
 
-procedure TForm1.FormActivate(Sender: TObject);
+procedure TfrRegUser.FormActivate(Sender: TObject);
 var
   userid : string;
 begin
@@ -70,6 +76,16 @@ begin
   modulDB.ZqStaffNama.ParamByName('id_user').AsString := userid;
   modulDB.ZqStaffNama.Open;
   edtStaffNama.Text := modulDB.ZqStaffNama.FieldByName('nama').AsString;
+end;
+
+procedure TfrRegUser.btnTujuanClick(Sender: TObject);
+begin
+frTujuanAdmin.Show;
+end;
+
+procedure TfrRegUser.btnTambahSuratClick(Sender: TObject);
+begin
+frSurat.ShowModal;
 end;
 
 end.

@@ -1,9 +1,9 @@
-object Form1: TForm1
-  Left = 421
-  Top = 188
+object frRegUser: TfrRegUser
+  Left = 297
+  Top = 129
   Width = 1027
   Height = 480
-  Caption = 'Form1'
+  Caption = 'Regular User'
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -56,13 +56,47 @@ object Form1: TForm1
       ReadOnly = True
       TabOrder = 0
     end
-    object edtStaff: TEdit
+    object edtStaffNama: TEdit
       Left = 64
       Top = 56
       Width = 121
       Height = 21
       ReadOnly = True
       TabOrder = 1
+    end
+  end
+  object GroupBox2: TGroupBox
+    Left = 8
+    Top = 144
+    Width = 185
+    Height = 137
+    Caption = 'GroupBox2'
+    TabOrder = 2
+    object btnTujuan: TButton
+      Left = 32
+      Top = 24
+      Width = 121
+      Height = 25
+      Caption = 'TAMBAHKAN TUJUAN'
+      TabOrder = 0
+      OnClick = btnTujuanClick
+    end
+    object btnTambahSurat: TButton
+      Left = 32
+      Top = 56
+      Width = 121
+      Height = 25
+      Caption = 'TAMBAH SURAT KELUAR'
+      TabOrder = 1
+      OnClick = btnTambahSuratClick
+    end
+    object btnCetak: TButton
+      Left = 32
+      Top = 88
+      Width = 121
+      Height = 25
+      Caption = 'CETAK SURAT'
+      TabOrder = 2
     end
   end
 end

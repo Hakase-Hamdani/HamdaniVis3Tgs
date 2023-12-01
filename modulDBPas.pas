@@ -62,6 +62,8 @@ type
     FrxdbStafView: TfrxDBDataset;
     FrxrepDsStafView: TfrxReport;
     ZqStaffNama: TZQuery;
+    GroupBox10: TGroupBox;
+    ZqIdUserPenerbit: TZQuery;
   private
     { Private declarations }
   public

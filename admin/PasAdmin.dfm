@@ -1,6 +1,6 @@
 object frAdmin: TfrAdmin
-  Left = 147
-  Top = 208
+  Left = 116
+  Top = 174
   Width = 1029
   Height = 489
   Caption = 'ADMIN'
@@ -50,11 +50,11 @@ object frAdmin: TfrAdmin
       OnClick = Button3Click
     end
     object Button9: TButton
-      Left = 32
+      Left = 24
       Top = 128
-      Width = 113
+      Width = 129
       Height = 25
-      Caption = 'CETAK DATA STAFF'
+      Caption = 'CETAK DATA STAFF/USER'
       TabOrder = 3
       OnClick = Button9Click
     end

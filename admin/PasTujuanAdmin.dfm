@@ -1,6 +1,6 @@
 object frTujuanAdmin: TfrTujuanAdmin
-  Left = 198
-  Top = 115
+  Left = 365
+  Top = 229
   Width = 928
   Height = 292
   Caption = 'Administrasi Tujuan'

@@ -1,6 +1,6 @@
 object frSurat: TfrSurat
-  Left = 374
-  Top = 261
+  Left = 190
+  Top = 333
   Width = 920
   Height = 400
   Caption = 'Buat Surat'
@@ -58,12 +58,13 @@ object frSurat: TfrSurat
     Caption = 'Status'
   end
   object cbxPenerbit: TComboBox
-    Left = 128
-    Top = 8
+    Left = 424
+    Top = 320
     Width = 185
     Height = 21
     ItemHeight = 13
     TabOrder = 0
+    Visible = False
   end
   object cbxTujuan: TComboBox
     Left = 128
@@ -157,5 +158,13 @@ object frSurat: TfrSurat
     Height = 25
     Caption = 'CETAK SURAT'
     TabOrder = 10
+  end
+  object edtIdPenerbit: TEdit
+    Left = 128
+    Top = 8
+    Width = 185
+    Height = 21
+    ReadOnly = True
+    TabOrder = 11
   end
 end

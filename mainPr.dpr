@@ -11,7 +11,8 @@ uses
   PasDivAdmin in 'admin\PasDivAdmin.pas' {frDIvisiAdmin},
   PasKlasAdmin in 'admin\PasKlasAdmin.pas' {frKlasAdmin},
   PasTujuanAdmin in 'admin\PasTujuanAdmin.pas' {frTujuanAdmin},
-  PasInputSurat in 'PasInputSurat.pas' {frSurat};
+  PasInputSurat in 'PasInputSurat.pas' {frSurat},
+  pasRegUser in 'pasRegUser.pas' {frRegUser};
 
 {$R *.res}
 
@@ -27,5 +28,6 @@ begin
   Application.CreateForm(TfrKlasAdmin, frKlasAdmin);
   Application.CreateForm(TfrTujuanAdmin, frTujuanAdmin);
   Application.CreateForm(TfrSurat, frSurat);
+  Application.CreateForm(TfrRegUser, frRegUser);
   Application.Run;
 end.
