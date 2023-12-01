@@ -24,6 +24,7 @@ type
     btnSimpan: TButton;
     Button2: TButton;
     edtIdUser: TEdit;
+    btnCetak: TButton;
     procedure FormActivate(Sender: TObject);
     procedure btnSimpanClick(Sender: TObject);
     procedure DBGrid1CellClick(Column: TColumn);

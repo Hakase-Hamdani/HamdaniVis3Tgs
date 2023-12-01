@@ -53,6 +53,14 @@ type
     ZqSuratList: TZQuery;
     DsSuratList: TDataSource;
     ZqUsr: TZQuery;
+    FrxrepSurat: TfrxReport;
+    FrxdbSurat: TfrxDBDataset;
+    ZqSuratCetak: TZQuery;
+    DsSuratCetak: TDataSource;
+    FrxdbSuratList: TfrxDBDataset;
+    FrxrepSuratList: TfrxReport;
+    FrxdbStafView: TfrxDBDataset;
+    FrxrepDsStafView: TfrxReport;
   private
     { Private declarations }
   public

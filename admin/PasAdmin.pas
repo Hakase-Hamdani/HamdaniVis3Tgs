@@ -22,6 +22,7 @@ type
     Button9: TButton;
     DBGrid1: TDBGrid;
     Button6: TButton;
+    edtOutRep: TButton;
     procedure Button9Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure Button1Click(Sender: TObject);
@@ -31,6 +32,7 @@ type
     procedure Button5Click(Sender: TObject);
     procedure Button6Click(Sender: TObject);
     procedure FormActivate(Sender: TObject);
+    procedure edtOutRepClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -50,7 +52,8 @@ uses
 
 procedure TfrAdmin.Button9Click(Sender: TObject);
 begin
-frAdminLapStaff.ShowModal;
+//frAdminLapStaff.ShowModal;
+modulDB.FrxrepAdminUser.ShowReport();
 end;
 
 procedure TfrAdmin.FormCreate(Sender: TObject);
@@ -107,6 +110,11 @@ begin
   modulDB.ZqUsr.ParamByName('id').AsString := userid; //assign var 'nama' ke :nama di kueri
   modulDB.ZqUsr.Open;
   edtIdUser.Text := modulDB.ZqUsr.FIeldByName('user_name').AsString;
+end;
+
+procedure TfrAdmin.edtOutRepClick(Sender: TObject);
+begin
+modulDB.FrxrepSuratList.ShowReport();
 end;
 
 end.

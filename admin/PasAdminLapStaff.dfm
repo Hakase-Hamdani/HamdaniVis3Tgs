@@ -1,5 +1,5 @@
 object frAdminLapStaff: TfrAdminLapStaff
-  Left = 436
+  Left = 287
   Top = 166
   Width = 1003
   Height = 457

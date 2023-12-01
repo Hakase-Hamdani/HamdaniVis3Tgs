@@ -1,6 +1,6 @@
 object frSurat: TfrSurat
-  Left = 449
-  Top = 271
+  Left = 374
+  Top = 261
   Width = 920
   Height = 400
   Caption = 'Buat Surat'
@@ -149,5 +149,13 @@ object frSurat: TfrSurat
     Height = 21
     TabOrder = 9
     Visible = False
+  end
+  object btnCetak: TButton
+    Left = 336
+    Top = 320
+    Width = 81
+    Height = 25
+    Caption = 'CETAK SURAT'
+    TabOrder = 10
   end
 end

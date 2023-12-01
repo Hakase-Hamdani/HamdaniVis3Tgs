@@ -25,6 +25,7 @@ type
     DBGrid1: TDBGrid;
     btnHapus: TButton;
     edtId: TEdit;
+    btnStaffRep: TButton;
     procedure FormCreate(Sender: TObject);
     procedure FormActivate(Sender: TObject);
     procedure btnSimpanClick(Sender: TObject);

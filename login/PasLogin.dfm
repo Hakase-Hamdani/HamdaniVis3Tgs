@@ -1,6 +1,6 @@
 object frLogin: TfrLogin
   Left = 138
-  Top = 142
+  Top = 112
   Width = 335
   Height = 461
   Caption = 'Login'
