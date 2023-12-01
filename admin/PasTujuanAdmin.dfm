@@ -132,4 +132,13 @@ object frTujuanAdmin: TfrTujuanAdmin
     TabOrder = 9
     Visible = False
   end
+  object btnRepTujuan: TButton
+    Left = 416
+    Top = 208
+    Width = 81
+    Height = 25
+    Caption = 'REPORT TUJUAN'
+    TabOrder = 10
+    OnClick = btnRepTujuanClick
+  end
 end

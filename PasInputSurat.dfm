@@ -1,6 +1,6 @@
 object frSurat: TfrSurat
-  Left = 549
-  Top = 100
+  Left = 414
+  Top = 70
   Width = 920
   Height = 400
   Caption = 'Buat Surat'

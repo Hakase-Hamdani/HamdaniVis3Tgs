@@ -1,6 +1,6 @@
 object frLogin: TfrLogin
-  Left = 138
-  Top = 142
+  Left = 468
+  Top = 158
   Width = 335
   Height = 461
   Caption = 'Login'
@@ -43,7 +43,7 @@ object frLogin: TfrLogin
     TabOrder = 1
   end
   object btnLogin: TButton
-    Left = 122
+    Left = 123
     Top = 192
     Width = 75
     Height = 25
@@ -59,5 +59,14 @@ object frLogin: TfrLogin
     ReadOnly = True
     TabOrder = 3
     Visible = False
+  end
+  object btnSignIn: TButton
+    Left = 123
+    Top = 224
+    Width = 75
+    Height = 25
+    Caption = 'Sign in'
+    TabOrder = 4
+    OnClick = btnSignInClick
   end
 end

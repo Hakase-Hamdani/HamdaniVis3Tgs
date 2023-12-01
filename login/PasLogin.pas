@@ -14,8 +14,10 @@ type
     Label2: TLabel;
     Label3: TLabel;
     Edit1: TEdit;
+    btnSignIn: TButton;
     procedure btnLoginClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
+    procedure btnSignInClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -28,7 +30,7 @@ var
 implementation
 
 uses
-  modulDBPas, PasAdmin, pasRegUser;
+  modulDBPas, PasAdmin, pasRegUser, PasSignIn;
 
 {$R *.dfm}
 
@@ -90,6 +92,11 @@ end;
 procedure TfrLogin.FormCreate(Sender: TObject);
 begin
 Position := poScreenCenter;
+end;
+
+procedure TfrLogin.btnSignInClick(Sender: TObject);
+begin
+frSignIn.ShowModal;
 end;
 
 end.

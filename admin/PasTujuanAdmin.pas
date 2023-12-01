@@ -23,10 +23,12 @@ type
     btnUbah: TButton;
     btnHapus: TButton;
     edtId: TEdit;
+    btnRepTujuan: TButton;
     procedure btsSimpanClick(Sender: TObject);
     procedure DBGrid1CellClick(Column: TColumn);
     procedure btnUbahClick(Sender: TObject);
     procedure btnHapusClick(Sender: TObject);
+    procedure btnRepTujuanClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -95,6 +97,11 @@ modulDB.ZqTujuanAdmin.SQL.Text := 'DELETE FROM tujuan where id = :id';
 modulDB.ZqTujuanAdmin.ParamByName('id').Value := edtId.Text;
 modulDB.ZqTujuanAdmin.ExecSQL;
 modulDB.DsTujuanAdmin.DataSet.Refresh;
+end;
+
+procedure TfrTujuanAdmin.btnRepTujuanClick(Sender: TObject);
+begin
+modulDB.FrxrepTujuanView.ShowReport();
 end;
 
 end.

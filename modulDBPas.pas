@@ -64,6 +64,8 @@ type
     ZqStaffNama: TZQuery;
     GroupBox10: TGroupBox;
     ZqIdUserPenerbit: TZQuery;
+    GroupBox11: TGroupBox;
+    ZqSignIn: TZQuery;
   private
     { Private declarations }
   public

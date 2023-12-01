@@ -1,6 +1,6 @@
 object modulDB: TmodulDB
-  Left = 306
-  Top = 69
+  Left = 380
+  Top = 47
   Width = 934
   Height = 629
   Caption = 'modulDB'
@@ -105,6 +105,14 @@ object modulDB: TmodulDB
     Height = 249
     Caption = 'Misc Join'
     TabOrder = 10
+  end
+  object GroupBox11: TGroupBox
+    Left = 672
+    Top = 424
+    Width = 185
+    Height = 105
+    Caption = 'Sign In'
+    TabOrder = 11
   end
   object Zconnection: TZConnection
     ControlsCodePage = cGET_ACP
@@ -1569,5 +1577,14 @@ object modulDB: TmodulDB
     Params = <>
     Left = 712
     Top = 56
+  end
+  object ZqSignIn: TZQuery
+    Connection = Zconnection
+    Active = True
+    SQL.Strings = (
+      'SELECT * FROM user')
+    Params = <>
+    Left = 704
+    Top = 456
   end
 end

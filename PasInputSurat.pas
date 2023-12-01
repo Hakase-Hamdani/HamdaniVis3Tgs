@@ -206,6 +206,8 @@ kueriJoin :=
     modulDB.ZqSuratCetak.ParamByName('id_penerbit').AsString := edtIdPenerbit.Text;
     modulDB.ZqSuratCetak.ParamByName('id_surat').AsString := edtIdSurat.Text;
     modulDB.ZqSuratCetak.Open;
+
+    modulDB.FrxrepSurat.ShowReport();
 end;
 
 end.
