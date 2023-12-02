@@ -91,6 +91,9 @@ var
   id_penerbit, id_tujuan, id_jenis : Integer;
 begin
 
+modulDB.ZqSuratMain.SQL.Text := '';
+modulDB.ZqSuratMain.SQL.Text := 'INSERT INTO surat (id_penerbit, id_tujuan, id_jenis, tgl_berlaku, detail, status) VALUES (:id_penerbit, :id_tujuan, :id_jenis, :tgl_berlaku, :detail, :status)';
+
 id_tujuan := Integer(cbxTujuan.Items.Objects[cbxTujuan.ItemIndex]);
 id_jenis := Integer(cbxJenis.Items.Objects[cbxTujuan.ItemIndex]);
 
