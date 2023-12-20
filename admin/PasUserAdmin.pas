@@ -21,10 +21,13 @@ type
     cbxSts: TComboBox;
     cbxLvl: TComboBox;
     edtId: TEdit;
+    Label5: TLabel;
+    edtCari: TEdit;
     procedure btnSimpanClick(Sender: TObject);
     procedure DBGrid1CellClick(Column: TColumn);
     procedure btnEditClick(Sender: TObject);
     procedure btnHapusClick(Sender: TObject);
+    procedure edtCariChange(Sender: TObject);
   private
     { Private declarations }
   public
@@ -42,21 +45,32 @@ uses
 {$R *.dfm}
 
 procedure TfrUserAdmin.btnSimpanClick(Sender: TObject);
-//var
-//  username, pswd, sts, lvl: string;
 begin
+if (edtUsername.Text = '') or (edtPassword.Text = '') or (cbxSts.Text = '----') or (cbxSts.Text = '') or (cbxLvl.Text='----') or (cbxSts.Text='') then
+  begin
+    ShowMessage('Ada Data Yang Kosong!');
+  end
+  else
+  begin
+    if MessageDlg('Apa Anda yakin ingin menambah data?', mtConfirmation, [mbYes, mbNo], 0) = mrYes then
+      begin
+        modulDB.ZqUserAdmin.SQL.Clear;
+        modulDB.ZqUserAdmin.SQL.Text := '';
+        modulDB.ZqUserAdmin.SQL.Text := 'INSERT INTO user (user_name, `password`, `status`, `level`) VALUES (:user_name, :password, :status, :level)';
 
-modulDB.ZqUserAdmin.SQL.Clear;
-modulDB.ZqUserAdmin.SQL.Text := '';
-modulDB.ZqUserAdmin.SQL.Text := 'INSERT INTO user (user_name, `password`, `status`, `level`) VALUES (:user_name, :password, :status, :level)';
+        modulDB.ZqUserAdmin.ParamByName('user_name').Value := edtUsername.Text;
+        modulDB.ZqUserAdmin.ParamByName('password').Value := edtPassword.Text;
+        modulDB.ZqUserAdmin.ParamByName('status').Value := cbxSts.Text;
+        modulDB.ZqUserAdmin.ParamByName('level').Value := cbxLvl.Text;
 
-modulDB.ZqUserAdmin.ParamByName('user_name').Value := edtUsername.Text;
-modulDB.ZqUserAdmin.ParamByName('password').Value := edtPassword.Text;
-modulDB.ZqUserAdmin.ParamByName('status').Value := cbxSts.Text;
-modulDB.ZqUserAdmin.ParamByName('level').Value := cbxLvl.Text;
-
-modulDB.ZqUserAdmin.ExecSQL;
-modulDB.DsUserAdmin.DataSet.Refresh;
+        modulDB.ZqUserAdmin.ExecSQL;
+        modulDB.DsUserAdmin.DataSet.Refresh;
+      end
+      else
+      begin
+        ShowMessage('Data Tidak Jadi Disimpan.');
+      end;
+  end;
 end;
 
 procedure TfrUserAdmin.DBGrid1CellClick(Column: TColumn);
@@ -70,28 +84,81 @@ end;
 
 procedure TfrUserAdmin.btnEditClick(Sender: TObject);
 begin
-modulDB.ZqUserAdmin.SQL.Clear;
-modulDB.ZqUserAdmin.SQL.Text := '';
-modulDB.ZqUserAdmin.SQL.Text := 'UPDATE user SET user_name = :user_name, `password` = :password, `status` = :status, `level` = :level WHERE id = :id';
+if (edtUsername.Text = '') or (edtPassword.Text = '') or (cbxSts.Text = '----') or (cbxSts.Text = '') or (cbxLvl.Text='----') or (cbxSts.Text='') then
+  begin
+    ShowMessage('Ada Data Yang Kosong!');
+  end
+  else
+  begin
+    if MessageDlg('Apa Anda yakin ingin mengubah data?', mtConfirmation, [mbYes, mbNo], 0) = mrYes then
+      begin
+        modulDB.ZqUserAdmin.SQL.Clear;
+        modulDB.ZqUserAdmin.SQL.Text := '';
+        modulDB.ZqUserAdmin.SQL.Text := 'UPDATE user SET user_name = :user_name, `password` = :password, `status` = :status, `level` = :level WHERE id = :id';
 
-modulDB.ZqUserAdmin.ParamByName('id').Value := edtId.Text;
-modulDB.ZqUserAdmin.ParamByName('user_name').Value := edtUsername.Text;
-modulDB.ZqUserAdmin.ParamByName('password').Value := edtPassword.Text;
-modulDB.ZqUserAdmin.ParamByName('status').Value := cbxSts.Text;
-modulDB.ZqUserAdmin.ParamByName('level').Value := cbxLvl.Text;
+        modulDB.ZqUserAdmin.ParamByName('id').Value := edtId.Text;
+        modulDB.ZqUserAdmin.ParamByName('user_name').Value := edtUsername.Text;
+        modulDB.ZqUserAdmin.ParamByName('password').Value := edtPassword.Text;
+        modulDB.ZqUserAdmin.ParamByName('status').Value := cbxSts.Text;
+        modulDB.ZqUserAdmin.ParamByName('level').Value := cbxLvl.Text;
 
-modulDB.ZqUserAdmin.ExecSQL;
-modulDB.DsUserAdmin.DataSet.Refresh;
+        modulDB.ZqUserAdmin.ExecSQL;
+        modulDB.DsUserAdmin.DataSet.Refresh;
+      end
+      else
+      begin
+        ShowMessage('Pengubahan Data Di Batalkan.');
+      end;
+  end;
 end;
 
 procedure TfrUserAdmin.btnHapusClick(Sender: TObject);
 begin
-modulDB.ZqUserAdmin.SQL.Clear;
-modulDB.ZqUserAdmin.SQL.Text := '';
-modulDB.ZqUserAdmin.SQL.Text := 'DELETE FROM user where id = :id';
-modulDB.ZqUserAdmin.ParamByName('id').Value := edtId.Text;
-modulDB.ZqUserAdmin.ExecSQL;
-modulDB.DsUserAdmin.DataSet.Refresh;
+if (edtUsername.Text = '') or (edtPassword.Text = '') or (cbxSts.Text = '----') or (cbxSts.Text = '') or (cbxLvl.Text='----') or (cbxSts.Text='') then
+  begin
+    ShowMessage('Ada Data Yang Kosong!');
+  end
+  else
+  begin
+    if MessageDlg('Apa Anda yakin ingin mengubah data?', mtConfirmation, [mbYes, mbNo], 0) = mrYes then
+      begin
+        modulDB.ZqUserAdmin.SQL.Clear;
+        modulDB.ZqUserAdmin.SQL.Text := '';
+        modulDB.ZqUserAdmin.SQL.Text := 'DELETE FROM user where id = :id';
+        modulDB.ZqUserAdmin.ParamByName('id').Value := edtId.Text;
+        modulDB.ZqUserAdmin.ExecSQL;
+        modulDB.DsUserAdmin.DataSet.Refresh;
+      end
+      else
+      begin
+        ShowMessage('Operasi Di Batalkan.');
+      end;
+  end;
+end;
+
+procedure TfrUserAdmin.edtCariChange(Sender: TObject);
+var
+  cari : String;
+begin
+if (edtCari.Text = '') then
+  begin
+    //jika kolom pencarian kosong, kembalikan ZqDivAdminView seperti semula
+    modulDB.ZqUserAdminView.SQL.Clear;
+    modulDB.ZqUserAdminView.SQL.Text := '';
+    modulDB.ZqUserAdminView.SQL.Text := 'SELECT * FROM user';
+    modulDB.ZqUserAdminView.Open;
+    modulDB.DsDivAdmin.DataSet.Refresh;
+  end
+  else
+  begin
+    //jika kolom pencarian ada isinya, lakukan pencarian secara keseluruhan
+    cari := edtCari.Text;
+    modulDB.ZqUserAdminView.SQL.Clear;
+    modulDB.ZqUserAdminView.SQL.Text := '';
+    modulDB.ZqUserAdminView.SQL.Text := 'SELECT * FROM user WHERE user_name LIKE ''%'+cari+'%'' OR status LIKE ''%'+cari+'%'' OR level LIKE ''%' +cari+'%''';
+    modulDB.ZqUserAdminView.Open;
+    modulDB.DsDivAdmin.DataSet.Refresh;
+  end;
 end;
 
 end.

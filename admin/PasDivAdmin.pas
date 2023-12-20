@@ -99,7 +99,7 @@ else
       end
       else
       begin
-        ShowMessage('Operasi Di Batalkan.');
+        ShowMessage('Pengubahan Data Di Batalkan.');
       end;
   end;
 

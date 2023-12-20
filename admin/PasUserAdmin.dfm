@@ -1,6 +1,6 @@
 object frUserAdmin: TfrUserAdmin
-  Left = 129
-  Top = 122
+  Left = 250
+  Top = 192
   Width = 858
   Height = 315
   Caption = 'Manajemen User'
@@ -40,6 +40,13 @@ object frUserAdmin: TfrUserAdmin
     Width = 25
     Height = 13
     Caption = 'Level'
+  end
+  object Label5: TLabel
+    Left = 336
+    Top = 232
+    Width = 88
+    Height = 13
+    Caption = 'PENCARIAN DATA'
   end
   object edtUsername: TEdit
     Left = 144
@@ -99,7 +106,7 @@ object frUserAdmin: TfrUserAdmin
       end>
   end
   object btnSimpan: TButton
-    Left = 96
+    Left = 48
     Top = 184
     Width = 75
     Height = 25
@@ -108,7 +115,7 @@ object frUserAdmin: TfrUserAdmin
     OnClick = btnSimpanClick
   end
   object btnEdit: TButton
-    Left = 184
+    Left = 136
     Top = 184
     Width = 75
     Height = 25
@@ -117,8 +124,8 @@ object frUserAdmin: TfrUserAdmin
     OnClick = btnEditClick
   end
   object btnHapus: TButton
-    Left = 328
-    Top = 224
+    Left = 224
+    Top = 184
     Width = 75
     Height = 25
     Caption = 'HAPUS'
@@ -144,7 +151,7 @@ object frUserAdmin: TfrUserAdmin
     Height = 21
     ItemHeight = 13
     TabOrder = 7
-    Text = '---'
+    Text = '----'
     Items.Strings = (
       'user'
       'admin')
@@ -157,5 +164,13 @@ object frUserAdmin: TfrUserAdmin
     ReadOnly = True
     TabOrder = 8
     Visible = False
+  end
+  object edtCari: TEdit
+    Left = 440
+    Top = 232
+    Width = 369
+    Height = 21
+    TabOrder = 9
+    OnChange = edtCariChange
   end
 end
