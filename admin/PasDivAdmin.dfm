@@ -2,7 +2,7 @@ object frDIvisiAdmin: TfrDIvisiAdmin
   Left = 298
   Top = 257
   Width = 894
-  Height = 255
+  Height = 261
   Caption = 'Edit Divisi'
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -29,7 +29,7 @@ object frDIvisiAdmin: TfrDIvisiAdmin
   end
   object Label3: TLabel
     Left = 344
-    Top = 176
+    Top = 192
     Width = 88
     Height = 13
     Caption = 'PENCARIAN DATA'
@@ -68,7 +68,7 @@ object frDIvisiAdmin: TfrDIvisiAdmin
   end
   object DBGrid1: TDBGrid
     Left = 344
-    Top = 24
+    Top = 40
     Width = 473
     Height = 137
     DataSource = modulDB.DsDivAdmin
@@ -99,10 +99,19 @@ object frDIvisiAdmin: TfrDIvisiAdmin
   end
   object edtCari: TEdit
     Left = 440
-    Top = 176
+    Top = 192
     Width = 385
     Height = 21
     TabOrder = 7
     OnChange = edtCariChange
+  end
+  object btnRefresh: TButton
+    Left = 720
+    Top = 8
+    Width = 75
+    Height = 25
+    Caption = 'REFRESH'
+    TabOrder = 8
+    OnClick = btnRefreshClick
   end
 end

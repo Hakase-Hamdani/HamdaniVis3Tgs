@@ -66,14 +66,14 @@ begin
 //              Label1.Caption := userid;
               Edit1.Text := userid;
               ShowMessage('Selamat Datang, Admin');
-              frAdmin.Show;
+              frAdmin.ShowModal;
             end
           else
             begin
               userid := modulDB.ZqLogin.FieldValues['id']; //set userid berdasarkan sintaks di kanan
               Edit1.Text := userid;
               ShowMessage('Selamat Datang, User');
-              frRegUser.Show;
+              frRegUser.ShowModal;
             end;
         end
       else

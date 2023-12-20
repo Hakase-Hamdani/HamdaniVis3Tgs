@@ -1,6 +1,6 @@
 object frRegUser: TfrRegUser
-  Left = 297
-  Top = 129
+  Left = 302
+  Top = 225
   Width = 1027
   Height = 480
   Caption = 'Regular User'

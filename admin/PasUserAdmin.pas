@@ -23,11 +23,13 @@ type
     edtId: TEdit;
     Label5: TLabel;
     edtCari: TEdit;
+    btnRefresh: TButton;
     procedure btnSimpanClick(Sender: TObject);
     procedure DBGrid1CellClick(Column: TColumn);
     procedure btnEditClick(Sender: TObject);
     procedure btnHapusClick(Sender: TObject);
     procedure edtCariChange(Sender: TObject);
+    procedure btnRefreshClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -136,18 +138,23 @@ if (edtUsername.Text = '') or (edtPassword.Text = '') or (cbxSts.Text = '----') 
   end;
 end;
 
+procedure refreshData();
+begin
+  //jika kolom pencarian kosong, kembalikan ZqDivAdminView seperti semula
+    modulDB.ZqUserAdminView.SQL.Clear;
+    modulDB.ZqUserAdminView.SQL.Text := '';
+    modulDB.ZqUserAdminView.SQL.Text := 'SELECT * FROM user';
+    modulDB.ZqUserAdminView.Open;
+    modulDB.DsDivAdmin.DataSet.Refresh;
+end;
+
 procedure TfrUserAdmin.edtCariChange(Sender: TObject);
 var
   cari : String;
 begin
 if (edtCari.Text = '') then
   begin
-    //jika kolom pencarian kosong, kembalikan ZqDivAdminView seperti semula
-    modulDB.ZqUserAdminView.SQL.Clear;
-    modulDB.ZqUserAdminView.SQL.Text := '';
-    modulDB.ZqUserAdminView.SQL.Text := 'SELECT * FROM user';
-    modulDB.ZqUserAdminView.Open;
-    modulDB.DsDivAdmin.DataSet.Refresh;
+    refreshData;
   end
   else
   begin
@@ -159,6 +166,11 @@ if (edtCari.Text = '') then
     modulDB.ZqUserAdminView.Open;
     modulDB.DsDivAdmin.DataSet.Refresh;
   end;
+end;
+
+procedure TfrUserAdmin.btnRefreshClick(Sender: TObject);
+begin
+  refreshData;
 end;
 
 end.

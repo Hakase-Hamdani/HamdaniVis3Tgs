@@ -19,11 +19,13 @@ type
     edtHapus: TButton;
     edtCari: TEdit;
     Label3: TLabel;
+    btnRefresh: TButton;
     procedure btnSimpanClick(Sender: TObject);
     procedure DBGrid1CellClick(Column: TColumn);
     procedure btnEditClick(Sender: TObject);
     procedure edtHapusClick(Sender: TObject);
     procedure edtCariChange(Sender: TObject);
+    procedure btnRefreshClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -154,6 +156,15 @@ if (edtCari.Text = '') then
     modulDB.ZqDivAdminView.Open;
     modulDB.DsDivAdmin.DataSet.Refresh;
   end;
+end;
+
+procedure TfrDIvisiAdmin.btnRefreshClick(Sender: TObject);
+begin
+modulDB.ZqDivAdminView.SQL.Clear;
+modulDB.ZqDivAdminView.SQL.Text := '';
+modulDB.ZqDivAdminView.SQL.Text := 'SELECT * FROM divisi';
+modulDB.ZqDivAdminView.Open;
+modulDB.DsDivAdmin.DataSet.Refresh;
 end;
 
 end.

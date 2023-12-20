@@ -62,6 +62,7 @@ procedure TfrRegUser.FormActivate(Sender: TObject);
 var
   userid : string;
 begin
+  //buat session because delphi can't do session
   userid  := frLogin.Edit1.Text;
   
   //edtIdUser.Text := userid;
@@ -85,7 +86,7 @@ end;
 
 procedure TfrRegUser.btnTambahSuratClick(Sender: TObject);
 begin
-frSurat.ShowModal;
+frSurat.Show;
 end;
 
 end.

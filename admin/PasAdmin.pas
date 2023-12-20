@@ -79,27 +79,27 @@ end;
 
 procedure TfrAdmin.Button1Click(Sender: TObject);
 begin
-frUserAdmin.ShowModal;
+frUserAdmin.Show;
 end;
 
 procedure TfrAdmin.Button2Click(Sender: TObject);
 begin
-frStaffAdmin.ShowModal;
+frStaffAdmin.Show;
 end;
 
 procedure TfrAdmin.Button3Click(Sender: TObject);
 begin
-frDIvisiAdmin.ShowModal;
+frDIvisiAdmin.Show;
 end;
 
 procedure TfrAdmin.Button4Click(Sender: TObject);
 begin
-frTujuanAdmin.ShowModal;
+frTujuanAdmin.Show;
 end;
 
 procedure TfrAdmin.Button5Click(Sender: TObject);
 begin
-frKlasAdmin.ShowModal;
+frKlasAdmin.Show;
 end;
 
 procedure TfrAdmin.Button6Click(Sender: TObject);
