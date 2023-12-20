@@ -1,8 +1,8 @@
 object frDIvisiAdmin: TfrDIvisiAdmin
-  Left = 474
-  Top = 152
-  Width = 787
-  Height = 242
+  Left = 313
+  Top = 191
+  Width = 894
+  Height = 255
   Caption = 'Edit Divisi'
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -26,6 +26,13 @@ object frDIvisiAdmin: TfrDIvisiAdmin
     Width = 51
     Height = 13
     Caption = 'Kode Divisi'
+  end
+  object Label3: TLabel
+    Left = 344
+    Top = 176
+    Width = 88
+    Height = 13
+    Caption = 'PENCARIAN DATA'
   end
   object edtNama: TEdit
     Left = 104
@@ -60,7 +67,7 @@ object frDIvisiAdmin: TfrDIvisiAdmin
     OnClick = btnEditClick
   end
   object DBGrid1: TDBGrid
-    Left = 272
+    Left = 344
     Top = 24
     Width = 473
     Height = 137
@@ -82,12 +89,20 @@ object frDIvisiAdmin: TfrDIvisiAdmin
     Visible = False
   end
   object edtHapus: TButton
-    Left = 272
-    Top = 168
+    Left = 232
+    Top = 112
     Width = 75
     Height = 25
     Caption = 'HAPUS'
     TabOrder = 6
     OnClick = edtHapusClick
+  end
+  object edtCari: TEdit
+    Left = 440
+    Top = 176
+    Width = 385
+    Height = 21
+    TabOrder = 7
+    OnChange = edtCariChange
   end
 end
