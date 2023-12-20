@@ -63,7 +63,7 @@ object frDIvisiAdmin: TfrDIvisiAdmin
     Left = 272
     Top = 24
     Width = 473
-    Height = 120
+    Height = 137
     DataSource = modulDB.DsDivAdmin
     TabOrder = 4
     TitleFont.Charset = DEFAULT_CHARSET
@@ -83,7 +83,7 @@ object frDIvisiAdmin: TfrDIvisiAdmin
   end
   object edtHapus: TButton
     Left = 272
-    Top = 152
+    Top = 168
     Width = 75
     Height = 25
     Caption = 'HAPUS'

@@ -39,46 +39,92 @@ uses
 
 procedure TfrDIvisiAdmin.btnSimpanClick(Sender: TObject);
 begin
-modulDB.ZqDivAdmin.SQL.Clear;
-modulDB.ZqDivAdmin.SQL.Text := '';
-modulDB.ZqDivAdmin.SQL.Text := 'INSERT INTO divisi (nama_divisi, kode_divisi) VALUES (:nama_divisi, :kode_divisi)';
+if (edtNama.Text = '') or (edtKode.Text = '') then
+  begin
+    ShowMessage('Ada Data Yang Kosong!');
+  end
+else
+  begin
+    if MessageDlg('Apa Anda yakin ingin mengubah data?', mtConfirmation, [mbYes, mbNo], 0) = mrYes then
+    begin
+      modulDB.ZqDivAdmin.SQL.Clear;
+      modulDB.ZqDivAdmin.SQL.Text := '';
+      modulDB.ZqDivAdmin.SQL.Text := 'INSERT INTO divisi (nama_divisi, kode_divisi) VALUES (:nama_divisi, :kode_divisi)';
 
-modulDB.ZqDivAdmin.ParamByName('nama_divisi').Value := edtNama.Text;
-modulDB.ZqDivAdmin.ParamByName('kode_divisi').Value := edtKode.Text;
+      modulDB.ZqDivAdmin.ParamByName('nama_divisi').Value := edtNama.Text;
+      modulDB.ZqDivAdmin.ParamByName('kode_divisi').Value := edtKode.Text;
 
-modulDB.ZqDivAdminView.ExecSQL;
-modulDB.DsDivAdmin.DataSet.Refresh;
+      modulDB.ZqDivAdmin.ExecSQL;
+      modulDB.DsDivAdmin.DataSet.Refresh;
+      ShowMessage('Data Sudah Disimpan.');
+    end
+    else
+    begin
+      ShowMessage('Data Tidak Jadi Di Simpan.');
+    end;
+  end;
 end;
 
 procedure TfrDIvisiAdmin.DBGrid1CellClick(Column: TColumn);
 begin
-edtId.Text := modulDB.ZqDivAdmin.Fields[0].AsString;
-edtNama.Text := modulDB.ZqDivAdmin.Fields[1].AsString;
-edtKode.Text := modulDB.ZqDivAdmin.Fields[2].AsString;
+  edtId.Text := modulDB.ZqDivAdminView.Fields[0].AsString;
+  edtNama.Text := modulDB.ZqDivAdminView.Fields[1].AsString;
+  edtKode.Text := modulDB.ZqDivAdminView.Fields[2].AsString;
 end;
 
 procedure TfrDIvisiAdmin.btnEditClick(Sender: TObject);
 begin
-modulDB.ZqDivAdmin.SQL.Clear;
-modulDB.ZqDivAdmin.SQL.Text := '';
-modulDB.ZqDivAdmin.SQL.Text := 'UPDATE divisi SET nama_divisi = :nama_divisi, kode_divisi = :kode_divisi WHERE id = :id';
+if (edtNama.Text = '') or (edtKode.Text = '') then
+  begin
+     ShowMessage('Ada Data Yang Kosong!');
+  end
+else
+  begin
+    if MessageDlg('Apa Anda yakin ingin mengubah data?', mtConfirmation, [mbYes, mbNo], 0) = mrYes then
+      begin
+        modulDB.ZqDivAdmin.SQL.Clear;
+        modulDB.ZqDivAdmin.SQL.Text := '';
+        modulDB.ZqDivAdmin.SQL.Text := 'UPDATE divisi SET nama_divisi = :nama_divisi, kode_divisi = :kode_divisi WHERE id = :id';
 
-modulDB.ZqDivAdmin.ParamByName('id').Value := edtId.Text;
-modulDB.ZqDivAdmin.ParamByName('nama_divisi').Value := edtNama.Text;
-modulDB.ZqDivAdmin.ParamByName('kode_divisi').Value := edtKode.Text;
+        modulDB.ZqDivAdmin.ParamByName('id').Value := edtId.Text;
+        modulDB.ZqDivAdmin.ParamByName('nama_divisi').Value := edtNama.Text;
+        modulDB.ZqDivAdmin.ParamByName('kode_divisi').Value := edtKode.Text;
 
-modulDB.ZqDivAdminView.ExecSQL;
-modulDB.DsDivAdmin.DataSet.Refresh;
+        modulDB.ZqDivAdmin.ExecSQL;
+        modulDB.DsDivAdmin.DataSet.Refresh;
+        ShowMessage('Data Sudah Di Ubah.');
+      end
+      else
+      begin
+        ShowMessage('Operasi Di Batalkan.');
+      end;
+  end;
+
 end;
 
 procedure TfrDIvisiAdmin.edtHapusClick(Sender: TObject);
 begin
-modulDB.ZqDivAdmin.SQL.Clear;
-modulDB.ZqDivAdmin.SQL.Text := '';
-modulDB.ZqDivAdmin.SQL.Text := 'DELETE FROM divisi where id = :id';
-modulDB.ZqDivAdmin.ParamByName('id').Value := edtId.Text;
-modulDB.ZqDivAdmin.ExecSQL;
-modulDB.DsDivAdmin.DataSet.Refresh;
+if (edtNama.Text = '') or (edtKode.Text = '') then
+  begin
+
+  end
+  else
+  begin
+    if MessageDlg('Apa Anda yakin ingin menghapus data?', mtConfirmation, [mbYes, mbNo], 0) = mrYes then
+      begin
+        modulDB.ZqDivAdmin.SQL.Clear;
+        modulDB.ZqDivAdmin.SQL.Text := '';
+        modulDB.ZqDivAdmin.SQL.Text := 'DELETE FROM divisi where id = :id';
+        modulDB.ZqDivAdmin.ParamByName('id').Value := edtId.Text;
+        modulDB.ZqDivAdmin.ExecSQL;
+        modulDB.DsDivAdmin.DataSet.Refresh;
+        ShowMessage('Data Sudah Di Hapus.');
+      end
+      else
+      begin
+        ShowMessage('Penghapusan Di Batalkan.');
+      end;
+  end;
 end;
 
 end.

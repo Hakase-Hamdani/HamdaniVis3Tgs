@@ -53,8 +53,8 @@ procedure TfrSurat.FormActivate(Sender: TObject);
 var
   userid, kueriJoinUser : string;
 begin
+  //kode buat session
   kueriJoinUser := 'SELECT id FROM penerbit WHERE id_user = :id_user';
-
   userid  := frLogin.Edit1.Text;
 
   modulDB.ZqIdUserPenerbit.SQL.Text := '';
