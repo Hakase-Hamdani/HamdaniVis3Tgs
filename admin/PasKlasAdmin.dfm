@@ -1,7 +1,7 @@
 object frKlasAdmin: TfrKlasAdmin
   Left = 211
   Top = 227
-  Width = 861
+  Width = 746
   Height = 306
   Caption = 'Administrasi Klasifikasi'
   Color = clBtnFace
@@ -35,6 +35,13 @@ object frKlasAdmin: TfrKlasAdmin
     Height = 13
     Caption = 'Status'
   end
+  object Label4: TLabel
+    Left = 344
+    Top = 216
+    Width = 88
+    Height = 13
+    Caption = 'PENCARIAN DATA'
+  end
   object btnSimpan: TButton
     Left = 48
     Top = 144
@@ -65,6 +72,7 @@ object frKlasAdmin: TfrKlasAdmin
     Height = 21
     ItemHeight = 13
     TabOrder = 3
+    Text = '----'
     Items.Strings = (
       'aktif'
       'nonaktif')
@@ -133,5 +141,30 @@ object frKlasAdmin: TfrKlasAdmin
     Caption = 'HAPUS'
     TabOrder = 7
     OnClick = edtHapusClick
+  end
+  object btnClr: TButton
+    Left = 136
+    Top = 176
+    Width = 75
+    Height = 25
+    Caption = 'CLEAR'
+    TabOrder = 8
+    OnClick = btnClrClick
+  end
+  object btnRefresh: TButton
+    Left = 624
+    Top = 24
+    Width = 75
+    Height = 25
+    Caption = 'REFRESH'
+    TabOrder = 9
+  end
+  object edtCari: TEdit
+    Left = 440
+    Top = 216
+    Width = 257
+    Height = 21
+    TabOrder = 10
+    OnChange = edtCariChange
   end
 end

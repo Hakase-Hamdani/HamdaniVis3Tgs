@@ -55,13 +55,13 @@ uses
 
 procedure TfrTujuanAdmin.btsSimpanClick(Sender: TObject);
 begin
-if (mmAlamat.Text = '') or (edtOrang.Text = '') or (edtJabatan.Text = '') or (edtInstitusi.Text = '') or (cbxSts.Text = '') or (cbxSts.Text = '----') then
+if (mmAlamat.Text = '') or (cbxSts.Text = '') or (cbxSts.Text = '----') then
   begin
     ShowMessage('Ada Data Yang Kosong!');
   end
   else
   begin
-    if MessageDlg('Apa Anda yakin ingin menambah data?', mtConfirmation, [mbYes, mbNo], 0) = mrYes then
+    if MessageDlg('Apa Anda yakin ingin MENAMBAH data?', mtConfirmation, [mbYes, mbNo], 0) = mrYes then
       begin
         modulDB.ZqTujuanAdmin.SQL.Clear;
         modulDB.ZqTujuanAdmin.SQL.Text := '';
@@ -95,9 +95,9 @@ end;
 
 procedure TfrTujuanAdmin.btnUbahClick(Sender: TObject);
 begin
-if (mmAlamat.Text = '') or (edtOrang.Text = '') or (edtJabatan.Text = '') or (edtInstitusi.Text = '') or (cbxSts.Text = '') or (cbxSts.Text = '----') or (edtId.Text = '') then
+if (edtId.Text := '') then
   begin
-    ShowMessage('Ada Data Yang Kosong!');
+    ShowMessage('Data Yang Akan Di UBAH Belum Di Pilih!');
   end
   else
   begin
@@ -126,9 +126,9 @@ end;
 
 procedure TfrTujuanAdmin.btnHapusClick(Sender: TObject);
 begin
-if (mmAlamat.Text = '') or (edtOrang.Text = '') or (edtJabatan.Text = '') or (edtInstitusi.Text = '') or (cbxSts.Text = '') or (cbxSts.Text = '----') or (edtId.Text = '') then
+if (edtId.Text := '') then
   begin
-    ShowMessage('Data Belum Di Pilih!');
+    ShowMessage('Data Yang Akan Di HAPUS Belum Di Pilih!');
   end
   else
   begin

@@ -53,7 +53,7 @@ if (edtNama.Text = '') or (edtKode.Text = '') then
   end
 else
   begin
-    if MessageDlg('Apa Anda yakin ingin mengubah data?', mtConfirmation, [mbYes, mbNo], 0) = mrYes then
+    if MessageDlg('Apa Anda yakin ingin MENAMBAHKAN data?', mtConfirmation, [mbYes, mbNo], 0) = mrYes then
     begin
       modulDB.ZqDivAdmin.SQL.Clear;
       modulDB.ZqDivAdmin.SQL.Text := '';
@@ -82,9 +82,9 @@ end;
 
 procedure TfrDIvisiAdmin.btnEditClick(Sender: TObject);
 begin
-if (edtNama.Text = '') or (edtKode.Text = '') then
+if (edtNama.Text = '') or (edtKode.Text = '') or (edtId.Text := '') then
   begin
-     ShowMessage('Ada Data Yang Kosong!');
+     ShowMessage('Data Yang Akan Di UBAH Belum Di Pilih/Belum Di Isi!');
   end
 else
   begin
@@ -112,9 +112,9 @@ end;
 
 procedure TfrDIvisiAdmin.edtHapusClick(Sender: TObject);
 begin
-if (edtNama.Text = '') or (edtKode.Text = '') then
+if (edtId.Text = '') then
   begin
-    ShowMessage('Data Belum Di Pilih!');
+    ShowMessage('Data Yang Akan Di HAPUS Belum Di Pilih!');
   end
   else
   begin

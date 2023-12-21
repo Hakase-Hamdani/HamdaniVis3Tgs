@@ -57,7 +57,7 @@ if (edtUsername.Text = '') or (edtPassword.Text = '') or (cbxSts.Text = '----') 
   end
   else
   begin
-    if MessageDlg('Apa Anda yakin ingin menambah data?', mtConfirmation, [mbYes, mbNo], 0) = mrYes then
+    if MessageDlg('Apa Anda yakin ingin MENAMBAH data?', mtConfirmation, [mbYes, mbNo], 0) = mrYes then
       begin
         modulDB.ZqUserAdmin.SQL.Clear;
         modulDB.ZqUserAdmin.SQL.Text := '';
@@ -95,7 +95,7 @@ if (edtUsername.Text = '') or (edtPassword.Text = '') or (cbxSts.Text = '----') 
   end
   else
   begin
-    if MessageDlg('Apa Anda yakin ingin mengubah data?', mtConfirmation, [mbYes, mbNo], 0) = mrYes then
+    if MessageDlg('Apa Anda yakin ingin MENGUBAH data?', mtConfirmation, [mbYes, mbNo], 0) = mrYes then
       begin
         modulDB.ZqUserAdmin.SQL.Clear;
         modulDB.ZqUserAdmin.SQL.Text := '';
@@ -119,13 +119,13 @@ end;
 
 procedure TfrUserAdmin.btnHapusClick(Sender: TObject);
 begin
-if (edtUsername.Text = '') or (edtPassword.Text = '') or (cbxSts.Text = '----') or (cbxSts.Text = '') or (cbxLvl.Text='----') or (cbxSts.Text='') then
+if (edtId.Text := '') then
   begin
-    ShowMessage('Ada Data Yang Kosong!');
+    ShowMessage('Data Yang Akan di HAPUS Belum Di Isi!');
   end
   else
   begin
-    if MessageDlg('Apa Anda yakin ingin mengubah data?', mtConfirmation, [mbYes, mbNo], 0) = mrYes then
+    if MessageDlg('Apa Anda yakin ingin MENGHAPUS data?', mtConfirmation, [mbYes, mbNo], 0) = mrYes then
       begin
         modulDB.ZqUserAdmin.SQL.Clear;
         modulDB.ZqUserAdmin.SQL.Text := '';
