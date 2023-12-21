@@ -24,12 +24,15 @@ type
     Label5: TLabel;
     edtCari: TEdit;
     btnRefresh: TButton;
+    btnClr: TButton;
     procedure btnSimpanClick(Sender: TObject);
     procedure DBGrid1CellClick(Column: TColumn);
     procedure btnEditClick(Sender: TObject);
     procedure btnHapusClick(Sender: TObject);
     procedure edtCariChange(Sender: TObject);
     procedure btnRefreshClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure btnClrClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -171,6 +174,20 @@ end;
 procedure TfrUserAdmin.btnRefreshClick(Sender: TObject);
 begin
   refreshData;
+end;
+
+procedure TfrUserAdmin.FormCreate(Sender: TObject);
+begin
+Position := poScreenCenter;
+end;
+
+procedure TfrUserAdmin.btnClrClick(Sender: TObject);
+begin
+edtId.Text := '';
+edtUsername.Text := '';
+edtPassword.Text := '';
+cbxSts.Text := '----';
+cbxLvl.Text := '----';
 end;
 
 end.

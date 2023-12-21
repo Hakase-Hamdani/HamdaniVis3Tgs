@@ -1,6 +1,6 @@
 object frDIvisiAdmin: TfrDIvisiAdmin
-  Left = 298
-  Top = 257
+  Left = 316
+  Top = 290
   Width = 894
   Height = 261
   Caption = 'Edit Divisi'
@@ -11,6 +11,7 @@ object frDIvisiAdmin: TfrDIvisiAdmin
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
   object Label1: TLabel
@@ -81,8 +82,8 @@ object frDIvisiAdmin: TfrDIvisiAdmin
     OnCellClick = DBGrid1CellClick
   end
   object edtId: TEdit
-    Left = 40
-    Top = 168
+    Left = 32
+    Top = 184
     Width = 121
     Height = 21
     TabOrder = 5
@@ -113,5 +114,14 @@ object frDIvisiAdmin: TfrDIvisiAdmin
     Caption = 'REFRESH'
     TabOrder = 8
     OnClick = btnRefreshClick
+  end
+  object btnClr: TButton
+    Left = 136
+    Top = 152
+    Width = 75
+    Height = 25
+    Caption = 'CLEAR'
+    TabOrder = 9
+    OnClick = btnClrClick
   end
 end

@@ -20,12 +20,15 @@ type
     edtCari: TEdit;
     Label3: TLabel;
     btnRefresh: TButton;
+    btnClr: TButton;
     procedure btnSimpanClick(Sender: TObject);
     procedure DBGrid1CellClick(Column: TColumn);
     procedure btnEditClick(Sender: TObject);
     procedure edtHapusClick(Sender: TObject);
     procedure edtCariChange(Sender: TObject);
     procedure btnRefreshClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure btnClrClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -111,7 +114,7 @@ procedure TfrDIvisiAdmin.edtHapusClick(Sender: TObject);
 begin
 if (edtNama.Text = '') or (edtKode.Text = '') then
   begin
-
+    ShowMessage('Data Belum Di Pilih!');
   end
   else
   begin
@@ -132,6 +135,15 @@ if (edtNama.Text = '') or (edtKode.Text = '') then
   end;
 end;
 
+procedure refreshData();
+begin
+modulDB.ZqDivAdminView.SQL.Clear;
+modulDB.ZqDivAdminView.SQL.Text := '';
+modulDB.ZqDivAdminView.SQL.Text := 'SELECT * FROM divisi';
+modulDB.ZqDivAdminView.Open;
+modulDB.DsDivAdmin.DataSet.Refresh;
+end;
+
 procedure TfrDIvisiAdmin.edtCariChange(Sender: TObject);
 var
   cari : string;
@@ -140,11 +152,7 @@ begin
 if (edtCari.Text = '') then
   begin
     //jika kolom pencarian kosong, kembalikan ZqDivAdminView seperti semula
-    modulDB.ZqDivAdminView.SQL.Clear;
-    modulDB.ZqDivAdminView.SQL.Text := '';
-    modulDB.ZqDivAdminView.SQL.Text := 'SELECT * FROM divisi';
-    modulDB.ZqDivAdminView.Open;
-    modulDB.DsDivAdmin.DataSet.Refresh;
+    refreshData;
   end
   else
   begin
@@ -160,11 +168,19 @@ end;
 
 procedure TfrDIvisiAdmin.btnRefreshClick(Sender: TObject);
 begin
-modulDB.ZqDivAdminView.SQL.Clear;
-modulDB.ZqDivAdminView.SQL.Text := '';
-modulDB.ZqDivAdminView.SQL.Text := 'SELECT * FROM divisi';
-modulDB.ZqDivAdminView.Open;
-modulDB.DsDivAdmin.DataSet.Refresh;
+refreshData;
+end;
+
+procedure TfrDIvisiAdmin.FormCreate(Sender: TObject);
+begin
+Position := poScreenCenter;
+end;
+
+procedure TfrDIvisiAdmin.btnClrClick(Sender: TObject);
+begin
+edtId.Text := '';
+edtNama.Text := '';
+edtKode.Text := '';
 end;
 
 end.

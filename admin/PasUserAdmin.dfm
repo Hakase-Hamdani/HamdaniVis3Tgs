@@ -1,6 +1,6 @@
 object frUserAdmin: TfrUserAdmin
-  Left = 250
-  Top = 192
+  Left = 218
+  Top = 170
   Width = 858
   Height = 371
   Caption = 'Manajemen User'
@@ -11,6 +11,7 @@ object frUserAdmin: TfrUserAdmin
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
   object Label1: TLabel
@@ -181,5 +182,14 @@ object frUserAdmin: TfrUserAdmin
     Caption = 'REFRESH'
     TabOrder = 10
     OnClick = btnRefreshClick
+  end
+  object btnClr: TButton
+    Left = 136
+    Top = 248
+    Width = 75
+    Height = 25
+    Caption = 'CLEAR'
+    TabOrder = 11
+    OnClick = btnClrClick
   end
 end
