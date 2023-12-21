@@ -36,6 +36,7 @@ type
     procedure btnClrClick(Sender: TObject);
     procedure edtCariChange(Sender: TObject);
     procedure btnRefreshClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
   public
@@ -194,6 +195,17 @@ end;
 procedure TfrTujuanAdmin.btnRefreshClick(Sender: TObject);
 begin
 refreshData;
+end;
+
+procedure TfrTujuanAdmin.FormCreate(Sender: TObject);
+begin
+Position := poScreenCenter;
+DBGrid1.Columns[0].Width := 32;
+DBGrid1.Columns[1].Width := 250;
+DBGrid1.Columns[2].Width := 150;
+DBGrid1.Columns[3].Width := 150;
+DBGrid1.Columns[4].Width := 150;
+DBGrid1.Columns[5].Width := 60;
 end;
 
 end.

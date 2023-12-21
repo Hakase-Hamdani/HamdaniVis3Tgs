@@ -50,6 +50,15 @@ uses
 
 procedure TfrStaffAdmin.FormCreate(Sender: TObject);
 begin
+Position := poScreenCenter;
+DBGrid1.Columns[0].Width := 32;
+DBGrid1.Columns[1].Width := 40;
+DBGrid1.Columns[2].Width := 50;
+DBGrid1.Columns[3].Width := 150;
+DBGrid1.Columns[4].Width := 175;
+DBGrid1.Columns[5].Width := 120;
+DBGrid1.Columns[6].Width := 64;
+
 while not modulDB.ZqDivStaf.Eof do
   begin
     cbxDiv.Items.AddObject(modulDB.ZqDivStaf.FieldByName('nama_divisi').AsString, TObject(modulDB.ZqDivStaf.FieldByName('id').AsInteger));

@@ -1,7 +1,7 @@
 object frDIvisiAdmin: TfrDIvisiAdmin
-  Left = 316
-  Top = 290
-  Width = 894
+  Left = 182
+  Top = 282
+  Width = 712
   Height = 261
   Caption = 'Edit Divisi'
   Color = clBtnFace
@@ -70,7 +70,7 @@ object frDIvisiAdmin: TfrDIvisiAdmin
   object DBGrid1: TDBGrid
     Left = 344
     Top = 40
-    Width = 473
+    Width = 313
     Height = 137
     DataSource = modulDB.DsDivAdmin
     TabOrder = 4
@@ -80,6 +80,25 @@ object frDIvisiAdmin: TfrDIvisiAdmin
     TitleFont.Name = 'Tahoma'
     TitleFont.Style = []
     OnCellClick = DBGrid1CellClick
+    Columns = <
+      item
+        Expanded = False
+        FieldName = 'id'
+        Width = 50
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'nama_divisi'
+        Width = 150
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'kode_divisi'
+        Width = 75
+        Visible = True
+      end>
   end
   object edtId: TEdit
     Left = 32
@@ -101,13 +120,13 @@ object frDIvisiAdmin: TfrDIvisiAdmin
   object edtCari: TEdit
     Left = 440
     Top = 192
-    Width = 385
+    Width = 217
     Height = 21
     TabOrder = 7
     OnChange = edtCariChange
   end
   object btnRefresh: TButton
-    Left = 720
+    Left = 584
     Top = 8
     Width = 75
     Height = 25

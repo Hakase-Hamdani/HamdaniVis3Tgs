@@ -1,7 +1,7 @@
 object frTujuanAdmin: TfrTujuanAdmin
-  Left = 148
-  Top = 222
-  Width = 928
+  Left = 28
+  Top = 221
+  Width = 1215
   Height = 385
   Caption = 'Administrasi Tujuan'
   Color = clBtnFace
@@ -11,6 +11,7 @@ object frTujuanAdmin: TfrTujuanAdmin
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
   object Label1: TLabel
@@ -79,7 +80,7 @@ object frTujuanAdmin: TfrTujuanAdmin
   object DBGrid1: TDBGrid
     Left = 336
     Top = 48
-    Width = 545
+    Width = 833
     Height = 225
     DataSource = modulDB.DsTujuanAdmin
     TabOrder = 3
@@ -89,6 +90,43 @@ object frTujuanAdmin: TfrTujuanAdmin
     TitleFont.Name = 'Tahoma'
     TitleFont.Style = []
     OnCellClick = DBGrid1CellClick
+    Columns = <
+      item
+        Expanded = False
+        FieldName = 'id'
+        Width = 32
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'alamat'
+        Width = 250
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'orang'
+        Width = 150
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'jabatan'
+        Width = 150
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'institusi'
+        Width = 150
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'status'
+        Width = 60
+        Visible = True
+      end>
   end
   object btsSimpan: TButton
     Left = 40
@@ -165,13 +203,13 @@ object frTujuanAdmin: TfrTujuanAdmin
   object edtCari: TEdit
     Left = 440
     Top = 280
-    Width = 441
+    Width = 729
     Height = 21
     TabOrder = 12
     OnChange = edtCariChange
   end
   object btnRefresh: TButton
-    Left = 784
+    Left = 1088
     Top = 16
     Width = 75
     Height = 25

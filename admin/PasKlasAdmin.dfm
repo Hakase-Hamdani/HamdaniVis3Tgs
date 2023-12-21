@@ -11,6 +11,7 @@ object frKlasAdmin: TfrKlasAdmin
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
   object Label1: TLabel
@@ -79,8 +80,8 @@ object frKlasAdmin: TfrKlasAdmin
   end
   object DBGrid1: TDBGrid
     Left = 344
-    Top = 16
-    Width = 465
+    Top = 56
+    Width = 353
     Height = 153
     DataSource = modulDB.DsKlasAdmin
     TabOrder = 5
@@ -90,6 +91,30 @@ object frKlasAdmin: TfrKlasAdmin
     TitleFont.Name = 'Tahoma'
     TitleFont.Style = []
     OnCellClick = DBGrid1CellClick
+    Columns = <
+      item
+        Expanded = False
+        FieldName = 'id'
+        Width = 32
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'nama'
+        Width = 150
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'nomor'
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'status'
+        Width = 64
+        Visible = True
+      end>
   end
   object edtId: TEdit
     Left = 208
@@ -101,8 +126,8 @@ object frKlasAdmin: TfrKlasAdmin
     Visible = False
   end
   object edtHapus: TButton
-    Left = 344
-    Top = 176
+    Left = 224
+    Top = 144
     Width = 75
     Height = 25
     Caption = 'HAPUS'

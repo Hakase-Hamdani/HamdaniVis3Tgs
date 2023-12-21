@@ -23,6 +23,7 @@ type
     procedure DBGrid1CellClick(Column: TColumn);
     procedure btnUbahClick(Sender: TObject);
     procedure edtHapusClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
   public
@@ -84,6 +85,15 @@ modulDB.ZqKlasAdmin.SQL.Text := 'DELETE FROM klasifikasi where id = :id';
 modulDB.ZqKlasAdmin.ParamByName('id').Value := edtId.Text;
 modulDB.ZqKlasAdmin.ExecSQL;
 modulDB.DsKlasAdmin.DataSet.Refresh;
+end;
+
+procedure TfrKlasAdmin.FormCreate(Sender: TObject);
+begin
+Position := poScreenCenter;
+DBGrid1.Columns[0].Width := 32;
+DBGrid1.Columns[1].Width := 150;
+DBGrid1.Columns[2].Width := 64;
+DBGrid1.Columns[3].Width := 64;
 end;
 
 end.

@@ -179,6 +179,11 @@ end;
 procedure TfrUserAdmin.FormCreate(Sender: TObject);
 begin
 Position := poScreenCenter;
+DBGrid1.Columns[0].Width := 32;
+DBGrid1.Columns[1].Width := 124;
+DBGrid1.Columns[2].Width := 124;
+DBGrid1.Columns[3].Width := 80;
+DBGrid1.Columns[4].Width := 50;
 end;
 
 procedure TfrUserAdmin.btnClrClick(Sender: TObject);

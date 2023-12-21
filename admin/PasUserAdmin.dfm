@@ -1,7 +1,7 @@
 object frUserAdmin: TfrUserAdmin
-  Left = 218
-  Top = 170
-  Width = 858
+  Left = 343
+  Top = 187
+  Width = 849
   Height = 371
   Caption = 'Manajemen User'
   Color = clBtnFace
@@ -66,7 +66,7 @@ object frUserAdmin: TfrUserAdmin
   object DBGrid1: TDBGrid
     Left = 328
     Top = 40
-    Width = 481
+    Width = 449
     Height = 201
     DataSource = modulDB.DsUserAdmin
     TabOrder = 2
@@ -86,23 +86,25 @@ object frUserAdmin: TfrUserAdmin
       item
         Expanded = False
         FieldName = 'user_name'
-        Width = 75
+        Width = 124
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'password'
-        Width = 80
+        Width = 124
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'status'
+        Width = 80
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'level'
+        Width = 50
         Visible = True
       end>
   end
@@ -169,13 +171,13 @@ object frUserAdmin: TfrUserAdmin
   object edtCari: TEdit
     Left = 440
     Top = 256
-    Width = 369
+    Width = 337
     Height = 21
     TabOrder = 9
     OnChange = edtCariChange
   end
   object btnRefresh: TButton
-    Left = 712
+    Left = 704
     Top = 8
     Width = 75
     Height = 25
