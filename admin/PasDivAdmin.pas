@@ -174,6 +174,7 @@ end;
 procedure TfrDIvisiAdmin.FormCreate(Sender: TObject);
 begin
 Position := poScreenCenter;
+BorderStyle := bsDialog;
 DBGrid1.Columns[0].Width := 50;
 DBGrid1.Columns[1].Width := 150;
 DBGrid1.Columns[2].Width := 75; 

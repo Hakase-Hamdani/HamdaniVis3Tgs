@@ -42,6 +42,8 @@ procedure TfrRegUser.FormCreate(Sender: TObject);
 var
   userid : string;
 begin
+  Position := poScreenCenter;
+  BorderStyle := bsDialog;
   userid  := frLogin.Edit1.Text;
   
   //edtIdUser.Text := userid;

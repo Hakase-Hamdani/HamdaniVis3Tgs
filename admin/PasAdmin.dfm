@@ -1,7 +1,7 @@
 object frAdmin: TfrAdmin
-  Left = 344
-  Top = 113
-  Width = 1029
+  Left = 86
+  Top = 182
+  Width = 1357
   Height = 489
   Caption = 'ADMIN'
   Color = clBtnFace
@@ -88,26 +88,26 @@ object frAdmin: TfrAdmin
   object GroupBox4: TGroupBox
     Left = 40
     Top = 8
-    Width = 217
+    Width = 185
     Height = 105
     Caption = 'Profil'
     TabOrder = 2
     object Label1: TLabel
-      Left = 16
+      Left = 8
       Top = 24
       Width = 26
       Height = 13
       Caption = 'USER'
     end
     object Label2: TLabel
-      Left = 56
+      Left = 48
       Top = 24
       Width = 4
       Height = 13
       Caption = ':'
     end
     object edtIdUser: TEdit
-      Left = 72
+      Left = 56
       Top = 24
       Width = 121
       Height = 21
@@ -115,7 +115,7 @@ object frAdmin: TfrAdmin
       TabOrder = 0
     end
     object edtStaffNama: TEdit
-      Left = 72
+      Left = 56
       Top = 56
       Width = 121
       Height = 21
@@ -124,9 +124,9 @@ object frAdmin: TfrAdmin
     end
   end
   object DBGrid1: TDBGrid
-    Left = 272
+    Left = 232
     Top = 16
-    Width = 697
+    Width = 1105
     Height = 385
     DataSource = modulDB.DsSuratList
     TabOrder = 3
@@ -135,6 +135,60 @@ object frAdmin: TfrAdmin
     TitleFont.Height = -11
     TitleFont.Name = 'Tahoma'
     TitleFont.Style = []
+    Columns = <
+      item
+        Expanded = False
+        FieldName = 'penerbit_nama'
+        Width = 125
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'penerbit_NIP'
+        Width = 100
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'penerbit_jabatan'
+        Width = 125
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'nama_divisi'
+        Width = 125
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'tujuan_alamat'
+        Width = 150
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'tujuan_orang'
+        Width = 125
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'tujuan_institusi'
+        Width = 125
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'klasifikasi_nama'
+        Width = 125
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'tgl_berlaku'
+        Visible = True
+      end>
   end
   object Button6: TButton
     Left = 276

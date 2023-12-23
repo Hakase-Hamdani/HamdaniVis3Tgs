@@ -15,6 +15,7 @@ type
     edtPswd2: TEdit;
     btnSignIn: TButton;
     procedure btnSignInClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
   public
@@ -63,6 +64,12 @@ begin
   begin
     ShowMessage('Username sudah ada!');
   end;
+end;
+
+procedure TfrSignIn.FormCreate(Sender: TObject);
+begin
+Position := poScreenCenter;
+BorderStyle := bsDialog;
 end;
 
 end.

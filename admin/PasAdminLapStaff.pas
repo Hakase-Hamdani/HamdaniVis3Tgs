@@ -49,6 +49,8 @@ var
 queryjoin: string;
 
 begin
+Position := poScreenCenter;
+BorderStyle := bsDialog;
 //queryjoin := 'SELECT u.user_name, u.status AS user_status, u.level AS user_level, ' +
 //             'p.nama AS penerbit_nama, p.NIP AS penerbit_NIP, ' +
 //             'p.jabatan AS penerbit_jabatan, d.nama_divisi, d.kode_divisi ' +

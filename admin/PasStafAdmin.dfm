@@ -234,13 +234,11 @@ object frStaffAdmin: TfrStaffAdmin
       item
         Expanded = False
         FieldName = 'status'
-        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'level'
-        Width = 64
         Visible = True
       end>
   end

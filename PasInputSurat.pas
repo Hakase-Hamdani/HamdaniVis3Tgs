@@ -216,6 +216,7 @@ var
   userid, kueriJoinUser : string;
 begin
   Position := poScreenCenter;
+  BorderStyle := bsDialog;
   kueriJoinUser := 'SELECT id FROM penerbit WHERE id_user = :id_user';
 
   userid  := frLogin.Edit1.Text;
