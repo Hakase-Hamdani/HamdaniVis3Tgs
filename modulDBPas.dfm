@@ -1,6 +1,6 @@
 object modulDB: TmodulDB
-  Left = 180
-  Top = 111
+  Left = 184
+  Top = 205
   Width = 1055
   Height = 629
   Caption = 'modulDB'
@@ -650,7 +650,7 @@ object modulDB: TmodulDB
       ''
       'end.')
     Left = 832
-    Top = 344
+    Top = 304
     Datasets = <
       item
         DataSet = FrxdbSurat
@@ -876,8 +876,8 @@ object modulDB: TmodulDB
     CloseDataSource = False
     DataSource = DsSuratCetak
     BCDToCurrency = False
-    Left = 768
-    Top = 336
+    Left = 776
+    Top = 312
   end
   object ZqSuratCetak: TZQuery
     Connection = Zconnection
@@ -913,8 +913,8 @@ object modulDB: TmodulDB
   end
   object DsSuratCetak: TDataSource
     DataSet = ZqSuratCetak
-    Left = 688
-    Top = 360
+    Left = 728
+    Top = 296
   end
   object FrxdbSuratList: TfrxDBDataset
     UserName = 'frxDBDataset1'
@@ -1890,5 +1890,19 @@ object modulDB: TmodulDB
     Params = <>
     Left = 656
     Top = 80
+  end
+  object DsSuratAlamatAktifOnly: TDataSource
+    DataSet = ZqSuratAlamatAktifOnly
+    Left = 648
+    Top = 352
+  end
+  object ZqSuratAlamatAktifOnly: TZQuery
+    Connection = Zconnection
+    Active = True
+    SQL.Strings = (
+      'SELECT * FROM tujuan WHERE `status`='#39'aktif'#39';')
+    Params = <>
+    Left = 584
+    Top = 360
   end
 end

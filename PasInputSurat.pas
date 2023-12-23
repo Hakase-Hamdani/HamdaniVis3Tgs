@@ -27,12 +27,24 @@ type
     btnCetak: TButton;
     edtIdPenerbit: TEdit;
     edtIdSurat: TEdit;
+    btnRefresh: TButton;
+    Label7: TLabel;
+    edtCari: TEdit;
+    DBGrid2: TDBGrid;
+    DBGrid3: TDBGrid;
+    DBGrid4: TDBGrid;
+    Label8: TLabel;
     procedure FormActivate(Sender: TObject);
     procedure btnSimpanClick(Sender: TObject);
     procedure DBGrid1CellClick(Column: TColumn);
     procedure Button2Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure btnCetakClick(Sender: TObject);
+    procedure btnRefreshClick(Sender: TObject);
+    procedure edtCariChange(Sender: TObject);
+    procedure DBGrid2CellClick(Column: TColumn);
+    procedure DBGrid4CellClick(Column: TColumn);
+    procedure DBGrid3CellClick(Column: TColumn);
   private
     { Private declarations }
   public
@@ -90,24 +102,37 @@ procedure TfrSurat.btnSimpanClick(Sender: TObject);
 var
   id_penerbit, id_tujuan, id_jenis : Integer;
 begin
+if (edtIdPenerbit.Text = '') or (MmDetail.Text = '') or (cbxStatus.Text = '') or (cbxStatus.Text = '----') or (cbxTujuan.Text = '----') or (cbxJenis.Text = '----') then
+  begin
+    ShowMessage('Ada Data Yang Kosong!');
+  end
+  else
+  begin
+    if MessageDlg('Apa Anda yakin ingin MENAMBAH data?', mtConfirmation, [mbYes, mbNo], 0) = mrYes then
+      begin
+        modulDB.ZqSuratMain.SQL.Text := '';
+        modulDB.ZqSuratMain.SQL.Text := 'INSERT INTO surat (id_penerbit, id_tujuan, id_jenis, tgl_berlaku, detail, status) VALUES (:id_penerbit, :id_tujuan, :id_jenis, :tgl_berlaku, :detail, :status)';
 
-modulDB.ZqSuratMain.SQL.Text := '';
-modulDB.ZqSuratMain.SQL.Text := 'INSERT INTO surat (id_penerbit, id_tujuan, id_jenis, tgl_berlaku, detail, status) VALUES (:id_penerbit, :id_tujuan, :id_jenis, :tgl_berlaku, :detail, :status)';
-
-id_tujuan := Integer(cbxTujuan.Items.Objects[cbxTujuan.ItemIndex]);
-id_jenis := Integer(cbxJenis.Items.Objects[cbxTujuan.ItemIndex]);
+        id_tujuan := Integer(cbxTujuan.Items.Objects[cbxTujuan.ItemIndex]);
+        id_jenis := Integer(cbxJenis.Items.Objects[cbxTujuan.ItemIndex]);
 
 
-modulDB.ZqSuratMain.ParamByName('id_penerbit').Value := edtIdPenerbit.Text;
-modulDB.ZqSuratMain.ParamByName('id_tujuan').Value := id_tujuan;
-modulDB.ZqSuratMain.ParamByName('id_jenis').Value := id_jenis;
+        modulDB.ZqSuratMain.ParamByName('id_penerbit').Value := edtIdPenerbit.Text;
+        modulDB.ZqSuratMain.ParamByName('id_tujuan').Value := id_tujuan;
+        modulDB.ZqSuratMain.ParamByName('id_jenis').Value := id_jenis;
 
-modulDB.ZqSuratMain.ParamByName('tgl_berlaku').Value := DateBerlaku.Date;
-modulDB.ZqSuratMain.ParamByName('detail').Value := MmDetail.Text;
-modulDB.ZqSuratMain.ParamByName('status').Value := cbxStatus.Text;
+        modulDB.ZqSuratMain.ParamByName('tgl_berlaku').Value := DateBerlaku.Date;
+        modulDB.ZqSuratMain.ParamByName('detail').Value := MmDetail.Text;
+        modulDB.ZqSuratMain.ParamByName('status').Value := cbxStatus.Text;
 
-modulDB.ZqSuratView.ExecSQL;
-modulDB.DsSurat.DataSet.Refresh;
+        modulDB.ZqSuratView.ExecSQL;
+        modulDB.DsSurat.DataSet.Refresh;
+      end
+      else
+      begin
+        ShowMessage('Penambahan Data Di Batalkan.');
+      end;
+  end;
 end;
 
 procedure TfrSurat.DBGrid1CellClick(Column: TColumn);
@@ -129,30 +154,45 @@ procedure TfrSurat.Button2Click(Sender: TObject);
 var
   id_penerbit, id_tujuan, id_jenis : Integer;
 begin
-modulDB.ZqSuratMain.SQL.Clear;
-modulDB.ZqSuratMain.SQL.Text := 'UPDATE surat SET id_penerbit = :id_penerbit, id_tujuan = :id_tujuan, id_jenis = :id_jenis, detail = :detail, status = :status WHERE id = :id';
+if (edtIdPenerbit.Text = '') or (MmDetail.Text = '') or (cbxStatus.Text = '') or (cbxStatus.Text = '----') or (cbxTujuan.Text = '----') or (cbxJenis.Text = '----') then
+  begin
+    ShowMessage('Data Yang Akan Di UBAH Masih Belum Di Pilih!');
+  end
+  else
+  begin
+    if MessageDlg('Apa Anda yakin ingin MENGUBAH data?', mtConfirmation, [mbYes, mbNo], 0) = mrYes then
+      begin
+        modulDB.ZqSuratMain.SQL.Clear;
+        modulDB.ZqSuratMain.SQL.Text := 'UPDATE surat SET id_penerbit = :id_penerbit, id_tujuan = :id_tujuan, id_jenis = :id_jenis, detail = :detail, status = :status WHERE id = :id';
 
-id_penerbit := Integer(cbxPenerbit.Items.Objects[cbxPenerbit.ItemIndex]);
-id_tujuan := Integer(cbxTujuan.Items.Objects[cbxTujuan.ItemIndex]);
-id_jenis := Integer(cbxJenis.Items.Objects[cbxTujuan.ItemIndex]);
+        id_penerbit := Integer(cbxPenerbit.Items.Objects[cbxPenerbit.ItemIndex]);
+        id_tujuan := Integer(cbxTujuan.Items.Objects[cbxTujuan.ItemIndex]);
+        id_jenis := Integer(cbxJenis.Items.Objects[cbxTujuan.ItemIndex]);
 
 
-modulDB.ZqSuratMain.ParamByName('id_penerbit').Value := id_penerbit;
-modulDB.ZqSuratMain.ParamByName('id_tujuan').Value := id_tujuan;
-modulDB.ZqSuratMain.ParamByName('id_jenis').Value := id_jenis;
+        modulDB.ZqSuratMain.ParamByName('id_penerbit').Value := id_penerbit;
+        modulDB.ZqSuratMain.ParamByName('id_tujuan').Value := id_tujuan;
+        modulDB.ZqSuratMain.ParamByName('id_jenis').Value := id_jenis;
 
-modulDB.ZqSuratMain.ParamByName('tgl_berlaku').Value := DateBerlaku.Date;
-modulDB.ZqSuratMain.ParamByName('detail').Value := MmDetail.Text;
-modulDB.ZqSuratMain.ParamByName('status').Value := cbxStatus.Text;
+        modulDB.ZqSuratMain.ParamByName('tgl_berlaku').Value := DateBerlaku.Date;
+        modulDB.ZqSuratMain.ParamByName('detail').Value := MmDetail.Text;
+        modulDB.ZqSuratMain.ParamByName('status').Value := cbxStatus.Text;
 
-modulDB.ZqSuratView.ExecSQL;
-modulDB.DsSurat.DataSet.Refresh;
+        modulDB.ZqSuratView.ExecSQL;
+        modulDB.DsSurat.DataSet.Refresh;
+      end
+      else
+      begin
+        ShowMessage('Pengubahan Data Di Batalkan.');
+      end;
+  end;
 end;
 
 procedure TfrSurat.FormCreate(Sender: TObject);
 var
   userid, kueriJoinUser : string;
 begin
+  Position := poScreenCenter;
   kueriJoinUser := 'SELECT id FROM penerbit WHERE id_user = :id_user';
 
   userid  := frLogin.Edit1.Text;
@@ -211,6 +251,56 @@ kueriJoin :=
     modulDB.ZqSuratCetak.Open;
 
     modulDB.FrxrepSurat.ShowReport();
+end;
+
+procedure refreshData();
+begin
+modulDB.ZqSuratView.SQL.Clear;
+modulDB.ZqSuratView.SQL.Text := '';
+modulDB.ZqSuratView.SQL.Text := 'SELECT * FROM surat';
+modulDB.ZqSuratView.Open;
+modulDB.DsSurat.DataSet.Refresh;
+end;
+
+procedure TfrSurat.btnRefreshClick(Sender: TObject);
+begin
+refreshData;
+end;
+
+procedure TfrSurat.edtCariChange(Sender: TObject);
+var
+  cari : string;
+begin
+if (edtCari.Text = '') then
+  begin
+    //jika kolom pencarian kosong, kembalikan ZqDivAdminView seperti semula
+    refreshData;
+  end
+  else
+  begin
+    //jika kolom pencarian ada isinya, lakukan pencarian secara keseluruhan
+    cari := edtCari.Text;
+    modulDB.ZqSuratView.SQL.Clear;
+    modulDB.ZqSuratView.SQL.Text := '';
+    modulDB.ZqSuratView.SQL.Text := 'SELECT * FROM surat WHERE id_penerbit LIKE ''%' +cari+ '%'' OR id_tujuan LIKE ''%' +cari+ '%'' OR id_jenis LIKE ''%' +cari+ '%'' or tgl_berlaku LIKE ''%' +cari+ '%'' or `status` LIKE ''%' +cari+ '%''';
+    modulDB.ZqSuratView.Open;
+    modulDB.DsSurat.DataSet.Refresh;
+  end;
+end;
+
+procedure TfrSurat.DBGrid2CellClick(Column: TColumn);
+begin
+edtCari.Text := modulDB.ZqStafAdminView.Fields[0].AsString;
+end;
+
+procedure TfrSurat.DBGrid4CellClick(Column: TColumn);
+begin
+edtCari.Text := modulDB.ZqDivAdminView.Fields[0].AsString;
+end;
+
+procedure TfrSurat.DBGrid3CellClick(Column: TColumn);
+begin
+edtCari.Text := modulDB.ZqSuratAlamatAktifOnly.Fields[0].AsString;
 end;
 
 end.

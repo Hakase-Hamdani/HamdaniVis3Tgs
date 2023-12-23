@@ -1,8 +1,8 @@
 object frSurat: TfrSurat
-  Left = 458
-  Top = 253
-  Width = 920
-  Height = 400
+  Left = 252
+  Top = 49
+  Width = 846
+  Height = 677
   Caption = 'Buat Surat'
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -57,9 +57,23 @@ object frSurat: TfrSurat
     Height = 13
     Caption = 'Status'
   end
-  object cbxPenerbit: TComboBox
-    Left = 424
+  object Label7: TLabel
+    Left = 328
     Top = 320
+    Width = 55
+    Height = 13
+    Caption = 'CARI DATA'
+  end
+  object Label8: TLabel
+    Left = 296
+    Top = 360
+    Width = 201
+    Height = 13
+    Caption = '*tekan tabel di bawah untuk mencari data'
+  end
+  object cbxPenerbit: TComboBox
+    Left = 832
+    Top = 56
     Width = 185
     Height = 21
     ItemHeight = 13
@@ -73,6 +87,7 @@ object frSurat: TfrSurat
     Height = 21
     ItemHeight = 13
     TabOrder = 1
+    Text = '----'
   end
   object cbxJenis: TComboBox
     Left = 128
@@ -81,14 +96,15 @@ object frSurat: TfrSurat
     Height = 21
     ItemHeight = 13
     TabOrder = 2
+    Text = '----'
   end
   object DateBerlaku: TDateTimePicker
     Left = 128
     Top = 128
     Width = 186
     Height = 21
-    Date = 45259.916339108790000000
-    Time = 45259.916339108790000000
+    Date = 45283.916339108790000000
+    Time = 45283.916339108790000000
     TabOrder = 3
   end
   object MmDetail: TMemo
@@ -107,15 +123,16 @@ object frSurat: TfrSurat
     Height = 21
     ItemHeight = 13
     TabOrder = 5
+    Text = '----'
     Items.Strings = (
       'aktif'
       'nonaktif')
   end
   object DBGrid1: TDBGrid
     Left = 328
-    Top = 8
+    Top = 40
     Width = 481
-    Height = 289
+    Height = 257
     DataSource = modulDB.DsSurat
     TabOrder = 6
     TitleFont.Charset = DEFAULT_CHARSET
@@ -124,6 +141,43 @@ object frSurat: TfrSurat
     TitleFont.Name = 'Tahoma'
     TitleFont.Style = []
     OnCellClick = DBGrid1CellClick
+    Columns = <
+      item
+        Expanded = False
+        FieldName = 'id'
+        Width = 32
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'id_penerbit'
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'id_tujuan'
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'id_jenis'
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'tgl_berlaku'
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'detail'
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'status'
+        Visible = True
+      end>
   end
   object btnSimpan: TButton
     Left = 40
@@ -144,15 +198,15 @@ object frSurat: TfrSurat
     OnClick = Button2Click
   end
   object edtIdUser: TEdit
-    Left = 232
-    Top = 320
+    Left = 832
+    Top = 88
     Width = 89
     Height = 21
     TabOrder = 9
     Visible = False
   end
   object btnCetak: TButton
-    Left = 336
+    Left = 232
     Top = 320
     Width = 81
     Height = 25
@@ -169,11 +223,125 @@ object frSurat: TfrSurat
     TabOrder = 11
   end
   object edtIdSurat: TEdit
-    Left = 624
-    Top = 320
+    Left = 832
+    Top = 24
     Width = 121
     Height = 21
     TabOrder = 12
     Visible = False
+  end
+  object btnRefresh: TButton
+    Left = 728
+    Top = 8
+    Width = 75
+    Height = 25
+    Caption = 'REFRESH'
+    TabOrder = 13
+    OnClick = btnRefreshClick
+  end
+  object edtCari: TEdit
+    Left = 400
+    Top = 320
+    Width = 409
+    Height = 21
+    TabOrder = 14
+    OnChange = edtCariChange
+  end
+  object DBGrid2: TDBGrid
+    Left = 344
+    Top = 384
+    Width = 177
+    Height = 120
+    DataSource = modulDB.DsStafAdminView
+    TabOrder = 15
+    TitleFont.Charset = DEFAULT_CHARSET
+    TitleFont.Color = clWindowText
+    TitleFont.Height = -11
+    TitleFont.Name = 'Tahoma'
+    TitleFont.Style = []
+    OnCellClick = DBGrid2CellClick
+    Columns = <
+      item
+        Expanded = False
+        FieldName = 'id'
+        Width = 32
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'nama'
+        Visible = True
+      end>
+  end
+  object DBGrid3: TDBGrid
+    Left = 288
+    Top = 512
+    Width = 521
+    Height = 120
+    DataSource = modulDB.DsSuratAlamatAktifOnly
+    TabOrder = 16
+    TitleFont.Charset = DEFAULT_CHARSET
+    TitleFont.Color = clWindowText
+    TitleFont.Height = -11
+    TitleFont.Name = 'Tahoma'
+    TitleFont.Style = []
+    OnCellClick = DBGrid3CellClick
+    Columns = <
+      item
+        Expanded = False
+        FieldName = 'id'
+        Width = 32
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'alamat'
+        Width = 150
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'orang'
+        Width = 100
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'jabatan'
+        Width = 100
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'institusi'
+        Width = 100
+        Visible = True
+      end>
+  end
+  object DBGrid4: TDBGrid
+    Left = 536
+    Top = 384
+    Width = 217
+    Height = 120
+    DataSource = modulDB.DsDivAdmin
+    TabOrder = 17
+    TitleFont.Charset = DEFAULT_CHARSET
+    TitleFont.Color = clWindowText
+    TitleFont.Height = -11
+    TitleFont.Name = 'Tahoma'
+    TitleFont.Style = []
+    OnCellClick = DBGrid4CellClick
+    Columns = <
+      item
+        Expanded = False
+        FieldName = 'id'
+        Width = 32
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'nama_divisi'
+        Visible = True
+      end>
   end
 end

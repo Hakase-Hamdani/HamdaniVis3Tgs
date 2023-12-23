@@ -73,6 +73,8 @@ type
     DsDivStafView: TDataSource;
     DsUserStafView: TDataSource;
     ZqStafAdminSetView: TZQuery;
+    DsSuratAlamatAktifOnly: TDataSource;
+    ZqSuratAlamatAktifOnly: TZQuery;
   private
     { Private declarations }
   public
