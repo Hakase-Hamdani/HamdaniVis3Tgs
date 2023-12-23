@@ -1,8 +1,8 @@
 object frSurat: TfrSurat
   Left = 252
   Top = 49
-  Width = 846
-  Height = 677
+  Width = 992
+  Height = 554
   Caption = 'Buat Surat'
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -72,8 +72,8 @@ object frSurat: TfrSurat
     Caption = '*tekan tabel di bawah untuk mencari data'
   end
   object cbxPenerbit: TComboBox
-    Left = 832
-    Top = 56
+    Left = 672
+    Top = 584
     Width = 185
     Height = 21
     ItemHeight = 13
@@ -131,7 +131,7 @@ object frSurat: TfrSurat
   object DBGrid1: TDBGrid
     Left = 328
     Top = 40
-    Width = 481
+    Width = 633
     Height = 257
     DataSource = modulDB.DsSurat
     TabOrder = 6
@@ -171,6 +171,7 @@ object frSurat: TfrSurat
       item
         Expanded = False
         FieldName = 'detail'
+        Width = 175
         Visible = True
       end
       item
@@ -198,8 +199,8 @@ object frSurat: TfrSurat
     OnClick = Button2Click
   end
   object edtIdUser: TEdit
-    Left = 832
-    Top = 88
+    Left = 672
+    Top = 616
     Width = 89
     Height = 21
     TabOrder = 9
@@ -223,15 +224,15 @@ object frSurat: TfrSurat
     TabOrder = 11
   end
   object edtIdSurat: TEdit
-    Left = 832
-    Top = 24
+    Left = 672
+    Top = 552
     Width = 121
     Height = 21
     TabOrder = 12
     Visible = False
   end
   object btnRefresh: TButton
-    Left = 728
+    Left = 888
     Top = 8
     Width = 75
     Height = 25
@@ -248,7 +249,7 @@ object frSurat: TfrSurat
     OnChange = edtCariChange
   end
   object DBGrid2: TDBGrid
-    Left = 344
+    Left = 24
     Top = 384
     Width = 177
     Height = 120
@@ -274,8 +275,8 @@ object frSurat: TfrSurat
       end>
   end
   object DBGrid3: TDBGrid
-    Left = 288
-    Top = 512
+    Left = 440
+    Top = 384
     Width = 521
     Height = 120
     DataSource = modulDB.DsSuratAlamatAktifOnly
@@ -319,7 +320,7 @@ object frSurat: TfrSurat
       end>
   end
   object DBGrid4: TDBGrid
-    Left = 536
+    Left = 208
     Top = 384
     Width = 217
     Height = 120
