@@ -43,7 +43,8 @@ begin
   password := MskPassword.Text;
 
   //assign kueri ke variabel querylogin
-  querylogin := 'SELECT * FROM user WHERE user_name = :nama AND `password` = :password';
+//  querylogin := 'SELECT * FROM user WHERE user_name = :nama AND AES_DECRYPT(`password`, ''76jV60mkzU'') = :password';
+  querylogin := 'SELECT * FROM user WHERE user_name = :nama AND password = AES_ENCRYPT(`password`, ''76jV60mkzU'') = :password';
 
   //clear properti SQL dan tambahkan querylogin
   modulDB.ZqLogin.SQL.Clear;
