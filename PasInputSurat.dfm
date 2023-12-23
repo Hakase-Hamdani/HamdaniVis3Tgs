@@ -1,8 +1,8 @@
 object frSurat: TfrSurat
-  Left = 245
-  Top = 204
-  Width = 992
-  Height = 554
+  Left = 108
+  Top = 205
+  Width = 1229
+  Height = 544
   Caption = 'Buat Surat'
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -23,53 +23,46 @@ object frSurat: TfrSurat
     Caption = 'Penerbit'
   end
   object Label2: TLabel
-    Left = 40
-    Top = 48
+    Left = 656
+    Top = 8
     Width = 33
     Height = 13
     Caption = 'Tujuan'
   end
   object Label3: TLabel
-    Left = 40
-    Top = 88
+    Left = 352
+    Top = 8
     Width = 24
     Height = 13
     Caption = 'Jenis'
   end
   object Label4: TLabel
     Left = 40
-    Top = 128
+    Top = 40
     Width = 76
     Height = 13
     Caption = 'Tanggal Berlaku'
   end
   object Label5: TLabel
     Left = 40
-    Top = 168
+    Top = 120
     Width = 27
     Height = 13
     Caption = 'Detail'
   end
   object Label6: TLabel
     Left = 40
-    Top = 272
+    Top = 72
     Width = 31
     Height = 13
     Caption = 'Status'
   end
   object Label7: TLabel
-    Left = 328
-    Top = 320
+    Left = 352
+    Top = 448
     Width = 55
     Height = 13
     Caption = 'CARI DATA'
-  end
-  object Label8: TLabel
-    Left = 296
-    Top = 360
-    Width = 201
-    Height = 13
-    Caption = '*tekan tabel di bawah untuk mencari data'
   end
   object cbxPenerbit: TComboBox
     Left = 672
@@ -80,61 +73,44 @@ object frSurat: TfrSurat
     TabOrder = 0
     Visible = False
   end
-  object cbxTujuan: TComboBox
-    Left = 128
-    Top = 48
-    Width = 185
-    Height = 21
-    ItemHeight = 13
-    TabOrder = 1
-    Text = '----'
-  end
-  object cbxJenis: TComboBox
-    Left = 128
-    Top = 88
-    Width = 185
-    Height = 21
-    ItemHeight = 13
-    TabOrder = 2
-    Text = '----'
-  end
   object DateBerlaku: TDateTimePicker
     Left = 128
-    Top = 128
+    Top = 40
     Width = 186
     Height = 21
     Date = 45283.916339108790000000
     Time = 45283.916339108790000000
-    TabOrder = 3
+    TabOrder = 1
+    OnChange = DateBerlakuChange
   end
   object MmDetail: TMemo
-    Left = 128
-    Top = 168
-    Width = 185
-    Height = 89
+    Left = 40
+    Top = 144
+    Width = 273
+    Height = 321
     Lines.Strings = (
       '')
-    TabOrder = 4
+    TabOrder = 2
   end
   object cbxStatus: TComboBox
     Left = 128
-    Top = 272
+    Top = 72
     Width = 185
     Height = 21
     ItemHeight = 13
-    TabOrder = 5
+    TabOrder = 3
     Text = '----'
     Items.Strings = (
       'aktif'
       'nonaktif')
   end
   object DBGrid1: TDBGrid
-    Left = 328
-    Top = 40
+    Left = 352
+    Top = 168
     Width = 633
     Height = 257
     DataSource = modulDB.DsSurat
-    TabOrder = 6
+    TabOrder = 4
     TitleFont.Charset = DEFAULT_CHARSET
     TitleFont.Color = clWindowText
     TitleFont.Height = -11
@@ -181,21 +157,21 @@ object frSurat: TfrSurat
       end>
   end
   object btnSimpan: TButton
-    Left = 40
-    Top = 320
+    Left = 1000
+    Top = 168
     Width = 75
     Height = 25
     Caption = 'SIMPAN'
-    TabOrder = 7
+    TabOrder = 5
     OnClick = btnSimpanClick
   end
   object Button2: TButton
-    Left = 136
-    Top = 320
-    Width = 75
+    Left = 1096
+    Top = 168
+    Width = 81
     Height = 25
     Caption = 'UBAH'
-    TabOrder = 8
+    TabOrder = 6
     OnClick = Button2Click
   end
   object edtIdUser: TEdit
@@ -203,16 +179,16 @@ object frSurat: TfrSurat
     Top = 616
     Width = 89
     Height = 21
-    TabOrder = 9
+    TabOrder = 7
     Visible = False
   end
   object btnCetak: TButton
-    Left = 232
-    Top = 320
+    Left = 1096
+    Top = 208
     Width = 81
     Height = 25
     Caption = 'CETAK SURAT'
-    TabOrder = 10
+    TabOrder = 8
     OnClick = btnCetakClick
   end
   object edtIdPenerbit: TEdit
@@ -221,66 +197,40 @@ object frSurat: TfrSurat
     Width = 185
     Height = 21
     ReadOnly = True
-    TabOrder = 11
+    TabOrder = 9
   end
   object edtIdSurat: TEdit
     Left = 672
     Top = 552
     Width = 121
     Height = 21
-    TabOrder = 12
+    TabOrder = 10
     Visible = False
   end
   object btnRefresh: TButton
-    Left = 888
-    Top = 8
+    Left = 1536
+    Top = 352
     Width = 75
     Height = 25
     Caption = 'REFRESH'
-    TabOrder = 13
+    TabOrder = 11
     OnClick = btnRefreshClick
   end
   object edtCari: TEdit
-    Left = 400
-    Top = 320
+    Left = 424
+    Top = 448
     Width = 409
     Height = 21
-    TabOrder = 14
+    TabOrder = 12
     OnChange = edtCariChange
   end
-  object DBGrid2: TDBGrid
-    Left = 24
-    Top = 384
-    Width = 177
-    Height = 120
-    DataSource = modulDB.DsStafAdminView
-    TabOrder = 15
-    TitleFont.Charset = DEFAULT_CHARSET
-    TitleFont.Color = clWindowText
-    TitleFont.Height = -11
-    TitleFont.Name = 'Tahoma'
-    TitleFont.Style = []
-    OnCellClick = DBGrid2CellClick
-    Columns = <
-      item
-        Expanded = False
-        FieldName = 'id'
-        Width = 32
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = 'nama'
-        Visible = True
-      end>
-  end
   object DBGrid3: TDBGrid
-    Left = 440
-    Top = 384
+    Left = 656
+    Top = 32
     Width = 521
     Height = 120
     DataSource = modulDB.DsSuratAlamatAktifOnly
-    TabOrder = 16
+    TabOrder = 13
     TitleFont.Charset = DEFAULT_CHARSET
     TitleFont.Color = clWindowText
     TitleFont.Height = -11
@@ -320,12 +270,12 @@ object frSurat: TfrSurat
       end>
   end
   object DBGrid4: TDBGrid
-    Left = 208
-    Top = 384
-    Width = 217
+    Left = 400
+    Top = 32
+    Width = 233
     Height = 120
-    DataSource = modulDB.DsDivAdmin
-    TabOrder = 17
+    DataSource = modulDB.DsKlasAdmin
+    TabOrder = 14
     TitleFont.Charset = DEFAULT_CHARSET
     TitleFont.Color = clWindowText
     TitleFont.Height = -11
@@ -341,8 +291,79 @@ object frSurat: TfrSurat
       end
       item
         Expanded = False
-        FieldName = 'nama_divisi'
+        FieldName = 'nama'
+        Width = 100
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'nomor'
+        Width = 32
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'status'
+        Width = 32
         Visible = True
       end>
+  end
+  object edtJenis: TEdit
+    Left = 400
+    Top = 8
+    Width = 185
+    Height = 21
+    ReadOnly = True
+    TabOrder = 15
+  end
+  object edtTujuan: TEdit
+    Left = 720
+    Top = 8
+    Width = 409
+    Height = 21
+    ReadOnly = True
+    TabOrder = 16
+  end
+  object edtKlasId: TEdit
+    Left = 592
+    Top = 8
+    Width = 33
+    Height = 21
+    TabOrder = 17
+    Visible = False
+  end
+  object edtTujuanId: TEdit
+    Left = 1136
+    Top = 8
+    Width = 41
+    Height = 21
+    TabOrder = 18
+    Visible = False
+  end
+  object btnClr: TButton
+    Left = 1000
+    Top = 208
+    Width = 75
+    Height = 25
+    Caption = 'CLEAR'
+    TabOrder = 19
+    OnClick = btnClrClick
+  end
+  object btnRef: TButton
+    Left = 1000
+    Top = 248
+    Width = 75
+    Height = 25
+    Caption = 'REFRESH'
+    TabOrder = 20
+    OnClick = btnRefClick
+  end
+  object edtTgl: TEdit
+    Left = 320
+    Top = 40
+    Width = 65
+    Height = 21
+    TabOrder = 21
+    Visible = False
   end
 end

@@ -51,7 +51,7 @@ begin
     else
     begin
       modulDB.ZqSignIn.SQL.Text := '';
-      modulDB.ZqSignIn.SQL.Text := 'INSERT INTO user (user_name, password, status, level) VALUES (:user_name, :password, ''nonaktif'', ''user'')';
+      modulDB.ZqSignIn.SQL.Text := 'INSERT INTO user (user_name, password, status, level) VALUES (:user_name, AES_ENCRYPT(:password, ''76jV60mkzU''), ''nonaktif'', ''user'')'; //gunakan fungsi AES_ENCRYPT dari MariaDB/MySQL 
 
       modulDB.ZqSignIn.ParamByName('user_name').Value := edtUsername.Text;
       modulDB.ZqSignIn.ParamByName('password').Value := edtPswd2.Text;
@@ -63,7 +63,6 @@ begin
   begin
     ShowMessage('Username sudah ada!');
   end;
-
 end;
 
 end.

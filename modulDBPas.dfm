@@ -1,6 +1,6 @@
 object modulDB: TmodulDB
-  Left = 184
-  Top = 205
+  Left = 223
+  Top = 132
   Width = 1055
   Height = 629
   Caption = 'modulDB'
@@ -578,6 +578,7 @@ object modulDB: TmodulDB
   end
   object ZqSuratMain: TZQuery
     Connection = Zconnection
+    Active = True
     SQL.Strings = (
       'SELECT * FROM surat')
     Params = <>
