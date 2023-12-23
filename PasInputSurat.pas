@@ -46,10 +46,13 @@ type
     procedure DBGrid4CellClick(Column: TColumn);
     procedure DBGrid3CellClick(Column: TColumn);
 <<<<<<< HEAD
+<<<<<<< HEAD
     procedure RbDefClick(Sender: TObject);
     procedure RbDescClick(Sender: TObject);
     procedure RbAscClick(Sender: TObject);
     procedure idUserSelector(Sender: TObject);
+=======
+>>>>>>> parent of fec5fb2 (PasSuratInput ORDER BY test one)
 =======
 >>>>>>> parent of fec5fb2 (PasSuratInput ORDER BY test one)
   private
@@ -320,6 +323,7 @@ edtCari.Text := modulDB.ZqSuratAlamatAktifOnly.Fields[0].AsString;
 end;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 procedure TfrSurat.RbDefClick(Sender: TObject);
 begin
 idUserSelector;
@@ -343,6 +347,8 @@ modulDB.ZqSuratView.Open;
 modulDB.DsSurat.DataSet.Refresh;
 end;
 
+=======
+>>>>>>> parent of fec5fb2 (PasSuratInput ORDER BY test one)
 =======
 >>>>>>> parent of fec5fb2 (PasSuratInput ORDER BY test one)
 end.
