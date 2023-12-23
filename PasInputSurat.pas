@@ -15,8 +15,6 @@ type
     Label5: TLabel;
     Label6: TLabel;
     cbxPenerbit: TComboBox;
-    cbxTujuan: TComboBox;
-    cbxJenis: TComboBox;
     DateBerlaku: TDateTimePicker;
     MmDetail: TMemo;
     cbxStatus: TComboBox;
@@ -30,10 +28,15 @@ type
     btnRefresh: TButton;
     Label7: TLabel;
     edtCari: TEdit;
-    DBGrid2: TDBGrid;
     DBGrid3: TDBGrid;
     DBGrid4: TDBGrid;
-    Label8: TLabel;
+    edtJenis: TEdit;
+    edtTujuan: TEdit;
+    edtKlasId: TEdit;
+    edtTujuanId: TEdit;
+    btnClr: TButton;
+    btnRef: TButton;
+    edtTgl: TEdit;
     procedure FormActivate(Sender: TObject);
     procedure btnSimpanClick(Sender: TObject);
     procedure DBGrid1CellClick(Column: TColumn);
@@ -48,6 +51,9 @@ type
     procedure RbDefClick(Sender: TObject);
     procedure RbDescClick(Sender: TObject);
     procedure RbAscClick(Sender: TObject);
+    procedure btnClrClick(Sender: TObject);
+    procedure btnRefClick(Sender: TObject);
+    procedure DateBerlakuChange(Sender: TObject);
 
   private
     { Private declarations }
@@ -61,7 +67,7 @@ var
 implementation
 
 uses
-  modulDBPas, PasLogin, DB;
+  modulDBPas, PasLogin, DB, DateUtils;
 
 {$R *.dfm}
 
@@ -90,23 +96,31 @@ begin
   modulDB.ZqUsr.ParamByName('id').AsString := userid;
   modulDB.ZqUsr.Open;
   edtIdUser.Text := modulDB.ZqUsr.FIeldByName('id').AsString;
-while not modulDB.ZqTujuanAdminView.Eof do //Tujuan
-  begin
-    cbxTujuan.Items.AddObject(modulDB.ZqTujuanAdminView.FieldByName('alamat').AsString, TObject(modulDB.ZqTujuanAdminView.FieldByName('id').AsInteger));
-    modulDB.ZqTujuanAdminView.Next;
-  end;
-while not modulDB.ZqKlasAdminView.Eof do
-  begin
-    cbxJenis.Items.AddObject(modulDB.ZqKlasAdminView.FieldByName('nama').AsString, TObject(modulDB.ZqKlasAdminView.FieldByName('id').AsInteger));
-    modulDB.ZqKlasAdminView.Next;
-  end;
+//while not modulDB.ZqTujuanAdminView.Eof do //Tujuan
+//  begin
+//    cbxTujuan.Items.AddObject(modulDB.ZqTujuanAdminView.FieldByName('alamat').AsString, TObject(modulDB.ZqTujuanAdminView.FieldByName('id').AsInteger));
+//    modulDB.ZqTujuanAdminView.Next;
+//  end;
+//while not modulDB.ZqKlasAdminView.Eof do
+//  begin
+//    cbxJenis.Items.AddObject(modulDB.ZqKlasAdminView.FieldByName('nama').AsString, TObject(modulDB.ZqKlasAdminView.FieldByName('id').AsInteger));
+//    modulDB.ZqKlasAdminView.Next;
+//  end;
+end;
+
+procedure TfrSurat.DateBerlakuChange(Sender: TObject);
+var
+  testdate : String;
+begin
+testdate := FormatDateTime('yyyy-mm-dd', DateBerlaku.Date);
+edtTgl.Text := testdate;
 end;
 
 procedure TfrSurat.btnSimpanClick(Sender: TObject);
 var
   id_penerbit, id_tujuan, id_jenis : Integer;
 begin
-if (edtIdPenerbit.Text = '') or (MmDetail.Text = '') or (cbxStatus.Text = '') or (cbxStatus.Text = '----') or (cbxTujuan.Text = '----') or (cbxJenis.Text = '----') then
+if (edtIdPenerbit.Text = '') or (MmDetail.Text = '') or (cbxStatus.Text = '') or (cbxStatus.Text = '----') or (edtTujuanId.Text = '') or (edtKlasId.Text = '') then
   begin
     ShowMessage('Ada Data Yang Kosong!');
   end
@@ -117,15 +131,15 @@ if (edtIdPenerbit.Text = '') or (MmDetail.Text = '') or (cbxStatus.Text = '') or
         modulDB.ZqSuratMain.SQL.Text := '';
         modulDB.ZqSuratMain.SQL.Text := 'INSERT INTO surat (id_penerbit, id_tujuan, id_jenis, tgl_berlaku, detail, status) VALUES (:id_penerbit, :id_tujuan, :id_jenis, :tgl_berlaku, :detail, :status)';
 
-        id_tujuan := Integer(cbxTujuan.Items.Objects[cbxTujuan.ItemIndex]);
-        id_jenis := Integer(cbxJenis.Items.Objects[cbxTujuan.ItemIndex]);
+//        id_tujuan := Integer(cbxTujuan.Items.Objects[cbxTujuan.ItemIndex]);
+//        id_jenis := Integer(cbxJenis.Items.Objects[cbxTujuan.ItemIndex]);
 
 
         modulDB.ZqSuratMain.ParamByName('id_penerbit').Value := edtIdPenerbit.Text;
-        modulDB.ZqSuratMain.ParamByName('id_tujuan').Value := id_tujuan;
-        modulDB.ZqSuratMain.ParamByName('id_jenis').Value := id_jenis;
+        modulDB.ZqSuratMain.ParamByName('id_tujuan').Value := edtTujuanId.Text;
+        modulDB.ZqSuratMain.ParamByName('id_jenis').Value := edtKlasId.Text;
 
-        modulDB.ZqSuratMain.ParamByName('tgl_berlaku').Value := DateBerlaku.Date;
+        modulDB.ZqSuratMain.ParamByName('tgl_berlaku').Value := edtTgl.Text;
         modulDB.ZqSuratMain.ParamByName('detail').Value := MmDetail.Text;
         modulDB.ZqSuratMain.ParamByName('status').Value := cbxStatus.Text;
 
@@ -150,15 +164,17 @@ if (DBGrid1.DataSource.DataSet <> nil) and (DBGrid1.DataSource.DataSet.RecNo > 0
   end;
 
 edtIdSurat.Text := modulDB.ZqSuratView.Fields[0].AsString;
+edtTujuanId.Text := modulDB.ZqSuratView.Fields[2].AsString;
+edtKlasId.Text := modulDB.ZqSuratView.Fields[3].AsString;
 MmDetail.Text := modulDB.ZqSuratView.Fields[5].AsString;
 cbxStatus.Text := modulDB.ZqSuratView.Fields[6].AsString;
 end;
 
 procedure TfrSurat.Button2Click(Sender: TObject);
-var
-  id_penerbit, id_tujuan, id_jenis : Integer;
+//var
+//  id_penerbit, id_tujuan, id_jenis : Integer;
 begin
-if (edtIdPenerbit.Text = '') or (MmDetail.Text = '') or (cbxStatus.Text = '') or (cbxStatus.Text = '----') or (cbxTujuan.Text = '----') or (cbxJenis.Text = '----') then
+if (edtIdPenerbit.Text = '') or (MmDetail.Text = '') or (cbxStatus.Text = '') or (cbxStatus.Text = '----') or (edtTujuanId.Text = '') or (edtKlasId.Text = '') then
   begin
     ShowMessage('Data Yang Akan Di UBAH Masih Belum Di Pilih!');
   end
@@ -167,23 +183,26 @@ if (edtIdPenerbit.Text = '') or (MmDetail.Text = '') or (cbxStatus.Text = '') or
     if MessageDlg('Apa Anda yakin ingin MENGUBAH data?', mtConfirmation, [mbYes, mbNo], 0) = mrYes then
       begin
         modulDB.ZqSuratMain.SQL.Clear;
-        modulDB.ZqSuratMain.SQL.Text := 'UPDATE surat SET id_penerbit = :id_penerbit, id_tujuan = :id_tujuan, id_jenis = :id_jenis, detail = :detail, status = :status WHERE id = :id';
+        modulDB.ZqSuratMain.SQL.Text := 'UPDATE surat SET id_penerbit = :id_penerbit, id_tujuan = :id_tujuan, id_jenis = :id_jenis, tgl_berlaku = :tgl_berlaku, detail = :detail, status = :status WHERE id = :id';
 
-        id_penerbit := Integer(cbxPenerbit.Items.Objects[cbxPenerbit.ItemIndex]);
-        id_tujuan := Integer(cbxTujuan.Items.Objects[cbxTujuan.ItemIndex]);
-        id_jenis := Integer(cbxJenis.Items.Objects[cbxTujuan.ItemIndex]);
+        modulDB.ZqSuratMain.ParamByName('id_penerbit').Value := edtIdPenerbit.Text;
+        modulDB.ZqSuratMain.ParamByName('id_tujuan').Value := edtTujuanId.Text;
+        modulDB.ZqSuratMain.ParamByName('id_jenis').Value := edtKlasId.Text;
 
-
-        modulDB.ZqSuratMain.ParamByName('id_penerbit').Value := id_penerbit;
-        modulDB.ZqSuratMain.ParamByName('id_tujuan').Value := id_tujuan;
-        modulDB.ZqSuratMain.ParamByName('id_jenis').Value := id_jenis;
-
-        modulDB.ZqSuratMain.ParamByName('tgl_berlaku').Value := DateBerlaku.Date;
-        modulDB.ZqSuratMain.ParamByName('detail').Value := MmDetail.Text;
+        modulDB.ZqSuratMain.ParamByName('tgl_berlaku').Value := edtTgl.Text;
+        modulDB.ZqSuratMain.ParamByName('detail').Value := MmDetail.Lines.Text;
         modulDB.ZqSuratMain.ParamByName('status').Value := cbxStatus.Text;
+        modulDB.ZqSuratMain.ParamByName('id').Value := edtIdSurat.Text;
 
-        modulDB.ZqSuratMain.ExecSQL;
-        modulDB.DsSurat.DataSet.Refresh;
+//        modulDB.ZqSuratMain.ExecSQL;
+//        modulDB.DsSurat.DataSet.Refresh;
+        try
+          modulDB.ZqSuratMain.ExecSQL;
+          modulDB.DsSurat.DataSet.Refresh;
+        except
+          on E: Exception do
+            ShowMessage('An error occurred: ' + E.Message);
+        end;
       end
       else
       begin
@@ -299,12 +318,14 @@ end;
 
 procedure TfrSurat.DBGrid4CellClick(Column: TColumn);
 begin
-edtCari.Text := modulDB.ZqDivAdminView.Fields[0].AsString;
+edtKlasId.Text := modulDB.ZqKlasAdminView.Fields[0].AsString;
+edtJenis.Text := modulDB.ZqKlasAdminView.Fields[1].AsString;
 end;
 
 procedure TfrSurat.DBGrid3CellClick(Column: TColumn);
 begin
-edtCari.Text := modulDB.ZqSuratAlamatAktifOnly.Fields[0].AsString;
+edtTujuan.Text := modulDB.ZqSuratAlamatAktifOnly.Fields[1].AsString;
+edtTujuanId.Text := modulDB.ZqSuratAlamatAktifOnly.Fields[0].AsString;
 end;
 
 procedure TfrSurat.RbDefClick(Sender: TObject);
@@ -328,6 +349,21 @@ modulDB.ZqSuratView.SQL.Text := '';
 modulDB.ZqSuratView.SQL.Text := 'SELECT * FROM surat ORDER BY tgl_berlaku ASC';
 modulDB.ZqSuratView.Open;
 modulDB.DsSurat.DataSet.Refresh;
+end;
+
+procedure TfrSurat.btnClrClick(Sender: TObject);
+begin
+cbxStatus.Text := '----';
+edtTujuan.Text := '';
+edtTujuanId.Text := '';
+edtJenis.Text := '';
+edtKlasId.Text := '';
+MmDetail.Text := '';
+end;
+
+procedure TfrSurat.btnRefClick(Sender: TObject);
+begin
+refreshData;
 end;
 
 end.

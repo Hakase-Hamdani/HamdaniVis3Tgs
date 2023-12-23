@@ -1,6 +1,6 @@
 object frStaffAdmin: TfrStaffAdmin
-  Left = 312
-  Top = 146
+  Left = 354
+  Top = 298
   Width = 941
   Height = 490
   Caption = 'Staff'
