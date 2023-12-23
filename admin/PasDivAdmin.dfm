@@ -30,10 +30,10 @@ object frDIvisiAdmin: TfrDIvisiAdmin
   end
   object Label3: TLabel
     Left = 344
-    Top = 192
-    Width = 88
+    Top = 8
+    Width = 55
     Height = 13
-    Caption = 'PENCARIAN DATA'
+    Caption = 'CARI DATA'
   end
   object edtNama: TEdit
     Left = 104
@@ -101,8 +101,8 @@ object frDIvisiAdmin: TfrDIvisiAdmin
       end>
   end
   object edtId: TEdit
-    Left = 32
-    Top = 184
+    Left = 136
+    Top = 152
     Width = 121
     Height = 21
     TabOrder = 5
@@ -118,9 +118,9 @@ object frDIvisiAdmin: TfrDIvisiAdmin
     OnClick = edtHapusClick
   end
   object edtCari: TEdit
-    Left = 440
-    Top = 192
-    Width = 217
+    Left = 408
+    Top = 8
+    Width = 169
     Height = 21
     TabOrder = 7
     OnChange = edtCariChange
@@ -135,7 +135,7 @@ object frDIvisiAdmin: TfrDIvisiAdmin
     OnClick = btnRefreshClick
   end
   object btnClr: TButton
-    Left = 136
+    Left = 40
     Top = 152
     Width = 75
     Height = 25

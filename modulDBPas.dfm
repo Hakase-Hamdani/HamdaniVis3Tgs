@@ -1,7 +1,7 @@
 object modulDB: TmodulDB
-  Left = 272
-  Top = 36
-  Width = 934
+  Left = 180
+  Top = 111
+  Width = 1055
   Height = 629
   Caption = 'modulDB'
   Color = clBtnFace
@@ -53,7 +53,7 @@ object modulDB: TmodulDB
   object GroupBox4: TGroupBox
     Left = 344
     Top = 8
-    Width = 329
+    Width = 457
     Height = 129
     Caption = 'Staf Admin'
     TabOrder = 4
@@ -99,7 +99,7 @@ object modulDB: TmodulDB
     TabOrder = 9
   end
   object GroupBox10: TGroupBox
-    Left = 688
+    Left = 816
     Top = 16
     Width = 201
     Height = 249
@@ -495,7 +495,7 @@ object modulDB: TmodulDB
   end
   object DsStafAdminView: TDataSource
     DataSet = ZqStafAdminView
-    Left = 480
+    Left = 472
     Top = 32
   end
   object ZqDivStaf: TZQuery
@@ -504,8 +504,8 @@ object modulDB: TmodulDB
     SQL.Strings = (
       'SELECT * FROM divisi')
     Params = <>
-    Left = 472
-    Top = 88
+    Left = 656
+    Top = 24
   end
   object ZqDivAdmin: TZQuery
     Connection = Zconnection
@@ -1275,8 +1275,8 @@ object modulDB: TmodulDB
     CloseDataSource = False
     DataSource = DsStafDivisi
     BCDToCurrency = False
-    Left = 544
-    Top = 24
+    Left = 528
+    Top = 16
   end
   object FrxrepDsStafView: TfrxReport
     Version = '4.12.6'
@@ -1293,8 +1293,8 @@ object modulDB: TmodulDB
       'begin'
       ''
       'end.')
-    Left = 624
-    Top = 24
+    Left = 584
+    Top = 32
     Datasets = <
       item
         DataSet = FrxdbStafView
@@ -1583,7 +1583,7 @@ object modulDB: TmodulDB
       'JOIN'
       '    user ON penerbit.id_user = user.id;')
     Params = <>
-    Left = 712
+    Left = 840
     Top = 56
   end
   object ZqSignIn: TZQuery
@@ -1611,12 +1611,12 @@ object modulDB: TmodulDB
       'JOIN'
       '    divisi ON penerbit.id_divisi = divisi.id;')
     Params = <>
-    Left = 552
+    Left = 480
     Top = 88
   end
   object DsStafDivisi: TDataSource
     DataSet = ZqStafDivisiView
-    Left = 616
+    Left = 536
     Top = 80
   end
   object FrxdbTujuanView: TfrxDBDataset
@@ -1871,5 +1871,24 @@ object modulDB: TmodulDB
         end
       end
     end
+  end
+  object DsDivStafView: TDataSource
+    DataSet = ZqStafDivisiView
+    Left = 712
+    Top = 32
+  end
+  object DsUserStafView: TDataSource
+    DataSet = ZqStafAdminSetView
+    Left = 712
+    Top = 88
+  end
+  object ZqStafAdminSetView: TZQuery
+    Connection = Zconnection
+    Active = True
+    SQL.Strings = (
+      'SELECT id, user_name, status, level FROM user')
+    Params = <>
+    Left = 656
+    Top = 80
   end
 end

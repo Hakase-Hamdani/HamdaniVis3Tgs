@@ -1,5 +1,5 @@
 object frAdmin: TfrAdmin
-  Left = 370
+  Left = 344
   Top = 113
   Width = 1029
   Height = 489

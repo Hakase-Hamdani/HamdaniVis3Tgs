@@ -95,7 +95,7 @@ end;
 
 procedure TfrTujuanAdmin.btnUbahClick(Sender: TObject);
 begin
-if (edtId.Text := '') then
+if (edtId.Text = '') then
   begin
     ShowMessage('Data Yang Akan Di UBAH Belum Di Pilih!');
   end
@@ -126,7 +126,7 @@ end;
 
 procedure TfrTujuanAdmin.btnHapusClick(Sender: TObject);
 begin
-if (edtId.Text := '') then
+if (edtId.Text = '') then
   begin
     ShowMessage('Data Yang Akan Di HAPUS Belum Di Pilih!');
   end

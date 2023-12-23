@@ -82,7 +82,7 @@ end;
 
 procedure TfrDIvisiAdmin.btnEditClick(Sender: TObject);
 begin
-if (edtNama.Text = '') or (edtKode.Text = '') or (edtId.Text := '') then
+if (edtNama.Text = '') or (edtKode.Text = '') or (edtId.Text = '') then
   begin
      ShowMessage('Data Yang Akan Di UBAH Belum Di Pilih/Belum Di Isi!');
   end

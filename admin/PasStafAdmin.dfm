@@ -1,8 +1,8 @@
 object frStaffAdmin: TfrStaffAdmin
-  Left = 201
-  Top = 216
+  Left = 295
+  Top = 366
   Width = 1015
-  Height = 413
+  Height = 469
   Caption = 'Staff'
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -57,6 +57,13 @@ object frStaffAdmin: TfrStaffAdmin
     Height = 13
     Caption = 'Divisi'
   end
+  object Label7: TLabel
+    Left = 304
+    Top = 8
+    Width = 55
+    Height = 13
+    Caption = 'CARI DATA'
+  end
   object cbxUser: TComboBox
     Left = 112
     Top = 48
@@ -64,6 +71,7 @@ object frStaffAdmin: TfrStaffAdmin
     Height = 21
     ItemHeight = 13
     TabOrder = 0
+    Text = '----'
   end
   object cbxDiv: TComboBox
     Left = 112
@@ -106,7 +114,7 @@ object frStaffAdmin: TfrStaffAdmin
       'nonaktif')
   end
   object btnSimpan: TButton
-    Left = 48
+    Left = 40
     Top = 288
     Width = 75
     Height = 25
@@ -115,7 +123,7 @@ object frStaffAdmin: TfrStaffAdmin
     OnClick = btnSimpanClick
   end
   object btnUbah: TButton
-    Left = 136
+    Left = 128
     Top = 288
     Width = 75
     Height = 25
@@ -124,8 +132,8 @@ object frStaffAdmin: TfrStaffAdmin
     OnClick = btnUbahClick
   end
   object DBGrid1: TDBGrid
-    Left = 296
-    Top = 48
+    Left = 304
+    Top = 40
     Width = 673
     Height = 233
     DataSource = modulDB.DsStafAdminView
@@ -176,32 +184,86 @@ object frStaffAdmin: TfrStaffAdmin
       item
         Expanded = False
         FieldName = 'status'
-        Width = 64
         Visible = True
       end>
   end
   object btnHapus: TButton
-    Left = 224
+    Left = 216
     Top = 288
     Width = 75
     Height = 25
     Caption = 'HAPUS'
     TabOrder = 9
+    OnClick = btnHapusClick
   end
   object edtId: TEdit
     Left = 256
     Top = 48
     Width = 33
     Height = 21
+    ReadOnly = True
     TabOrder = 10
+    Visible = False
   end
   object btnStaffRep: TButton
-    Left = 296
-    Top = 16
-    Width = 75
+    Left = 128
+    Top = 320
+    Width = 161
     Height = 25
     Caption = 'REPORT STAFF'
     TabOrder = 11
     OnClick = btnStaffRepClick
+  end
+  object btnClr: TButton
+    Left = 40
+    Top = 320
+    Width = 75
+    Height = 25
+    Caption = 'CLEAR'
+    TabOrder = 12
+    OnClick = btnClrClick
+  end
+  object DBGrid2: TDBGrid
+    Left = 304
+    Top = 288
+    Width = 289
+    Height = 113
+    DataSource = modulDB.DsUserStafView
+    TabOrder = 13
+    TitleFont.Charset = DEFAULT_CHARSET
+    TitleFont.Color = clWindowText
+    TitleFont.Height = -11
+    TitleFont.Name = 'Tahoma'
+    TitleFont.Style = []
+  end
+  object DBGrid3: TDBGrid
+    Left = 608
+    Top = 288
+    Width = 289
+    Height = 113
+    DataSource = modulDB.DsDivAdmin
+    TabOrder = 14
+    TitleFont.Charset = DEFAULT_CHARSET
+    TitleFont.Color = clWindowText
+    TitleFont.Height = -11
+    TitleFont.Name = 'Tahoma'
+    TitleFont.Style = []
+  end
+  object edtRefresh: TButton
+    Left = 888
+    Top = 8
+    Width = 75
+    Height = 25
+    Caption = 'REFRESH'
+    TabOrder = 15
+    OnClick = edtRefreshClick
+  end
+  object edtCari: TEdit
+    Left = 368
+    Top = 8
+    Width = 505
+    Height = 21
+    TabOrder = 16
+    OnChange = edtCariChange
   end
 end

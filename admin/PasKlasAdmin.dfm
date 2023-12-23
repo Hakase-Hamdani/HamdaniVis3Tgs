@@ -36,8 +36,8 @@ object frKlasAdmin: TfrKlasAdmin
     Caption = 'Status'
   end
   object Label4: TLabel
-    Left = 344
-    Top = 216
+    Left = 336
+    Top = 176
     Width = 88
     Height = 13
     Caption = 'PENCARIAN DATA'
@@ -87,8 +87,8 @@ object frKlasAdmin: TfrKlasAdmin
     OnClick = btnUbahClick
   end
   object DBGrid1: TDBGrid
-    Left = 344
-    Top = 56
+    Left = 336
+    Top = 16
     Width = 353
     Height = 153
     DataSource = modulDB.DsKlasAdmin
@@ -120,14 +120,13 @@ object frKlasAdmin: TfrKlasAdmin
       item
         Expanded = False
         FieldName = 'status'
-        Width = 64
         Visible = True
       end>
   end
   object edtId: TEdit
-    Left = 208
-    Top = 232
-    Width = 121
+    Left = 224
+    Top = 176
+    Width = 73
     Height = 21
     TabOrder = 6
     Text = 'edtId'
@@ -143,7 +142,7 @@ object frKlasAdmin: TfrKlasAdmin
     OnClick = edtHapusClick
   end
   object btnClr: TButton
-    Left = 136
+    Left = 48
     Top = 176
     Width = 75
     Height = 25
@@ -152,16 +151,16 @@ object frKlasAdmin: TfrKlasAdmin
     OnClick = btnClrClick
   end
   object btnRefresh: TButton
-    Left = 624
-    Top = 24
+    Left = 136
+    Top = 176
     Width = 75
     Height = 25
     Caption = 'REFRESH'
     TabOrder = 9
   end
   object edtCari: TEdit
-    Left = 440
-    Top = 216
+    Left = 432
+    Top = 176
     Width = 257
     Height = 21
     TabOrder = 10

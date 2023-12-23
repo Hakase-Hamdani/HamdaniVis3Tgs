@@ -70,6 +70,9 @@ type
     DsStafDivisi: TDataSource;
     FrxdbTujuanView: TfrxDBDataset;
     FrxrepTujuanView: TfrxReport;
+    DsDivStafView: TDataSource;
+    DsUserStafView: TDataSource;
+    ZqStafAdminSetView: TZQuery;
   private
     { Private declarations }
   public

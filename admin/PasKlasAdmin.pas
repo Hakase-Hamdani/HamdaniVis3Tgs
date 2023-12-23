@@ -48,7 +48,7 @@ uses
 
 procedure TfrKlasAdmin.btnSimpanClick(Sender: TObject);
 begin
-if (edtNama.Text := '') or (edtNo.Text := '') or (cbxSts.Text := '') or (cbxSts.Text := '') then
+if (edtNama.Text = '') or (edtNo.Text = '') or (cbxSts.Text = '') or (cbxSts.Text = '') then
   begin
     ShowMessage('Ada Data Yang Kosong!');
   end
@@ -84,7 +84,7 @@ end;
 
 procedure TfrKlasAdmin.btnUbahClick(Sender: TObject);
 begin
-if (edtId.Text := '') or (edtNama.Text := '') or (edtNo.Text := '') then
+if (edtId.Text = '') or (edtNama.Text = '') or (edtNo.Text = '') then
   begin
     ShowMessage('Data Yang Akan Di UBAH Belum Di Pilih!');
   end
@@ -113,7 +113,7 @@ end;
 
 procedure TfrKlasAdmin.edtHapusClick(Sender: TObject);
 begin
-if (edtId.Text := '') then
+if (edtId.Text = '') then
   begin
     ShowMessage('Data Yang Akan Di HAPUS Belum Di Pilih!');
   end

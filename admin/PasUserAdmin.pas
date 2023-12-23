@@ -119,7 +119,7 @@ end;
 
 procedure TfrUserAdmin.btnHapusClick(Sender: TObject);
 begin
-if (edtId.Text := '') then
+if (edtId.Text = '') then
   begin
     ShowMessage('Data Yang Akan di HAPUS Belum Di Isi!');
   end
