@@ -4,7 +4,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, ComCtrls, Grids, DBGrids, ExtCtrls;
+  Dialogs, StdCtrls, ComCtrls, Grids, DBGrids;
 
 type
   TfrSurat = class(TForm)
@@ -34,10 +34,6 @@ type
     DBGrid3: TDBGrid;
     DBGrid4: TDBGrid;
     Label8: TLabel;
-    RadioGroup1: TRadioGroup;
-    RbAsc: TRadioButton;
-    RbDesc: TRadioButton;
-    RbDef: TRadioButton;
     procedure FormActivate(Sender: TObject);
     procedure btnSimpanClick(Sender: TObject);
     procedure DBGrid1CellClick(Column: TColumn);
@@ -49,10 +45,13 @@ type
     procedure DBGrid2CellClick(Column: TColumn);
     procedure DBGrid4CellClick(Column: TColumn);
     procedure DBGrid3CellClick(Column: TColumn);
+<<<<<<< HEAD
     procedure RbDefClick(Sender: TObject);
     procedure RbDescClick(Sender: TObject);
     procedure RbAscClick(Sender: TObject);
     procedure idUserSelector(Sender: TObject);
+=======
+>>>>>>> parent of fec5fb2 (PasSuratInput ORDER BY test one)
   private
     { Private declarations }
   public
@@ -275,7 +274,6 @@ modulDB.ZqSuratView.SQL.Text := '';
 modulDB.ZqSuratView.SQL.Text := 'SELECT * FROM surat';
 modulDB.ZqSuratView.Open;
 modulDB.DsSurat.DataSet.Refresh;
-
 end;
 
 procedure TfrSurat.btnRefreshClick(Sender: TObject);
@@ -321,6 +319,7 @@ begin
 edtCari.Text := modulDB.ZqSuratAlamatAktifOnly.Fields[0].AsString;
 end;
 
+<<<<<<< HEAD
 procedure TfrSurat.RbDefClick(Sender: TObject);
 begin
 idUserSelector;
@@ -344,4 +343,6 @@ modulDB.ZqSuratView.Open;
 modulDB.DsSurat.DataSet.Refresh;
 end;
 
+=======
+>>>>>>> parent of fec5fb2 (PasSuratInput ORDER BY test one)
 end.
