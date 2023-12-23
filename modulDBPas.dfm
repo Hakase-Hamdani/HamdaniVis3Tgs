@@ -1,6 +1,6 @@
 object modulDB: TmodulDB
-  Left = 184
-  Top = 205
+  Left = 256
+  Top = 414
   Width = 1055
   Height = 629
   Caption = 'modulDB'

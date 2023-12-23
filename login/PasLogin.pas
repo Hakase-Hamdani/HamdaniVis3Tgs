@@ -93,6 +93,7 @@ end;
 procedure TfrLogin.FormCreate(Sender: TObject);
 begin
 Position := poScreenCenter;
+BorderStyle := bsDialog;
 end;
 
 procedure TfrLogin.btnSignInClick(Sender: TObject);

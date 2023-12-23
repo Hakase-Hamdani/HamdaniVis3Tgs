@@ -8,8 +8,6 @@ uses
 
 type
   TfrStaffAdmin = class(TForm)
-    cbxUser: TComboBox;
-    cbxDiv: TComboBox;
     edtNama: TEdit;
     edtNip: TEdit;
     edtJabatan: TEdit;
@@ -32,6 +30,9 @@ type
     Label7: TLabel;
     edtRefresh: TButton;
     edtCari: TEdit;
+    edtIdUser: TEdit;
+    edtDiv: TEdit;
+    btnRefresh: TButton;
     procedure FormCreate(Sender: TObject);
     procedure FormActivate(Sender: TObject);
     procedure btnSimpanClick(Sender: TObject);
@@ -42,6 +43,9 @@ type
     procedure btnClrClick(Sender: TObject);
     procedure edtRefreshClick(Sender: TObject);
     procedure edtCariChange(Sender: TObject);
+    procedure DBGrid2CellClick(Column: TColumn);
+    procedure DBGrid3CellClick(Column: TColumn);
+    procedure btnRefreshClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -77,37 +81,46 @@ DBGrid3.Columns[0].Width := 32;
 DBGrid3.Columns[1].Width := 150;
 DBGrid3.Columns[2].Width := 32;
 
-while not modulDB.ZqDivStaf.Eof do
-  begin
-    cbxDiv.Items.AddObject(modulDB.ZqDivStaf.FieldByName('nama_divisi').AsString, TObject(modulDB.ZqDivStaf.FieldByName('id').AsInteger));
-    modulDB.ZqDivStaf.Next;
-  end;
-while not modulDB.ZqUserAdminView.Eof do
-  begin
-    cbxUser.Items.AddObject(modulDB.ZqUserAdminView.FieldByName('user_name').AsString, TObject(modulDB.ZqUserAdminView.FieldByName('id').AsInteger));
-    modulDB.ZqUserAdminView.Next;
-  end;
+//while not modulDB.ZqDivStaf.Eof do
+//  begin
+//    cbxDiv.Items.AddObject(modulDB.ZqDivStaf.FieldByName('nama_divisi').AsString, TObject(modulDB.ZqDivStaf.FieldByName('id').AsInteger));
+//    modulDB.ZqDivStaf.Next;
+//  end;
+//while not modulDB.ZqUserAdminView.Eof do
+//  begin
+//    cbxUser.Items.AddObject(modulDB.ZqUserAdminView.FieldByName('user_name').AsString, TObject(modulDB.ZqUserAdminView.FieldByName('id').AsInteger));
+//    modulDB.ZqUserAdminView.Next;
+//  end;
 end;
 
 procedure TfrStaffAdmin.FormActivate(Sender: TObject);
 begin
-while not modulDB.ZqDivStaf.Eof do
-  begin
-    cbxDiv.Items.AddObject(modulDB.ZqDivStaf.FieldByName('nama_divisi').AsString, TObject(modulDB.ZqDivStaf.FieldByName('id').AsInteger));
-    modulDB.ZqDivStaf.Next;
-  end;
-while not modulDB.ZqUserAdminView.Eof do
-  begin
-    cbxUser.Items.AddObject(modulDB.ZqUserAdminView.FieldByName('user_name').AsString, TObject(modulDB.ZqUserAdminView.FieldByName('id').AsInteger));
-    modulDB.ZqUserAdminView.Next;
-  end;
+//while not modulDB.ZqDivStaf.Eof do
+//  begin
+//    cbxDiv.Items.AddObject(modulDB.ZqDivStaf.FieldByName('nama_divisi').AsString, TObject(modulDB.ZqDivStaf.FieldByName('id').AsInteger));
+//    modulDB.ZqDivStaf.Next;
+//  end;
+//while not modulDB.ZqUserAdminView.Eof do
+//  begin
+//    cbxUser.Items.AddObject(modulDB.ZqUserAdminView.FieldByName('user_name').AsString, TObject(modulDB.ZqUserAdminView.FieldByName('id').AsInteger));
+//    modulDB.ZqUserAdminView.Next;
+//  end;
+end;
+
+procedure refreshData();
+begin
+modulDB.ZqStafAdminView.SQL.Clear;
+modulDB.ZqStafAdminView.SQL.Text := '';
+modulDB.ZqStafAdminView.SQL.Text := 'SELECT * FROM penerbit';
+modulDB.ZqStafAdminView.Open;
+modulDB.DsStafAdminView.DataSet.Refresh;
 end;
 
 procedure TfrStaffAdmin.btnSimpanClick(Sender: TObject);
 var
   id_user, id_divisi : Integer;
 begin
-if (cbxUser.Text = '') or (cbxDiv.Text = '') or (cbxUser.Text = '----') or (cbxDiv.Text = '----') or (edtNama.Text = '') or (edtNip.Text = '') or (cbxSts.Text = '') or (cbxSts.Text = '----') then
+if (edtIdUser.Text = '') or (edtDiv.Text = '') or (edtNama.Text = '') or (edtNip.Text = '') or (cbxSts.Text = '') or (cbxSts.Text = '----') then
   begin
     ShowMessage('Ada Data Yang Kosong!');
   end
@@ -119,11 +132,8 @@ if (cbxUser.Text = '') or (cbxDiv.Text = '') or (cbxUser.Text = '----') or (cbxD
         modulDB.ZqStafAdmin.SQL.Text := '';
         modulDB.ZqStafAdmin.SQL.Text := 'INSERT INTO penerbit (id_user, id_divisi, nama, NIP, jabatan, `status`) VALUES (:id_user, :id_divisi, :nama, :NIP, :jabatan, :status)';
 
-        id_user := Integer(cbxUser.Items.Objects[cbxUser.ItemIndex]);
-        id_divisi := Integer(cbxDiv.Items.Objects[cbxDiv.ItemIndex]);
-
-        modulDB.ZqStafAdmin.ParamByName('id_user').Value := id_user;
-        modulDB.ZqStafAdmin.ParamByName('id_divisi').Value := id_divisi;
+        modulDB.ZqStafAdmin.ParamByName('id_user').Value := edtIdUser.Text;
+        modulDB.ZqStafAdmin.ParamByName('id_divisi').Value := edtDiv.Text;
         modulDB.ZqStafAdmin.ParamByName('nama').Value := edtNama.Text;
         modulDB.ZqStafAdmin.ParamByName('nip').Value := edtNip.Text;
         modulDB.ZqStafAdmin.ParamByName('jabatan').Value := edtJabatan.Text;
@@ -145,8 +155,8 @@ var
 begin
 edtId.Text := modulDB.ZqStafAdminView.Fields[0].AsString;
 
-cbxUser.Text := modulDB.ZqStafAdminView.Fields[1].AsString;
-cbxDiv.Text := modulDB.ZqStafAdminView.Fields[2].AsString;
+edtIdUser.Text := modulDB.ZqStafAdminView.Fields[1].AsString;
+edtDiv.Text := modulDB.ZqStafAdminView.Fields[2].AsString;
 
 edtNama.Text := modulDB.ZqStafAdminView.Fields[3].AsString;
 edtNip.Text := modulDB.ZqStafAdminView.Fields[4].AsString;
@@ -158,7 +168,7 @@ procedure TfrStaffAdmin.btnUbahClick(Sender: TObject);
 var
   id_user, id_divisi : Integer;
 begin
-if (cbxUser.Text = '') or (cbxDiv.Text = '') or (cbxUser.Text = '----') or (cbxDiv.Text = '----') or (edtNama.Text = '') or (edtNip.Text = '') or (cbxSts.Text = '') or (cbxSts.Text = '----') or (edtId.Text = '') then
+if (edtIdUser.Text = '') or (edtDiv.Text = '') or (edtNama.Text = '') or (edtNip.Text = '') or (cbxSts.Text = '') or (cbxSts.Text = '----') or (edtId.Text = '') then
   begin
     ShowMessage('Data Yang Akan Di UBAH Belum Di Pilih!');
   end
@@ -170,12 +180,9 @@ if (cbxUser.Text = '') or (cbxDiv.Text = '') or (cbxUser.Text = '----') or (cbxD
         modulDB.ZqStafAdmin.SQL.Text := '';
         modulDB.ZqStafAdmin.SQL.Text := 'UPDATE penerbit SET id_user = :id_user, id_divisi = :id_divisi, nama = :nama, NIP = :NIP, jabatan = :jabatan, `status` = :status WHERE id = :id';
 
-        id_user := Integer(cbxUser.Items.Objects[cbxUser.ItemIndex]);
-        id_divisi := Integer(cbxDiv.Items.Objects[cbxDiv.ItemIndex]);
-
         modulDB.ZqStafAdmin.ParamByName('id').Value := edtId.Text;
-        modulDB.ZqStafAdmin.ParamByName('id_user').Value := id_user;
-        modulDB.ZqStafAdmin.ParamByName('id_divisi').Value := id_divisi;
+        modulDB.ZqStafAdmin.ParamByName('id_user').Value := edtIdUser.Text;
+        modulDB.ZqStafAdmin.ParamByName('id_divisi').Value := edtDiv.Text;
         modulDB.ZqStafAdmin.ParamByName('nama').Value := edtNama.Text;
         modulDB.ZqStafAdmin.ParamByName('NIP').Value := edtNip.Text;
         modulDB.ZqStafAdmin.ParamByName('jabatan').Value := edtJabatan.Text;
@@ -197,10 +204,10 @@ modulDB.FrxrepDsStafView.ShowReport();
 end;
 
 procedure TfrStaffAdmin.btnHapusClick(Sender: TObject);
-var
-  id_user, id_divisi : Integer;
+//var
+//  id_user, id_divisi : Integer;
 begin
-if (cbxUser.Text = '') or (cbxDiv.Text = '') or (cbxUser.Text = '----') or (cbxDiv.Text = '----') or (edtId.Text = '') then
+if (edtIdUser.Text = '') or (edtDiv.Text = '') or (edtId.Text = '') then
   begin
     ShowMessage('Data Yang Akan Di HAPUS Belum Di Pilih!');
   end
@@ -211,13 +218,9 @@ if (cbxUser.Text = '') or (cbxDiv.Text = '') or (cbxUser.Text = '----') or (cbxD
         modulDB.ZqStafAdmin.SQL.Clear;
         modulDB.ZqStafAdmin.SQL.Text := '';
         modulDB.ZqStafAdmin.SQL.Text := 'DELETE FROM penerbit WHERE id = :id AND id_user = :id_user';
-        modulDB.ZqKlasAdmin.SQL.Text := 'DELETE FROM klasifikasi where id = :id';
-
-        id_user := Integer(cbxUser.Items.Objects[cbxUser.ItemIndex]);
-        id_divisi := Integer(cbxDiv.Items.Objects[cbxDiv.ItemIndex]);
 
         modulDB.ZqStafAdmin.ParamByName('id').Value := edtId.Text;
-        modulDB.ZqStafAdmin.ParamByName('id_user').Value := id_user;
+        modulDB.ZqStafAdmin.ParamByName('id_user').Value := edtIdUser.Text;
 
         modulDB.ZqStafAdmin.ExecSQL;
         modulDB.DsStafAdminView.DataSet.Refresh;
@@ -232,21 +235,12 @@ end;
 procedure TfrStaffAdmin.btnClrClick(Sender: TObject);
 begin
 edtId.Text := '';
-cbxUser.Text := '----';
-cbxDiv.Text := '----';
+edtIdUser.Text := '';
+edtDiv.Text := '';
 cbxSts.Text := '----';
 edtNama.Text := '';
 edtNip.Text := '';
 edtJabatan.Text := ''
-end;
-
-procedure refreshData();
-begin
-modulDB.ZqStafAdminView.SQL.Clear;
-modulDB.ZqStafAdminView.SQL.Text := '';
-modulDB.ZqStafAdminView.SQL.Text := 'SELECT * FROM penerbit';
-modulDB.ZqStafAdminView.Open;
-modulDB.DsStafAdminView.DataSet.Refresh;
 end;
 
 procedure TfrStaffAdmin.edtRefreshClick(Sender: TObject);
@@ -271,6 +265,21 @@ if (edtCari.Text = '') then
     modulDB.ZqStafAdminView.Open;
     modulDB.DsStafAdminView.DataSet.Refresh;
   end;
+end;
+
+procedure TfrStaffAdmin.DBGrid2CellClick(Column: TColumn);
+begin
+edtIdUser.Text := modulDB.ZqStafAdminSetView.Fields[0].AsString;
+end;
+
+procedure TfrStaffAdmin.DBGrid3CellClick(Column: TColumn);
+begin
+edtDiv.Text := modulDB.ZqDivAdminView.Fields[0].AsString;
+end;
+
+procedure TfrStaffAdmin.btnRefreshClick(Sender: TObject);
+begin
+refreshData;
 end;
 
 end.
