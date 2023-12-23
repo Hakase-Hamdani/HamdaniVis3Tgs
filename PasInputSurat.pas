@@ -45,16 +45,9 @@ type
     procedure DBGrid2CellClick(Column: TColumn);
     procedure DBGrid4CellClick(Column: TColumn);
     procedure DBGrid3CellClick(Column: TColumn);
-<<<<<<< HEAD
-<<<<<<< HEAD
     procedure RbDefClick(Sender: TObject);
     procedure RbDescClick(Sender: TObject);
     procedure RbAscClick(Sender: TObject);
-    procedure idUserSelector(Sender: TObject);
-=======
->>>>>>> parent of fec5fb2 (PasSuratInput ORDER BY test one)
-=======
->>>>>>> parent of fec5fb2 (PasSuratInput ORDER BY test one)
   private
     { Private declarations }
   public
@@ -198,10 +191,11 @@ if (edtIdPenerbit.Text = '') or (MmDetail.Text = '') or (cbxStatus.Text = '') or
   end;
 end;
 
-procedure idUserSelector(Sender: TObject);
+procedure TfrSurat.FormCreate(Sender: TObject);
 var
   userid, kueriJoinUser : string;
 begin
+  Position := poScreenCenter;
   kueriJoinUser := 'SELECT id FROM penerbit WHERE id_user = :id_user';
 
   userid  := frLogin.Edit1.Text;
@@ -219,14 +213,6 @@ begin
   modulDB.ZqUsr.ParamByName('id').AsString := userid; //assign var 'nama' ke :nama di kueri
   modulDB.ZqUsr.Open;
   edtIdUser.Text := modulDB.ZqUsr.FIeldByName('id').AsString;
-end;
-
-procedure TfrSurat.FormCreate(Sender: TObject);
-//var
-//  userid, kueriJoinUser : string;
-begin
-  idUserSelector;
-  Position := poScreenCenter;
 end;
 
 procedure TfrSurat.btnCetakClick(Sender: TObject);
@@ -281,8 +267,7 @@ end;
 
 procedure TfrSurat.btnRefreshClick(Sender: TObject);
 begin
-//refreshData;
-idUserSelector;
+refreshData;
 end;
 
 procedure TfrSurat.edtCariChange(Sender: TObject);
@@ -292,8 +277,7 @@ begin
 if (edtCari.Text = '') then
   begin
     //jika kolom pencarian kosong, kembalikan ZqDivAdminView seperti semula
-    //refreshData;
-    idUserSelector;
+    refreshData;
   end
   else
   begin
@@ -322,11 +306,9 @@ begin
 edtCari.Text := modulDB.ZqSuratAlamatAktifOnly.Fields[0].AsString;
 end;
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 procedure TfrSurat.RbDefClick(Sender: TObject);
 begin
-idUserSelector;
+refreshData;
 end;
 
 procedure TfrSurat.RbDescClick(Sender: TObject);
@@ -347,8 +329,4 @@ modulDB.ZqSuratView.Open;
 modulDB.DsSurat.DataSet.Refresh;
 end;
 
-=======
->>>>>>> parent of fec5fb2 (PasSuratInput ORDER BY test one)
-=======
->>>>>>> parent of fec5fb2 (PasSuratInput ORDER BY test one)
 end.
