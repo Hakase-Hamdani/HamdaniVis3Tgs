@@ -52,6 +52,7 @@ type
     procedure RbDefClick(Sender: TObject);
     procedure RbDescClick(Sender: TObject);
     procedure RbAscClick(Sender: TObject);
+    procedure idUserSelector(Sender: TObject);
   private
     { Private declarations }
   public
@@ -195,11 +196,10 @@ if (edtIdPenerbit.Text = '') or (MmDetail.Text = '') or (cbxStatus.Text = '') or
   end;
 end;
 
-procedure TfrSurat.FormCreate(Sender: TObject);
+procedure idUserSelector(Sender: TObject);
 var
   userid, kueriJoinUser : string;
 begin
-  Position := poScreenCenter;
   kueriJoinUser := 'SELECT id FROM penerbit WHERE id_user = :id_user';
 
   userid  := frLogin.Edit1.Text;
@@ -217,6 +217,14 @@ begin
   modulDB.ZqUsr.ParamByName('id').AsString := userid; //assign var 'nama' ke :nama di kueri
   modulDB.ZqUsr.Open;
   edtIdUser.Text := modulDB.ZqUsr.FIeldByName('id').AsString;
+end;
+
+procedure TfrSurat.FormCreate(Sender: TObject);
+//var
+//  userid, kueriJoinUser : string;
+begin
+  idUserSelector;
+  Position := poScreenCenter;
 end;
 
 procedure TfrSurat.btnCetakClick(Sender: TObject);
@@ -272,7 +280,8 @@ end;
 
 procedure TfrSurat.btnRefreshClick(Sender: TObject);
 begin
-refreshData;
+//refreshData;
+idUserSelector;
 end;
 
 procedure TfrSurat.edtCariChange(Sender: TObject);
@@ -282,7 +291,8 @@ begin
 if (edtCari.Text = '') then
   begin
     //jika kolom pencarian kosong, kembalikan ZqDivAdminView seperti semula
-    refreshData;
+    //refreshData;
+    idUserSelector;
   end
   else
   begin
@@ -313,7 +323,7 @@ end;
 
 procedure TfrSurat.RbDefClick(Sender: TObject);
 begin
-refreshData;
+idUserSelector;
 end;
 
 procedure TfrSurat.RbDescClick(Sender: TObject);
