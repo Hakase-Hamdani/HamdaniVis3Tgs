@@ -1,8 +1,8 @@
 object frSurat: TfrSurat
-  Left = 252
-  Top = 49
-  Width = 846
-  Height = 677
+  Left = 262
+  Top = 177
+  Width = 1010
+  Height = 573
   Caption = 'Buat Surat'
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -59,20 +59,20 @@ object frSurat: TfrSurat
   end
   object Label7: TLabel
     Left = 328
-    Top = 320
+    Top = 336
     Width = 55
     Height = 13
     Caption = 'CARI DATA'
   end
   object Label8: TLabel
-    Left = 296
+    Left = 24
     Top = 360
     Width = 201
     Height = 13
     Caption = '*tekan tabel di bawah untuk mencari data'
   end
   object cbxPenerbit: TComboBox
-    Left = 832
+    Left = 984
     Top = 56
     Width = 185
     Height = 21
@@ -130,8 +130,8 @@ object frSurat: TfrSurat
   end
   object DBGrid1: TDBGrid
     Left = 328
-    Top = 40
-    Width = 481
+    Top = 56
+    Width = 641
     Height = 257
     DataSource = modulDB.DsSurat
     TabOrder = 6
@@ -171,6 +171,7 @@ object frSurat: TfrSurat
       item
         Expanded = False
         FieldName = 'detail'
+        Width = 175
         Visible = True
       end
       item
@@ -198,7 +199,7 @@ object frSurat: TfrSurat
     OnClick = Button2Click
   end
   object edtIdUser: TEdit
-    Left = 832
+    Left = 984
     Top = 88
     Width = 89
     Height = 21
@@ -223,7 +224,7 @@ object frSurat: TfrSurat
     TabOrder = 11
   end
   object edtIdSurat: TEdit
-    Left = 832
+    Left = 984
     Top = 24
     Width = 121
     Height = 21
@@ -231,7 +232,7 @@ object frSurat: TfrSurat
     Visible = False
   end
   object btnRefresh: TButton
-    Left = 728
+    Left = 888
     Top = 8
     Width = 75
     Height = 25
@@ -241,15 +242,15 @@ object frSurat: TfrSurat
   end
   object edtCari: TEdit
     Left = 400
-    Top = 320
-    Width = 409
+    Top = 336
+    Width = 569
     Height = 21
     TabOrder = 14
     OnChange = edtCariChange
   end
   object DBGrid2: TDBGrid
-    Left = 344
-    Top = 384
+    Left = 24
+    Top = 392
     Width = 177
     Height = 120
     DataSource = modulDB.DsStafAdminView
@@ -274,8 +275,8 @@ object frSurat: TfrSurat
       end>
   end
   object DBGrid3: TDBGrid
-    Left = 288
-    Top = 512
+    Left = 440
+    Top = 392
     Width = 521
     Height = 120
     DataSource = modulDB.DsSuratAlamatAktifOnly
@@ -319,8 +320,8 @@ object frSurat: TfrSurat
       end>
   end
   object DBGrid4: TDBGrid
-    Left = 536
-    Top = 384
+    Left = 216
+    Top = 392
     Width = 217
     Height = 120
     DataSource = modulDB.DsDivAdmin
@@ -343,5 +344,40 @@ object frSurat: TfrSurat
         FieldName = 'nama_divisi'
         Visible = True
       end>
+  end
+  object RadioGroup1: TRadioGroup
+    Left = 328
+    Top = 8
+    Width = 353
+    Height = 41
+    Caption = 'ORDER BY DATE'
+    TabOrder = 18
+  end
+  object RbAsc: TRadioButton
+    Left = 344
+    Top = 24
+    Width = 113
+    Height = 17
+    Caption = 'ASCENDING'
+    TabOrder = 19
+    OnClick = RbAscClick
+  end
+  object RbDesc: TRadioButton
+    Left = 440
+    Top = 24
+    Width = 113
+    Height = 17
+    Caption = 'DESCENDING'
+    TabOrder = 20
+    OnClick = RbDescClick
+  end
+  object RbDef: TRadioButton
+    Left = 536
+    Top = 24
+    Width = 113
+    Height = 17
+    Caption = 'DEFAULT'
+    TabOrder = 21
+    OnClick = RbDefClick
   end
 end

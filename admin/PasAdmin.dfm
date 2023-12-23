@@ -1,7 +1,7 @@
 object frAdmin: TfrAdmin
-  Left = 344
-  Top = 113
-  Width = 1029
+  Left = 18
+  Top = 140
+  Width = 1356
   Height = 489
   Caption = 'ADMIN'
   Color = clBtnFace
@@ -126,7 +126,7 @@ object frAdmin: TfrAdmin
   object DBGrid1: TDBGrid
     Left = 272
     Top = 16
-    Width = 697
+    Width = 1057
     Height = 385
     DataSource = modulDB.DsSuratList
     TabOrder = 3
@@ -135,6 +135,54 @@ object frAdmin: TfrAdmin
     TitleFont.Height = -11
     TitleFont.Name = 'Tahoma'
     TitleFont.Style = []
+    Columns = <
+      item
+        Expanded = False
+        FieldName = 'penerbit_nama'
+        Width = 150
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'penerbit_jabatan'
+        Width = 150
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'nama_divisi'
+        Width = 150
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'tujuan_alamat'
+        Width = 150
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'tujuan_orang'
+        Width = 125
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'tujuan_institusi'
+        Width = 125
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'klasifikasi_nama'
+        Width = 100
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'tgl_berlaku'
+        Visible = True
+      end>
   end
   object Button6: TButton
     Left = 276

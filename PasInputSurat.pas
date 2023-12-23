@@ -4,7 +4,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, ComCtrls, Grids, DBGrids;
+  Dialogs, StdCtrls, ComCtrls, Grids, DBGrids, ExtCtrls;
 
 type
   TfrSurat = class(TForm)
@@ -34,6 +34,10 @@ type
     DBGrid3: TDBGrid;
     DBGrid4: TDBGrid;
     Label8: TLabel;
+    RadioGroup1: TRadioGroup;
+    RbAsc: TRadioButton;
+    RbDesc: TRadioButton;
+    RbDef: TRadioButton;
     procedure FormActivate(Sender: TObject);
     procedure btnSimpanClick(Sender: TObject);
     procedure DBGrid1CellClick(Column: TColumn);
@@ -45,6 +49,9 @@ type
     procedure DBGrid2CellClick(Column: TColumn);
     procedure DBGrid4CellClick(Column: TColumn);
     procedure DBGrid3CellClick(Column: TColumn);
+    procedure RbDefClick(Sender: TObject);
+    procedure RbDescClick(Sender: TObject);
+    procedure RbAscClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -260,6 +267,7 @@ modulDB.ZqSuratView.SQL.Text := '';
 modulDB.ZqSuratView.SQL.Text := 'SELECT * FROM surat';
 modulDB.ZqSuratView.Open;
 modulDB.DsSurat.DataSet.Refresh;
+
 end;
 
 procedure TfrSurat.btnRefreshClick(Sender: TObject);
@@ -301,6 +309,29 @@ end;
 procedure TfrSurat.DBGrid3CellClick(Column: TColumn);
 begin
 edtCari.Text := modulDB.ZqSuratAlamatAktifOnly.Fields[0].AsString;
+end;
+
+procedure TfrSurat.RbDefClick(Sender: TObject);
+begin
+refreshData;
+end;
+
+procedure TfrSurat.RbDescClick(Sender: TObject);
+begin
+modulDB.ZqSuratView.SQL.Clear;
+modulDB.ZqSuratView.SQL.Text := '';
+modulDB.ZqSuratView.SQL.Text := 'SELECT * FROM surat ORDER BY tgl_berlaku DESC';
+modulDB.ZqSuratView.Open;
+modulDB.DsSurat.DataSet.Refresh;
+end;
+
+procedure TfrSurat.RbAscClick(Sender: TObject);
+begin
+modulDB.ZqSuratView.SQL.Clear;
+modulDB.ZqSuratView.SQL.Text := '';
+modulDB.ZqSuratView.SQL.Text := 'SELECT * FROM surat ORDER BY tgl_berlaku ASC';
+modulDB.ZqSuratView.Open;
+modulDB.DsSurat.DataSet.Refresh;
 end;
 
 end.
