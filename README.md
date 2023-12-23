@@ -1,5 +1,8 @@
 # Aplikasi Manajemen Surat Keluar
 
+Homework only, not meant for production. The code is badly written, full of bad implementations and workaround, very, very insecure. Just all around a very bad code meant to score some scores for my college assignment.
+
+
 > **modulDB.pas** : Modul koneksi.
 > 
 > **pasLogin.pas** : Modul untuk login.
