@@ -1,7 +1,7 @@
 object frRegUser: TfrRegUser
-  Left = 218
-  Top = 115
-  Width = 1333
+  Left = 302
+  Top = 225
+  Width = 1027
   Height = 480
   Caption = 'Regular User'
   Color = clBtnFace
@@ -18,63 +18,14 @@ object frRegUser: TfrRegUser
   object DBGrid1: TDBGrid
     Left = 208
     Top = 16
-    Width = 1081
+    Width = 769
     Height = 385
-    DataSource = modulDB.DsSuratList
     TabOrder = 0
     TitleFont.Charset = DEFAULT_CHARSET
     TitleFont.Color = clWindowText
     TitleFont.Height = -11
     TitleFont.Name = 'Tahoma'
     TitleFont.Style = []
-    Columns = <
-      item
-        Expanded = False
-        FieldName = 'penerbit_nama'
-        Width = 125
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = 'penerbit_jabatan'
-        Width = 100
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = 'nama_divisi'
-        Width = 150
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = 'tujuan_alamat'
-        Width = 150
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = 'tujuan_orang'
-        Width = 150
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = 'tujuan_institusi'
-        Width = 150
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = 'klasifikasi_nama'
-        Width = 125
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = 'tgl_berlaku'
-        Visible = True
-      end>
   end
   object GroupBox1: TGroupBox
     Left = 8
